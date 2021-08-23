@@ -619,6 +619,14 @@ Some concepts to remember about Python are:
 
 ## Activities
 
+Security Summer School most activities take the shape of **CTF challenges**.
+CTF stands for "Capture The Flag" and is a type of challenge where you are given access to an environment (a set of files, a website, a remote system etc.), which you have to use in order to obtain and submit a special string called **flag**.
+We use the [CyberEdu platform](TODO:add-link) for submitting flags.
+For the Security Summer School, all flags follow this pattern:
+```
+SSS{some_random_ASCII_characters}
+```
+
 ### Tutorial: In Your Face
 
 The flag is literally in your face.
@@ -656,7 +664,7 @@ You've just learned a cool new programming language that you can use!
 
 ### Challenge: Jumbled
 
-The file you're given contains the flag, but not quite.
+The [flag](./activities/06-challenge_jumbled/src/flag) you're given does contain the actual flag, but not quite.
 Use your Python skills to reconstruct it.
 
 ## Further Reading
