@@ -3,9 +3,10 @@
 ## Description
 
 You are given access to a seemingly uninteresting system.
-`ls` shows nothing in the `/home/ctf` directory.
+`ls` shows that a file hierarchy is present in the `/home/ctf` directory.
+Upon inspecting it, all files _seem_ to be empty.
 
 ## Solution
 
-Running `ls -a` reveals a hidden file called `.flag`.
-Inspecting its contents with `cat .flag` reveals the flag.
+Running `ls -a` inside `/home/ctf/south-park/al-gore/manbearpig` reveals a hidden file called `.flag`.
+Inspecting its contents with `cat .flag` displays the flag.
