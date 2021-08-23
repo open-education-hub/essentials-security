@@ -217,7 +217,7 @@ It's one of the most powerful tools at our disposal, so remember to abuse it as 
 
 Now back to our directories.
 So we're in `libc-database`, but how do we get back to `/root`?
-Symilarly to a browser, the parent of any directory can be accessed using `..` like so:
+Similarly to a browser, the parent of any directory can be accessed using `..` like so:
 ```
 root@kali:~/libc-database# ls ..
 Desktop    ghidra_9.1.2_PUBLIC  peda      %SystemDrive%
@@ -240,6 +240,34 @@ root@kali:/# ls  # now we are 2 levels up, in /
 bin   etc   initrd.img.old  lib64   media       root  srv   usr  vmlinuz.old
 boot  home  lib             libx32  opt         run   sys   var
 ```
+
+#### Be a Man!
+
+Almost every Linux command comes with extensive documentation.
+This documentation can be read using `man <command>`.
+Let's try reading the manual page for the `ls` command:
+```
+root@kali:~# man ls
+```
+
+- Use `↑` and `↓` to scroll up and down.
+- Use `Space` to scroll one whole page down.
+- Use `/<string>` to search for any string.
+Try searching for the string "recursive".
+Use `n` to navigate to the next occurrence of your string and `Shfit + n` to navigate to the previous one.
+- Use `q` to quit the manual
+
+**Task 1:** Use the parameter you've just found to recurisively list the contents of the `/root/libc-database` directory, using both relative and absolute paths.
+
+**Task 2:** Use the man page for `ls` again to learn how to view the contents of a directory in the form of a **long listing**.
+This parameter will show you more details regarding a file, such as its type, size, owner, access rights, the date when it was last modified etc.
+Test it on the file `/root/libc-database/README.md`
+
+**Task 3:** Use the man page for `ls` to find out what parameter to pass to `ls` to list **all** entries in a directory.
+This option will also show you the **hidden** files in that directory.
+These files start with `.`.
+Test it on the `~` directory.
+Notice our friend `..` is also present.
 
 #### I'll Make My Own Hierarchy!
 
@@ -318,34 +346,6 @@ Use `Tab` and you'll barely have to type anything.
 - Navigate to `~/ghidra_9.1.2_PUBLIC/docs/images` using its absolute path.
 - Now move 2 levels up the hierarchy without retyping the path.
 Use `..`.
-
-#### Be a Man!
-
-Almost every Linux command comes with extensive documentation.
-This documentation can be read using `man <command>`.
-Let's try reading the manual page for the `ls` command:
-```
-root@kali:~# man ls
-```
-
-- Use `↑` and `↓` to scroll up and down.
-- Use `Space` to scroll one whole page down.
-- Use `/<string>` to search for any string.
-Try searching for the string "recursive".
-Use `n` to navigate to the next occurrence of your string and `Shfit + n` to navigate to the previous one.
-- Use `q` to quit the manual
-
-**Task 1:** Use the parameter you've just found to recurisively list the contents of the `/root/libc-database` directory, using both relative and absolute paths.
-
-**Task 2:** Use the man page for `ls` again to learn how to view the contents of a directory in the form of a **long listing**.
-This parameter will show you more details regarding a file, such as its type, size, owner, access rights, the date when it was last modified etc.
-Test it on the file `/root/libc-database/README.md`
-
-**Task 3:** Use the man page for `ls` to find out what parameter to pass to `ls` to list **all** entries in a directory.
-This option will also show you the **hidden** files in that directory.
-These files start with `.`.
-Test it on the `~` directory.
-Notice our friend `..` is also present.
 
 #### Inspecting File Contents
 
@@ -484,6 +484,10 @@ while condition:
     # while body
 ```
 Once again, note the usage of the `:` after each loop declaration and the indentation of their bodies.
+
+The `in` keyword present in the `for` loop above signifies that the `var` variable will act as an **iterator**.
+At every step of the loop, `var` will be assigned to each consecutive element of  the collection `set_of_objects`.
+
 As before, take a look at, run and play with the code in [loops.py](./activities/00-demo_python/loops.py) until you feel you get the hang of `for`s and `while`s.
 
 #### Functions
@@ -666,7 +670,13 @@ Check out how you can do this [here](https://www.redhat.com/sysadmin/command-pro
 
 - Use `↑` and `↓` to navigate between your previous commands.
 - Use `Ctrl + r` to search for a previously issued command.
-- TODO: sa te misti intre cuvinte
+- Use `Ctrl + A` to navigate to the beginning of the line.
+- Use `Ctrl + E` to navigate to the end of the line.
+- Use `Alt + B` to navigate one word to the left of the cursor.
+- Use `Alt + F` to navigate one word to the right of the cursor.
+- Use `Alt + Backspace` to delete one word to the left of the cursor.
+- Use `Ctrl + Delete` to delete one word to the right of the cursor.
+- Use `Ctrl + D` to close the current terminal.
 
 ### Hardcore Python
 
