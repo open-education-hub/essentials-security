@@ -12,12 +12,13 @@
     * [The Prompt](#the-prompt)
     * [The File System](#the-file-system)
     * [Traversing the File System](#traversing-the-file-system)
+    * [Be a Man!](#be-a-man)
     * [I'll Make My Own Hierarchy!](#ill-make-my-own-hierarchy)
     * [Absolute or Relative?](#absolute-or-relative)
-    * [Be a Man!](#be-a-man)
     * [Inspecting File Contents](#inspecting-file-contents)
   * [The Root User](#the-root-user)
   * [Processes](#processes)
+  * [Scripts](#scripts)
 * [Enter Python](#enter-python)
   * [The Basics](#the-basics)
     * [Variables](#variables)
@@ -40,9 +41,11 @@
   * [Challenge: Quick Mafs](#challenge-quick-mafs)
   * [Challenge: Jumbled](#challenge-jumbled)
 * [Further Reading](#further-reading)
-  * [Altering the Prompt](#altering-the-prompt)
   * [More Terminal Tricks](#more-terminal-tricks)
+  * [Altering the Prompt](#altering-the-prompt)
+  * [Alternatives to Bash](#alternatives-to-bash)
   * [Hardcore Python](#hardcore-python)
+
 
 ## Introduction
 
@@ -427,6 +430,20 @@ We have seen Firefox move from being a simple program to being a running process
 In addition, we've learned a new command that is useful for inspecting what processes might be running on a system.
 Once you hack into a remote system, you can use `ps` to inspect what potentially exploitable processes are there.
 
+### Scripts
+
+It is often convenient to group together a set of instrucitons so that you don't have to type them separately each time you want to make use of their combined functionality.
+For this purpose, you can use Bash scripts.
+They are text files that simply contain Bash commands.
+Bash is also a programming lanugage that comes with `if` statements, `for` loops, functions and more, but we won't be needing those right now.
+
+Bash scripts typically bear the extension `.sh`, but this is by no means mandatory.
+Take some time to take a look at and run the Bash script in [00-demo_bash/demo.sh](./activities/00-demo_bash)
+You can run it like so:
+```
+root@kali:~/essentials/welcome-to-linux/activities/00-demo_bash# sh demo.sh
+```
+
 ## Enter Python
 
 ### The Basics
@@ -435,18 +452,18 @@ Python is a programming language designed with simplicty in mind.
 It's meant to be simple and fast to read, understand and write.
 This is evident even from the language's syntax.
 
-To get accustomed to Python, take a look at the code in the [00-demo_python](./activities/00-demo_python) dierctory.
+To get accustomed to Python, take a look at the code in the [01-demo_python](./activities/01-demo_python) dierctory.
 Feel free to fiddle with any of the code snippets.
 Add your own, try things out and experiment!
 
 In order to run a Python script, just type the name of the script preceeded by `python3`:
 ```
-root@kali:~/essentials/welcome-to-linux/activities/00-demo_python# python3 file.py 
+root@kali:~/essentials/welcome-to-linux/activities/01-demo_python# python3 variables.py 
 ```
 
 #### Variables
 
-Let's start with [variables.py](./activities/00-demo_python/variables.py).
+Let's start with [variables.py](./activities/01-demo_python/variables.py).
 This file explains how variables such as integers, floats and strings work in Python.
 It also introduces the `print` function.
 Inspect and run the code.
@@ -463,7 +480,7 @@ if condition:
 Notice that there are no `{}`, like you would use in C.
 This is because Python relies on **indentation** to determine which instructions make up the body of the `if` statement and which don't.
 Moreover, a colon (`:`) needs to be used after every `if`, `for` or function declaration, as we'll see shortly.
-To make things clearer, check out and run the code in [if.py](./activities/00-demo_python/if.py).
+To make things clearer, check out and run the code in [if.py](./activities/01-demo_python/if.py).
 
 As stated above, this code would not work because the `print` instruction is not correctly indented and the `if` statement appears to have no body:
 ```python
@@ -488,7 +505,7 @@ Once again, note the usage of the `:` after each loop declaration and the indent
 The `in` keyword present in the `for` loop above signifies that the `var` variable will act as an **iterator**.
 At every step of the loop, `var` will be assigned to each consecutive element of  the collection `set_of_objects`.
 
-As before, take a look at, run and play with the code in [loops.py](./activities/00-demo_python/loops.py) until you feel you get the hang of `for`s and `while`s.
+As before, take a look at, run and play with the code in [loops.py](./activities/01-demo_python/loops.py) until you feel you get the hang of `for`s and `while`s.
 
 #### Functions
 
@@ -512,7 +529,7 @@ foo('whatever')  # Here param2 = 5, by default
 foo('whatever', 2)
 ```
 By now, you already know what to do.
-The demo for Python functions is in [functions.py](./activities/00-demo_python/functions.py).
+The demo for Python functions is in [functions.py](./activities/01-demo_python/functions.py).
 Go to town on it!
 
 ### Data Structures
@@ -529,7 +546,7 @@ lst = [1, 'some string', True, 2.9]
 Accessing the lists elements is similar to C: `lst[0]`, `lst[1]` and so on.
 Yes, lists in Python are indexed from 0.
 
-Now go ahead and get some practice with lists by using the [lists.py](./activities/00-demo_python/lists.py) script.
+Now go ahead and get some practice with lists by using the [lists.py](./activities/01-demo_python/lists.py) script.
 
 #### Dictionaries
 
@@ -570,7 +587,7 @@ The `mode` parameter is a string, where each character has its own meaning.
 The list of the most common characters is specified in [Python's official documentation](https://docs.python.org/3/library/functions.html#open).
 
 Use https://docs.python.org whenever you need to look up some of Python's features.
-For a quick intro into handling files in Python, consult the [files.py](./activities/00-demo_python/files.py) script.
+For a quick intro into handling files in Python, consult the [files.py](./activities/01-demo_python/files.py) script.
 Run it, and then check the contents of the `output.txt` file it creates.
 
 #### Strings or Bytes?
@@ -589,7 +606,7 @@ You can create a byte array just like you would create a regular string **and ad
 my_bytes = b'SSS Rulz, but in bytes!'
 ```
 
-As always, the demo [strings_bytes.py](./activities/00-demo_python/strings_bytes.py) provides a more in-depth presentation of byte array and string operations.
+As always, the demo [strings_bytes.py](./activities/01-demo_python/strings_bytes.py) provides a more in-depth presentation of byte array and string operations.
 Go take a look.
 
 ## Summary
@@ -664,15 +681,10 @@ You've just learned a cool new programming language that you can use!
 
 ### Challenge: Jumbled
 
-The [flag](./activities/06-challenge_jumbled/src/flag) you're given does contain the actual flag, but not quite.
+The [flag](./activities/07-challenge_jumbled/src/flag) you're given does contain the actual flag, but not quite.
 Use your Python skills to reconstruct it.
 
 ## Further Reading
-
-### Altering the Prompt
-
-You can modify your prompt while keeping the same user and host name, by using the `PS1` **environment variable**.
-Check out how you can do this [here](https://www.redhat.com/sysadmin/command-prompt-tell-me).
 
 ### More Terminal Tricks
 
@@ -685,6 +697,16 @@ Check out how you can do this [here](https://www.redhat.com/sysadmin/command-pro
 - Use `Alt + Backspace` to delete one word to the left of the cursor.
 - Use `Ctrl + Delete` to delete one word to the right of the cursor.
 - Use `Ctrl + D` to close the current terminal.
+
+### Altering the Prompt
+
+You can modify your prompt while keeping the same user and host name, by using the `PS1` **environment variable**.
+Check out how you can do this [here](https://www.redhat.com/sysadmin/command-prompt-tell-me).
+
+### Alternatives to Bash
+
+There are quite a few alternatives to Bash, such as [zsh](https://ohmyz.sh/) and [DASH](http://manpages.ubuntu.com/manpages/trusty/man1/dash.1.html).
+Feel free to experiment with them in your free time.
 
 ### Hardcore Python
 
