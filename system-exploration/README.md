@@ -587,7 +587,7 @@ We'll get back to this subject starting from from Session [Data Representation](
 ### `file`
 
 First, we want to get some more detailed information about what type of binary file we are dealing with specifically.
-``ls` already gives us information such as the file's name, size and permissions.
+`ls` already gives us information such as the file's name, size and permissions.
 This is all fine, but this information is common to all files. Whether we're dealing with an image, or with an executable file `ls` won't tell us.
 
 But `file` does.
