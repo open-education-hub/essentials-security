@@ -7,8 +7,8 @@ Use [gh-md-toc](https://github.com/ekalinin/github-markdown-toc).
 ## Introduction
 
 In this session, we'll discuss some networking fundamentals.
-By doing so, we'll lay the foundations for some of our later sessions regarding networking and the Interned, such as [(Re)Discovering the Browser](./rediscovering-the-browser)
-and [Hacking the Web](./hacking-the-web).
+By doing so, we'll lay the foundations for some of our later sessions regarding networking and the Internet, such as [(Re)Discovering the Browser](../rediscovering-the-browser)
+and [Hacking the Web](../hacking-the-web).
 
 Moreover, we'll explain what happens when you access a URL (we'll also learn how to do this from our terminals).
 Last, but not least, we'll see what those `ssh` commands you've been using in order to solve the remote challenges mean.
@@ -19,7 +19,7 @@ For this session, you'll need:
 - a working internet connection;
 - a Linux environment that you're comfortable working with;
 - to understand what a *process* is;
-- general knowledge of the Linux CLI, as discussed in session [Welcone to Linux](../welcome-to-linux).
+- general knowledge of the Linux CLI, as discussed in session [Welcome to Linux](../welcome-to-linux).
 
 ## A General Overview of the Internet
 
@@ -41,7 +41,7 @@ However, there are 4 boxes above the aforementioned medium.
 These boxes are altogether known as **The TCP/IP Network Stack**.
 We'll see what's with the *TCP/IP* part soon enough.
 Individually, each box is a **layer**.
-Here are the 4 layers of the The TCP/IP stack:
+Here are the 4 layers of the TCP/IP stack:
 
 ![The TCP/IP Network Stack](./assets/tcp_ip_network_stack.svg)
 
@@ -71,7 +71,7 @@ This method of modular communication is called **encapsulation**.
 It can be likened to taking the data from the layer above and placing it in an **envelope**, writing some additional information on the envelope, then passing the envelope to the layer below.
 At the receiving end, a layer is passed an envelope from the layer below.
 It looks at the data on the outside of the envelope to decide what to do with the contents of the envelope.
-It then open the envelope and pass the contained data up to the next level. The reverse of encapsulation is **decapsulation**.
+It then opens the envelope and passes the contained data up to the next level. The reverse of encapsulation is **decapsulation**.
 After a message has passed through the network stack, it ends up in a _matrioshka_ of envelopes, one for each layer, each with its own, specific information.
 
 ### A Bit of Nomenclature
@@ -101,7 +101,7 @@ This layer is also known as the **Data Link** layer.
 
 It represents the underlying technology of any application.
 The device on which the application is running may have a choice of many technologies to connect to a network, such as Ethernet, WiFi, Bluetooth, 4G, 5G etc.
-Where more than one link exists, the operating system of the device chooses the most approprite link, e.g. a mobile phone might be connected to both 4G and WiFi.
+Where more than one link exists, the operating system of the device chooses the most appropriate link, e.g. a mobile phone might be connected to both 4G and WiFi.
 However, in some cases the application itself may dictate the choice of link, e.g. the mobile phone may decide to send traffic over WiFi to avoid 4G data charges.
 Once the link has been chosen, the appropriate link layer protocol is selected.
 
@@ -136,7 +136,7 @@ You're probably doing this right now.
 Another network is the one provided by your Internet Service Provider (ISP).
 
 There are many ISPs around the world and even more local home networks.
-The web thus becomes a _web of rounters_ who transmit **packets** from one network to another.
+The web thus becomes a _web of routers_ who transmit **packets** from one network to another.
 Back to our example above, you will surely need many routers to get a packet from the US to India.
 
 But how does a router know how where to send a packet?
@@ -178,12 +178,13 @@ The first hop is between the VM and the host.
 The other is the router to which the host is connected.
 From then on, it's whe wild Internet itself.
 
-### IPs
+### IP Addresses
 
-IPs are 32-bit (i.e. 4 bytes) numbers used to identify **hosts**, hence they are often called _ip addresses_.
+IP addresses or, in short, **IPs**, are 32-bit (i.e. 4 bytes) numbers used to identify **hosts**.
+IP stands for **Internet Protocol**, which is the most widely used internet layer protocol.
 Notice the difference between IPs and MACs.
 While MACs are associated with NICs, IPs are associated with hosts.
-Another difference is that whereas a MACs is unique to and engraved into the NIC, a host can easily change its IP.
+Another difference is that whereas a MAC is unique to and engraved into the NIC, a host can change its IP more easily.
 We won't go into this in today's session, but you can read about one such mechanism called [DHCP](#dhcp). 
 
 Of course you are free to express an IP address however you like, but by far the most common representation is to write each of its 4 bytes individually, in the decimal base, separated by a dot (`.`).
@@ -222,7 +223,7 @@ Its purpose is for testing the OS's TCP/IP stack.
 Its IP is, by convention `127.0.0.1`, or `0.0.0.0`.
 
 **`eth0`** is the interface used to connect to the Internet.
-It acts as a middle man between your host OS (the one in which you're running the VM) and the guest OS (Kali).
+It acts as a middleman between your host OS (the one in which you're running the VM) and the guest OS (Kali).
 Its status is *UP* (i.e. it's running) and its IP address is `10.0.2.15`.
 
 #### `ping`
@@ -298,7 +299,7 @@ The image below summarises the building blocks of a URL
 ![Anatomy of a URL](./assets/url_anatomy.png)
 
 Let's disect these components:
-- **The scheme** (sometimes called _schema_) indicates the application layer protocol that the browser must use to request the resouce.
+- **The scheme** (sometimes called _schema_) indicates the application layer protocol that the browser must use to request the resource.
 Usually, for websites, the protocol is HTTP (unsecured) or HTTPS (secured).
 We'll get into the details of HTTP in the [next session](../rediscovering-the-browser).
 Other schemes include `ftp` (File Transfer Protocol), `git`, `mailto` etc.
@@ -325,7 +326,7 @@ You might have heard the same things being called _Uniform Resource Identifiers 
 This is correct, but it's not the most precise name you can use.
 In order to understand the difference between URLs and URIs, check out their [corresponding section](#url-vs-uri).
 
-We'll se how URLs are translated into IPs by a naming system called the **Domanin Name System (DNS)**.
+We'll see how URLs are translated into IPs by a naming system called the **Domanin Name System (DNS)**.
 
 ### The Domain Name System
 
@@ -337,8 +338,8 @@ You can think of the DNS as being similar to a **phonebook of the Internet**.
 
 Here's how all of this works.
 When you type `security-summer-school.github.io` into your browser, it sends a query over the Internet in order to find the website associated with the URL `security-summer-school.github.io`.
-A query is a question asking to look up the domain name and respond the corresponging IP address.
-Let's follow the path of this question accross the Internet.
+A query is a question asking to look up the domain name and respond the corresponding IP address.
+Let's follow the path of this question across the Internet.
 
 #### The Recursive Resolver
 
@@ -350,7 +351,7 @@ It is a database of other DNS servers, which asks it forwards the same question:
 
 The first DNS server that the recursive resolver talks to is the **root server**.
 These servers are responsible for translating _top-level domains_, such as `.io`, `.com`, `.net` etc.
-These root servers are few in number (only 13 accross the world) and are highly secured.
+These root servers are few in number (only 13 across the world) and are highly secured.
 
 #### The Top-Level Domain Name Server
 
@@ -377,7 +378,7 @@ As a result, `security-summer-school.github.io` is mapped to its IP in the order
 - `security-summer-school`.
 
 This makes sense, as this order gradually narrows the _scope_ in which the URL has to be searched.
-It would be much more inefficient to look for `security-summer-school` accross the whole Internet, rather than limiting the search to the `.github.io` domain.
+It would be much more inefficient to look for `security-summer-school` across the whole Internet, rather than limiting the search to the `.github.io` domain.
 The fact that we are able to perform queries in this manner is proof of the hierarchical nature of IP addresses.
 
 All in all, the DNS lookup for `security-summer-school.github.io` is the one shown below.
@@ -405,9 +406,9 @@ Then we moved on to LANs and then to the whole Web.
 This must be it, right?
 We're now worldwide.
 Why all the fuss about the Transport Layer.
-Let's run an experiment: in your browser, open to tabs to your favourite website (which is https://security-summer-school.github.io, of course).
+Let's run an experiment: in your browser, open two tabs to your favourite website (which is https://security-summer-school.github.io, of course).
 How are those connections handled?
-How come what you do in one of the browsers does not interfere with what you do in the other?
+How come what you do in one of the tabs does not interfere with what you do in the other?
 IPs give us connections from host to host, but they can't differentiate between multiple connections between the same two hosts.
 
 For this, we need another concept: **ports**.
@@ -470,7 +471,7 @@ As a result, TCP is used for the transport-layer in the following application-le
 - **SMTP (Simple Mail Transfer Protocol)**, **IMAP (Internet Access Message Protocol)** and **POP3 (Post Office Protocol version 3)**: the main protocols used by email services worldwide.
 - **HTTP/HTTPS (HyperText Transfer Protocol / Secured)**: the most popular protocol used to transfer web pages.
 By default, HTTP uses port 80 and HTTPS uses port 443.
-- **SSH (Secure Shell)**: a wildey used protocol for obtaining a remote shell on another machine.
+- **SSH (Secure Shell)**: a widely used protocol for obtaining a remote shell on another machine.
 
 #### SSH
 
@@ -478,9 +479,9 @@ We've been using `ssh` to connect to the remote machines used for challenges and
 Now we know it is a protocol used for connecting to remote hosts via a shell.
 It opens a TCP connection to the remote host, where each character typed in the terminal is sent to the receiving host.
 
-As its name suggests, the main gist of this protocol is **secured**.
+As its name suggests, the gist of this protocol is **secured**.
 The security implies that the characters are not sent to the receiver as plain text, but are **encrypted**.
-While we'll discuss more about encryption in the [Data Security](../data-security) session, it is important that we outline the the main workings of encryption.
+While we'll discuss more about encryption in the [Data Security](../data-security) session, it is important that we outline the main workings of encryption.
 
 Upon initiating the SSH connection, an encryption algorithm is negociated between the communicating hosts.
 This algorithm performs two operations: encryption and decryption
@@ -505,7 +506,7 @@ $ ssh user@ip -p port
 
 We said TCP guarantees the correctness of the delivered data, which is great.
 This guarantee, however, comes at the cost of performance.
-In the pictura above, we saw how ACKs are transmitted.
+In the picture above, we saw how ACKs are transmitted.
 This mechanism causes a significant temporal overhead, that we sometimes simply cannot afford.
 There are services that need to transfer data really fast and, thus, they forgo the need for **datagram** correctness.
 As the protocol's name suggests, UDP messages are called datagrams.
@@ -585,7 +586,7 @@ Here's a short summary of the layers of the TCP/IP stack:
 Also adds identifiers to NICs in the form of MAC addresses.
 - **Internet:** Provides routing and identifiers for hosts in the Internet, in the form of IP addresses.
 - **Transport:** Provides connections between processes on different hosts by using ports.
-- **Application:** Composes actual the message to be delivered to the receiver.
+- **Application:** Composes the actual message to be delivered to the receiver.
 
 Finally, let's map some of the layers of the TCP/IP stack to the CLI tools we use for each of them:
 - **Internet:**
@@ -631,8 +632,8 @@ You can learn about this alternative stack [here](https://www.imperva.com/learn/
 
 ### The Networking Bible
 
-Speaking of the OSI model, it is paramounnt that we mention the most influential book in computer networking to this day, namely Andrew Tanenbaum's [Computer Networks](http://index-of.es/Varios-2/Computer%20Networks%205th%20Edition.pdf).
-Dating from 1981 (about the time these stacks were first defined), this book has been the cornerstone of networking ever since. It's a must-read for every netowrking enthusiast.
+Speaking of the OSI model, it is paramount that we mention the most influential book in computer networking to this day, namely Andrew Tanenbaum's [Computer Networks](http://index-of.es/Varios-2/Computer%20Networks%205th%20Edition.pdf).
+Dating from 1981 (about the time these stacks were first defined), this book has been the cornerstone of networking ever since. It's a must-read for every netoworking enthusiast.
 
 ### ICMP
 
@@ -657,7 +658,7 @@ This number may look large, but it's _just_ 4,294,967,296, so just upwards of 4 
 But the world's population is 7.9 billion as of September 2021, and growing.
 The pigeonhole principle tells us there are not enough IPs so that every human can be connected to the Internet at the same time.
 
-For this reason and some others relatd to the lack of native security of the IP protocol, a new iteration of IPs was designed: **IPv6**.
+For this reason and some others related to the lack of native security of the IP protocol, a new iteration of IPs was designed: **IPv6**.
 These new IPs are 128-bit numbers.
 `2^128` is 39 **digits** long, so it should suffice for the entirety of Earth's population (a few times over).
 
@@ -668,4 +669,4 @@ For a better (but still short) introduction to IPv6, check out [this](http://www
 **Dynamic Host Configuration Protocol (DHCP)** is a protocol used in order to manage and distribute IP addresses.
 Hosts are *leased* IP addresses from DHCP servers for some limited amounts of time.
 When an address is about to expire, a host can ask the server to extend the lease.
-You can read more about DHCPP servers [here](https://www.infoblox.com/glossary/dhcp-server/).
+You can read more about DHCP servers [here](https://www.infoblox.com/glossary/dhcp-server/).
