@@ -375,7 +375,7 @@ These privileges refer to the actions a certain user is allowed to perform, such
 But among all users, there is *one to rule them all*: `root`.
 Similar to the `Administrator` user in Windows, `root` has no restrictions to the actions he may perform.
 This is the default user in Kali Linux, so you don't need to worry about permissions.
-However, for the CTF challenges below, your user will be `ctf` and it **does** have limited permissions.
+However, when loggin into the remote servers we provide for some of the CTF challenges below, the user will be `ctf` and it **does** have limited permissions.
 
 ### Processes
 
@@ -653,7 +653,7 @@ Connect to the specified virtual machine and use `ls` to explore your surroundin
 ctf@tutorial:~$ ls
 flag
 ```
-Now just use `cat` to inspect the content of the `flag` file.
+Now just use `cat` to extract the content of the `flag` file.
 
 ### Challenge: Did You Look Everywhere?
 
