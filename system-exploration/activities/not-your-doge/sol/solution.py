@@ -1,4 +1,6 @@
-file = open('../src/not-doge.pnm', 'rb')
+#! /usr/bin/python
+
+file = open('../public/not-doge.pnm', 'rb')
 data = file.read()
 file.close()
 
