@@ -1,3 +1,5 @@
+#! /bin/bash
+
 echo "Get the first flag."
 find / -type f -name flag
 cat /proc/1/net/stat/flag | grep SSS

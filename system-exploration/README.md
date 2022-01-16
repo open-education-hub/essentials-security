@@ -208,7 +208,7 @@ But what if we only knew a portion of our filename?
 Or what if we intentionally wanted to find all files ending in `.log`, for instance?
 
 For this, we need to use the concept of **globbing**.
-This mechanism defines a set of special characters that are interpreted differenttly than regular ASCII text.
+This mechanism defines a set of special characters that are interpreted differently than regular ASCII text.
 
 #### `*`: 0 or more characters
 
@@ -363,7 +363,7 @@ ls: cannot access 'whatever': No such file or directory
 The error message (`ls: cannot access 'whatever': No such file or directory`) is displayed to the terminal, so it would make sense for it to be printed by `ls` to `stdout`, right?
 Well... no.
 It's printed to another stream, called `stderr`.
-As its name implies, this stream is dedicated to error messasges.
+As its name implies, this stream is dedicated to error messages.
 This distinction was made in order for users to be able to separate between useful / legitimate output and sometimes unimportant error messages.
 
 Redirecting `stderr` is performed using 2 characters: `2>`.
@@ -418,7 +418,7 @@ More specifically, remember `open`'s parameters.
 The second one was `mode` and one of the modes is _append_, symbolised by the `a` character.
 This mode makes any text that's written to that specific file to be added at the end of whatever data was already inside it, without overwriting anything.
 
-We need something symilar to that, which can be achieved by using `>>` for redirecting `stdin` and `2>>` for redirecting `stderr`.
+We need something similar to that, which can be achieved by using `>>` for redirecting `stdin` and `2>>` for redirecting `stderr`.
 Here's how it works for the previous `ls` commands:
 ```
 root@kali:~# ls essentials > out  # This command also creates the out file. It is irrelevant whether we use > or >>.
@@ -492,7 +492,7 @@ Remember that pipes redirect the `stdout` of the first command into the second's
 But what if we wanted to redirect the same `stdout` as command line parameters for the second command?
 
 This is when we would use `| xargs`.
-Let's asume this hypothetical command:
+Let's assume this hypothetical command:
 ```
 $ cmd1 | xargs cmd2
 ```
@@ -555,7 +555,7 @@ root@kali:~# grep "stdin" essentials/system-exploration/README.md
 Let's showcase the usage of `stdin` redirection.
 We use `<` in order to redirect `stdin`.
 `stdout` is the complement of `stdin`.
-We need something symilar to that, which can be achieved by using `>>` for redirecting `stdin` and `2>>` for redirecting `stderr`.
+We need something similar to that, which can be achieved by using `>>` for redirecting `stdin` and `2>>` for redirecting `stderr`.
 ```
 As you can see, `grep` outputs the **lines that contain the given string**.
 This makes `grep` extremely useful for looking for CTF flags.
@@ -573,7 +573,7 @@ This symbol is a C `struct` that contains all the information associated with an
 root@kali:~# grep -R "task_struct" /usr/src/linux-headers-5.6.0-kali2-common | less  # The output is rather large, so we contain it with less.
 ```
 
-**Rememeber this distinction:** `find` looks for file **metadata** (names, permissions, size, type), while `grep` looks for file **data**.
+**Remember this distinction:** `find` looks for file **metadata** (names, permissions, size, type), while `grep` looks for file **data**.
 
 ## Inspecting Files
 
@@ -604,14 +604,14 @@ activities/05-challenge_not-your-doge/src/not-doge.pnm: Netpbm image data, size 
 One of the most basic forms of binary analysis is to simply look for any human-readable string present in a binary file.
 For this purpose, we'll use the `strings` command.
 
-#### Demo: Doge
+#### Tutorial: Doge
 
 The best way to showcase the `strings` command is to use it in order to find our first flag for today.
-Head to the [00-demo_doge/src](./activities/00-demo_doge/src) folder and take a look at the image you've been given.
+Head to the [doge/src](./activities/doge/src) folder and take a look at the image you've been given.
 
 Since this section is dedicated to the `strings` command, we'll run this command on our `doge.jpg` file:
 ```
-root@kali:~/essentials/system-exploration/activities/00-demo_doge/src# strings doge.jpg
+root@kali:~/essentials/system-exploration/activities/doge/src# strings doge.jpg
 JFIF
 [...]
 eP!_"
@@ -622,7 +622,7 @@ In order to filter them out, we'll use what we've learned today: `|` + `grep`.
 We'll try to find the flag itself.
 Maybe we get lucky.
 ```
-root@kali:~/essentials/system-exploration/activities/00-demo_doge/src# strings doge.jpg | grep SSS
+root@kali:~/essentials/system-exploration/activities/doge/src# strings doge.jpg | grep SSS
 SSS{grep_your_strings}
 ```
 
@@ -630,8 +630,8 @@ That's how you use `strings`: often in combination with some filtering mechanism
 
 Another way to get the flag is to run the `file` command:
 ```
-root@kali:~/essentials/system-exploration# file activities/00-demo_doge/src/doge.jpg 
-activities/00-demo_doge/src/doge.jpg: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, comment: "SSS{grep_your_strings}", progressive, precision 8, 500x500, components 3
+root@kali:~/essentials/system-exploration# file activities/doge/src/doge.jpg 
+activities/doge/src/doge.jpg: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, comment: "SSS{grep_your_strings}", progressive, precision 8, 500x500, components 3
 ```
 The flag is included in the file as a comment.
 Image comments are often used in CTFs in order to hide some more subtle information, such as hints.
@@ -651,10 +651,10 @@ Here are a few useful snippets from today's session:
 
 There are many false flags out there.
 Answer the questions and find the **real** flags.
-The quizes cover subjects discussed today and durint the previous session.
+The quizzes cover subjects discussed today and during the previous session.
 Think of them as a recap.
 
-The answer to each of the riddles in the files `question-*` from the [01-challenge_surgical-precision/src](./activities/01-challenge_surgical-precision/src) is the name of the flag you need to submit for that particular riddle.
+The answer to each of the riddles in the files `question-*` from the [surgical-precision/src](./activities/surgical-precision/src) is the name of the flag you need to submit for that particular riddle.
 
 Beware of [red herrings](https://en.wikipedia.org/wiki/Red_herring)!
 
@@ -671,7 +671,8 @@ Use the hint it comes with, in order to figure out the second flag as well.
 
 ### Challenge: Not Your Doge
 
-The image is in `.pnm` format. It has a rather simple header, that you can find [here](https://en.wikipedia.org/wiki/Netpbm#PPM_example)(`.pnm`s are almost the same as `.ppm`s; it's just the data encoding that differs).
+The image is in `.pnm` format.
+It has a rather simple header, that you can find [here](https://en.wikipedia.org/wiki/Netpbm#PPM_example)(`.pnm`s are almost the same as `.ppm`s; it's just the data encoding that differs).
 But it's incomplete.
 Find a way to reveal it completely.
 
@@ -692,7 +693,7 @@ As expected, they're also more difficult to understand.
 By default, `grep` actually matches regular expressions, not just raw strings.
 `find` can also look fore files matching regular expressions, by using the `-regex` and `-regextype` parameters (yes, there are multiple regex syntaxes).
 
-A good point from which to start learning how to use regular expressions are these ones:
+A good point from which to start learning how to use regular expressions are these resources:
 - https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285
 - https://regexone.com/
 
@@ -702,6 +703,6 @@ Once you've got the hang of regular expressions, test your skills in the [Regex 
 Yes, such a thing really does exist and it's as crazy as you might think.
 Give it a try!
 
-Moreover, most programming languages are capable of matching regexes.
+Moreover, most programming languages have libraries for regular expressions.
 Python can do so, too.
 Take a look at its [regex module](https://docs.python.org/3/library/re.html).
