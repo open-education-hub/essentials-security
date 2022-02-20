@@ -1,4 +1,10 @@
-# Binary Analysis
+---
+linkTitle: 10. Assembly Language
+type: docs
+weight: 10
+---
+
+# Assembly Language
 
 ## Table of Contents
 

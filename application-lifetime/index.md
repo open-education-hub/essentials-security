@@ -1,4 +1,10 @@
-# Assembly Language
+---
+linkTitle: 08. Application Lifetime
+type: docs
+weight: 10
+---
+
+# Application Lifetime
 
 ## Table of Contents
 

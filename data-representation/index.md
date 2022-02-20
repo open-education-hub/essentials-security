@@ -1,4 +1,10 @@
-# Hacking the Web
+---
+linkTitle: 06. Data Representation
+type: docs
+weight: 10
+---
+
+# Data Representation
 
 ## Table of Contents
 

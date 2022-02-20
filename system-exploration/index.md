@@ -1,3 +1,9 @@
+---
+linkTitle: 02. Welcome to Linux
+type: docs
+weight: 10
+---
+
 # System Exploration
 
 ## Table of Contents
@@ -44,7 +50,7 @@
 
 ## Introduction
 
-In the [previous section](../welcome-to-linux/README.md), we introduced the Linux OS family via the Kali Linux OS.
+In the [previous session](../welcome-to-linux/index.md), we introduced the Linux OS family via Kali Linux.
 With its help, we learned about the terminal and about basic file navigation commands, such as `ls`, `cd`, `mkdir`, `rm`.
 We also talked about processes and the `ps` command.
 
@@ -582,7 +588,7 @@ Now that we can find our way inside a file hierarchy, we need a means by which t
 But what if we aren't?
 
 In this case, we'll need to taka a sneak peak into some _binary analysis_.
-We'll get back to this subject starting from from Session [Data Representation](../data-representation).
+We'll get back to this subject starting from from Session [Data Representation](../data-representation/index.md).
 
 ### `file`
 
@@ -593,10 +599,10 @@ This is all fine, but this information is common to all files. Whether we're dea
 But `file` does.
 `file` works by reading a file's header (the first few bytes at the beginning of the file, which hold information about its format and type).
 Thus, it is capable of outputting more precise information than `ls`.
-Let's test it using one of today's challenges, [05-challenge_not-your-doge/src/not-doge.pnm](./activities/05-challenge_not-your-doge/src/not-doge.pnm):
+Let's test it using one of today's challenges, `activities/05-challenge_not-your-doge/public/not-doge.pnm`.
 ```
-root@kali:~/essentials/system-exploration# file activities/05-challenge_not-your-doge/src/not-doge.pnm
-activities/05-challenge_not-your-doge/src/not-doge.pnm: Netpbm image data, size = 500 x 590, rawbits, pixmap
+root@kali:~/essentials/system-exploration# file activities/05-challenge_not-your-doge/public/not-doge.pnm
+activities/05-challenge_not-your-doge/public/not-doge.pnm: Netpbm image data, size = 500 x 590, rawbits, pixmap
 ```
 
 ### `strings`
@@ -607,11 +613,11 @@ For this purpose, we'll use the `strings` command.
 #### Tutorial: Doge
 
 The best way to showcase the `strings` command is to use it in order to find our first flag for today.
-Head to the [doge/src](./activities/doge/src) folder and take a look at the image you've been given.
+Head to the `activities/doge/public` folder and take a look at the image you've been given.
 
 Since this section is dedicated to the `strings` command, we'll run this command on our `doge.jpg` file:
 ```
-root@kali:~/essentials/system-exploration/activities/doge/src# strings doge.jpg
+root@kali:~/essentials/system-exploration/activities/doge/public# strings doge.jpg
 JFIF
 [...]
 eP!_"
@@ -622,7 +628,7 @@ In order to filter them out, we'll use what we've learned today: `|` + `grep`.
 We'll try to find the flag itself.
 Maybe we get lucky.
 ```
-root@kali:~/essentials/system-exploration/activities/doge/src# strings doge.jpg | grep SSS
+root@kali:~/essentials/system-exploration/activities/doge/public# strings doge.jpg | grep SSS
 SSS{grep_your_strings}
 ```
 
@@ -630,8 +636,8 @@ That's how you use `strings`: often in combination with some filtering mechanism
 
 Another way to get the flag is to run the `file` command:
 ```
-root@kali:~/essentials/system-exploration# file activities/doge/src/doge.jpg 
-activities/doge/src/doge.jpg: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, comment: "SSS{grep_your_strings}", progressive, precision 8, 500x500, components 3
+root@kali:~/essentials/system-exploration# file activities/doge/public/doge.jpg 
+activities/doge/public/doge.jpg: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, comment: "SSS{grep_your_strings}", progressive, precision 8, 500x500, components 3
 ```
 The flag is included in the file as a comment.
 Image comments are often used in CTFs in order to hide some more subtle information, such as hints.
@@ -654,7 +660,7 @@ Answer the questions and find the **real** flags.
 The quizzes cover subjects discussed today and during the previous session.
 Think of them as a recap.
 
-The answer to each of the riddles in the files `question-*` from the [surgical-precision/src](./activities/surgical-precision/src) is the name of the flag you need to submit for that particular riddle.
+The answer to each of the riddles in the files `question-*` from the `activities/surgical-precision/public` is the name of the flag you need to submit for that particular riddle.
 
 Beware of [red herrings](https://en.wikipedia.org/wiki/Red_herring)!
 
