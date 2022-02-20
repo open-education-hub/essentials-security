@@ -1,4 +1,10 @@
-# Data Security
+---
+linkTitle: 09. Binary Analysis
+type: docs
+weight: 10
+---
+
+# Binary Analysis
 
 ## Table of Contents
 

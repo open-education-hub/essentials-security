@@ -1,4 +1,10 @@
-# Data Representation
+---
+linkTitle: 11. Taming the Stack
+type: docs
+weight: 10
+---
+
+# Taming the Stack
 
 ## Table of Contents
 

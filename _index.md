@@ -1,3 +1,11 @@
+---
+linkTitle: Security Essentials
+type: docs
+menu:
+  main:
+    weight: 20
+---
+
 # SSS Security Essentials
 
 This is the public repository for the **Security Essentials** track of the Security Summer School (SSS).
@@ -27,22 +35,6 @@ Activities come in two forms:
 ## Support
 
 In case you have questions or want to know more about a topic, use the the `Discussions` tab or join the [SSS Discord community](https://discord.gg/qx3RmNEVkB).
-
-## Sessions
-
-The sessions of the SSS **Security Essentials** track are:
-
-1. [Welcome to Linux](./welcome-to-linux/README.md)
-1. [System Exploration](./system-exploration/README.md)
-1. [Explaining the Internet](./explaining-the-internet/README.md)
-1. [(Re)Discovering the Browser](./rediscovering-the-browser/README.md)
-1. [Hacking the Web](./hacking-the-web/README.md)
-1. [Data Representation](./data-representation/README.md)
-1. [Data Security](./data-security/README.md)
-1. [Application Lifetime](./application-lifetime/README.md)
-1. [Binary Analysis](./binary-analysis/README.md)
-1. [Assembly Language](./assembly-language/README.md)
-1. [Taming the Stack](./taming-the-stack/README.md)
 
 ### Session Folder Structure
 

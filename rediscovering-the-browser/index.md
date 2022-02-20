@@ -1,4 +1,10 @@
-# Taming the Stack
+---
+linkTitle: 04. (Re)Discovering the Browser
+type: docs
+weight: 10
+---
+
+# (Re)Discovering the Browser
 
 ## Table of Contents
 

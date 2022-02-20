@@ -1,4 +1,10 @@
-# (Re)Discovering the Browser
+---
+linkTitle: 07. Data Security
+type: docs
+weight: 10
+---
+
+# Data Security
 
 ## Table of Contents
 

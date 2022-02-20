@@ -1,4 +1,10 @@
-# Application Lifetime
+---
+linkTitle: 05. Hacking the Web
+type: docs
+weight: 10
+---
+
+# Hacking the Web
 
 ## Table of Contents
 
