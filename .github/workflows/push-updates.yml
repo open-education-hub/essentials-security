@@ -1,0 +1,27 @@
+name: Sync parent repo with submodule
+
+on:
+  push:
+    branches: 
+      - master
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with: 
+          repository: security-summer-school/security-summer-school.github.io
+
+      - name: Pull and update submodule recursively
+        run: |
+          git submodule update --remote --recursive --merge
+
+      - name: Commit
+        run: |
+          git config user.email "essentials-updater@github.com"
+          git config user.name "Essentials Track Updater"
+          git add --all
+          git commit -m "essentials: Update track submodule" || echo "No changes to commit"
+          git push
