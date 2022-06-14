@@ -17,7 +17,7 @@ By doing so, we'll lay the foundations for some of our later sessions regarding 
 and [Hacking the Web](../hacking-the-web).
 
 Moreover, we'll explain what happens when you access a URL (we'll also learn how to do this from our terminals).
-Last, but not least, we'll see what those `ssh` commands you've been using in order to solve the remote challenges mean.
+Last but not least, we'll see what those `ssh` commands you've been using in order to solve the remote challenges mean.
 
 ## Reminders and Prerequisites
 
@@ -51,7 +51,7 @@ Here are the 4 layers of the TCP/IP stack:
 
 ![The TCP/IP Network Stack](./assets/tcp_ip_network_stack.svg)
 
-Each layer makes a well-defined set of requirements, which are fulfilled by **protocols**.
+Each layer provides a well-defined set of requirements, which are fulfilled by **protocols**.
 A networking protocol is a set of rules that define the communication (data formatting and processing) between the same two levels of the network stack.
 For example, there are protocols for the transport layer, others for the link layer and so on.
 We'll talk about them in a bit.
@@ -59,16 +59,17 @@ We'll talk about them in a bit.
 ### Encapsulation
 
 Each layer takes care of a specific requirement of networking, as we'll discuss shortly.
-When sending data, each of the layers in the TCP/IP model accepts data from the layer above (or from a program in the case of the application layer), and adds additional information to the data that is necessary for that layer to carry out its task.
-In some cases, the original data may be processed in some way before the additional information is added, i.e. it might be encrypted.
-The layer then passes this data on to the layer below (or onto the transmission media in the case of the link layer).
+When sending data, each of the layers in the TCP/IP model accepts data from the layer above (or from the user in the case of the application layer), and adds additional information to the data that is necessary for that layer to carry out its task.
+In some cases, the original data may be processed in some way before the additional information is added.
+For example, it might be encrypted.
+The layer then passes this data on to the layer below (or onto the transmission medium in the case of the link layer).
 
 The arrival of data from an upper layer may trigger additional separate messages to be sent to the receiving end.
 For instance, if the data needed to be encrypted, the layer that carries out the encryption has to exchange initial setup messages with the receiving end to agree the encryption method and other data that we'll touch on in the session [Data Security](../data-security), before the encrypted data can be transferred.
 
 At the receiving end, the process happens in reverse: each layer accepts data from the layer below, inspects and removes the additional information added on by the corresponding layer in the sending end, before passing it up to the layer above.
 
-Data is passed from a process on the sender to a process on the receiver by using the services of the layer below.
+Data is passed from a sender process to a receiver process by using the services of the layer below.
 It is only the final layer that actually causes the data to be transmitted onto the transmission media (e.g. cable). Below is a representation of this whole mechanism.
 
 ![General Workings of a Network Stack Layer](./assets/network_layers.png)
@@ -95,7 +96,7 @@ Each of these has a specific name depending on the layer that creates it:
 
 ## The Medium 
 
-This layer is not mentioned in the above diagrams, but is worth mentioning.
+This layer is not mentioned in the above diagrams, but is worth talking a little bit about.
 The medium represents the connection itself between the 2 staions.
 This connection can be:
 - **wired**: using a cable on which digital signals that encode the bits are sent;
@@ -106,8 +107,10 @@ This connection can be:
 This layer is also known as the **Data Link** layer.
 
 It represents the underlying technology of any application.
-The device on which the application is running may have a choice of many technologies to connect to a network, such as Ethernet, WiFi, Bluetooth, 4G, 5G etc.
-Where more than one link exists, the operating system of the device chooses the most appropriate link, e.g. a mobile phone might be connected to both 4G and WiFi.
+The device on which the application is running may have a choice of many technologies to connect to a network, such as Ethernet, WiFi, Bluetooth, 4G, 5G (_tinfoil hat off_) etc.
+Where more than one link exists, the operating system of the device chooses the most appropriate link.
+For instance, a mobile phone might be connected to both 4G and WiFi.
+Most moblile phones prefer the WiFi connection, but remain connected to 4G mobile data, which they use as backup. 
 However, in some cases the application itself may dictate the choice of link, e.g. the mobile phone may decide to send traffic over WiFi to avoid 4G data charges.
 Once the link has been chosen, the appropriate link layer protocol is selected.
 
@@ -135,7 +138,11 @@ You need some intermediaries: **routers**.
 
 ### Routers
 
-A router is a networking device that connects two or more networks.
+It is impossible to connect your PC / laptop directly (physically) to every PC or server in the world.
+Therefore, we need **networks**, which are basically aggregations of hosts (servers, PCs, laptops, mobile phones etc.).
+
+Each network contains one **router** which sends data between the hosts in its network and those on other netowrks.
+So a router is a networking device that connects two or more networks.
 Think of the router you most probably have at home.
 There is a *local network*, to which you can connect via WiFi, or Ethernet cables.
 You're probably doing this right now.
@@ -153,7 +160,8 @@ A packet comes from TODO
 
 In order to visualise the hops that our requests to a well-known service, such as `google.com`, we use the `traceroute` command:
 ```
-root@kali:~# traceroute google.com
+┌──(kali㉿kali)-[~]
+└─$ traceroute google.com
 traceroute to google.com (142.250.185.206), 30 hops max, 60 byte packets
  1  _gateway (10.0.2.2)  0.212 ms  0.123 ms  0.228 ms
  2  10.20.21.254 (10.20.21.254)  2.815 ms  3.908 ms  3.838 ms
@@ -203,7 +211,8 @@ We'll explain what the DNS is in a future [section](#the-dns).
 
 In order to see the IP of your machine, run the following command:
 ```
-root@kali:~# ip address show
+┌──(kali㉿kali)-[~]
+└─$ ip address show
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
@@ -232,6 +241,9 @@ Its IP is, by convention `127.0.0.1`, or `0.0.0.0`.
 It acts as a middleman between your host OS (the one in which you're running the VM) and the guest OS (Kali).
 Its status is *UP* (i.e. it's running) and its IP address is `10.0.2.15`.
 
+Notice the `/24` part.
+
+
 #### `ping`
 
 In order to test whether a host is up or down, we can `ping` its IP.
@@ -247,8 +259,11 @@ An unreachable host is as good as a dead one: _useless_.
 `localhost`, in other words. the `lo` interface, should **always** be up and respond to pings.
 In case it doesn't, well... your kernel's TCP/IP stack may be broken.
 Sad reacts only.
+We use the `-c 3` parameter to only send 3 "pings" to `localhost`.
+Otherwise, `ping` sends packets continuously, until stopped manually (with `ctrl + c`).
 ```
-root@kali:~# ping -c 3 127.0.0.1
+┌──(kali㉿kali)-[~]
+└─$ ping -c 3 127.0.0.1
 PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
 64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.040 ms
 64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.060 ms
@@ -266,7 +281,8 @@ This makes sense, since there are no hops (routers) between a host and itself.
 Now let's ping a remote server, say `google.com`.
 We can `ping` either an IP or a URL.
 ```
-root@kali:~# ping -c 3 google.com
+┌──(kali㉿kali)-[~]
+└─$ ping -c 3 google.com
 PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
 64 bytes from 8.8.8.8: icmp_seq=1 ttl=63 time=39.0 ms
 64 bytes from 8.8.8.8: icmp_seq=2 ttl=63 time=50.1 ms
@@ -396,13 +412,29 @@ Notice that only the domain of a URL gets DNS'd.
 The port, path, parameters and anchor are handled by the web server itself.
 The DNS part is, thus, necessary in order to **find** that web server.
 
-#### `dig`
+#### `host`
 
 In the previous section we explained the DNS.
 Now let's put what we've just learned into practice.
-In order to query the DNS service, we use the `dig` command.
+In order to query the DNS service, we use the `host` command.
+It's pretty straightforward:
+```
+root@kali:~# host security.summer.schoo.github.io
+security.summer.schoo.github.io has address 185.199.108.153
+security.summer.schoo.github.io has address 185.199.110.153
+security.summer.schoo.github.io has address 185.199.109.153
+security.summer.schoo.github.io has address 185.199.111.153
+security.summer.schoo.github.io has IPv6 address 2606:50c0:8002::153
+security.summer.schoo.github.io has IPv6 address 2606:50c0:8000::153
+security.summer.schoo.github.io has IPv6 address 2606:50c0:8003::153
+security.summer.schoo.github.io has IPv6 address 2606:50c0:8001::153
+```
 
-TODO
+Notice there are more IP's for `security.summer.schoo.github.io`.
+The main reason for this is **load balancing**.
+Github is accessed frequently and in order not to overload a single server, it uses multiple servers for a single domain.
+Obviously, each of them serve the same web page: `security.summer.schoo.github.io`.
+Github simply uses more machines to spread the workload.
 
 ## The Transport Layer
 
@@ -445,7 +477,69 @@ These ports are unaccessible for the regular apps.
 
 #### `nmap`
 
-TODO
+`nmap` is the Swiss army knife of network hacking.
+It is a very complex network scanning tool.
+Today we will briefly scratch its surface.
+For a more in-depth look, check out the additional information given in section [Advanced `nmap`](#advanced-nmap).
+
+Let's scan our local network.
+
+First let's find out what network we need to find:
+```
+┌──(kali㉿kali)-[~]
+└─$ ip address show
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:db:96:6a brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute eth0
+       valid_lft 86240sec preferred_lft 86240sec
+    inet6 fe80::a00:27ff:fedb:966a/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+```
+Remember that the `lo` interface is the loopback interface.
+We need to scan the `eth0` interface.
+
+```
+┌──(kali㉿kali)-[~]
+└─$ nmap 10.0.2.0/24
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-06-14 16:12 EDT
+Nmap scan report for 10.0.2.2
+Host is up (0.00019s latency).
+Not shown: 997 closed tcp ports (conn-refused)
+PORT    STATE SERVICE
+22/tcp  open  ssh
+80/tcp  open  http
+631/tcp open  ipp
+
+Nmap scan report for 10.0.2.3
+Host is up (0.00021s latency).
+Not shown: 996 closed tcp ports (conn-refused)
+PORT    STATE SERVICE
+22/tcp  open  ssh
+53/tcp  open  domain
+80/tcp  open  http
+631/tcp open  ipp
+
+Nmap scan report for 10.0.2.4
+Host is up (0.00029s latency).
+Not shown: 997 closed tcp ports (conn-refused)
+PORT    STATE SERVICE
+22/tcp  open  ssh
+80/tcp  open  http
+631/tcp open  ipp
+
+Nmap scan report for 10.0.2.15
+Host is up (0.00025s latency).
+All 1000 scanned ports on 10.0.2.15 are in ignored states.
+Not shown: 1000 closed tcp ports (conn-refused)
+
+Nmap done: 256 IP addresses (4 hosts up) scanned in 3.40 seconds
+```
 
 ### TCP
 
@@ -676,3 +770,7 @@ For a better (but still short) introduction to IPv6, check out [this](http://www
 Hosts are *leased* IP addresses from DHCP servers for some limited amounts of time.
 When an address is about to expire, a host can ask the server to extend the lease.
 You can read more about DHCP servers [here](https://www.infoblox.com/glossary/dhcp-server/).
+
+### Advanced `nmap`
+
+TODO: link with tutorial
