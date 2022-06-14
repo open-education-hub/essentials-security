@@ -153,11 +153,16 @@ The web thus becomes a _web of routers_ who transmit **packets** from one networ
 Back to our example above, you will surely need many routers to get a packet from the US to India.
 
 But how does a router know how where to send a packet?
-Let's say a router R1 connects 3 networks, as shown below.
-A packet comes from TODO
+Let's say a router R1 connects a laptop with IP 192.168.100.5 and a PC with IP 192.168.100.10 to the external network, as shown in the image below.
 
-![TODO: Router in Action](./assets/router_in_action.png)
+![Router in Action](./assets/router_in_action.svg)
 
+Now let's look at 2 different scenarios:
+1. If the laptop sends a packet to IP `192.168.100.10`, the router knows this address is part of its **Local Area Network (LAN)** and sends it directly to the PC.
+1. If the PC sends a packet to `upb.ro` (with IP `141.85.220.33`), the router sees its IP as an external address. Therefore, it passes it into the internet, where other routers take it and then pass it again to other routers and so on, until the packet reaches `upb.ro`.
+
+Each new router that a packet encounters on its way from source to destination is called a **hop**.
+Most often, a hop is a router.
 In order to visualise the hops that our requests to a well-known service, such as `google.com`, we use the `traceroute` command:
 ```
 ┌──(kali㉿kali)-[~]
@@ -475,72 +480,6 @@ However, not all of them are available for your average network application.
 The **first 1024 (port numbers 0 to 1023)** of them are reserved common system applications and services.
 These ports are unaccessible for the regular apps.
 
-#### `nmap`
-
-`nmap` is the Swiss army knife of network hacking.
-It is a very complex network scanning tool.
-Today we will briefly scratch its surface.
-For a more in-depth look, check out the additional information given in section [Advanced `nmap`](#advanced-nmap).
-
-Let's scan our local network.
-
-First let's find out what network we need to find:
-```
-┌──(kali㉿kali)-[~]
-└─$ ip address show
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host 
-       valid_lft forever preferred_lft forever
-2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
-    link/ether 08:00:27:db:96:6a brd ff:ff:ff:ff:ff:ff
-    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute eth0
-       valid_lft 86240sec preferred_lft 86240sec
-    inet6 fe80::a00:27ff:fedb:966a/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
-```
-Remember that the `lo` interface is the loopback interface.
-We need to scan the `eth0` interface.
-
-```
-┌──(kali㉿kali)-[~]
-└─$ nmap 10.0.2.0/24
-Starting Nmap 7.92 ( https://nmap.org ) at 2022-06-14 16:12 EDT
-Nmap scan report for 10.0.2.2
-Host is up (0.00019s latency).
-Not shown: 997 closed tcp ports (conn-refused)
-PORT    STATE SERVICE
-22/tcp  open  ssh
-80/tcp  open  http
-631/tcp open  ipp
-
-Nmap scan report for 10.0.2.3
-Host is up (0.00021s latency).
-Not shown: 996 closed tcp ports (conn-refused)
-PORT    STATE SERVICE
-22/tcp  open  ssh
-53/tcp  open  domain
-80/tcp  open  http
-631/tcp open  ipp
-
-Nmap scan report for 10.0.2.4
-Host is up (0.00029s latency).
-Not shown: 997 closed tcp ports (conn-refused)
-PORT    STATE SERVICE
-22/tcp  open  ssh
-80/tcp  open  http
-631/tcp open  ipp
-
-Nmap scan report for 10.0.2.15
-Host is up (0.00025s latency).
-All 1000 scanned ports on 10.0.2.15 are in ignored states.
-Not shown: 1000 closed tcp ports (conn-refused)
-
-Nmap done: 256 IP addresses (4 hosts up) scanned in 3.40 seconds
-```
-
 ### TCP
 
 The "Control" word in this protocol's name should give us a hint that TCP is about handling various errors that may occur while a packet is traversing the Internet.
@@ -594,13 +533,25 @@ $ ssh user@ip
 ```
 For example:
 ```
-TODO
+$ ssh student@141.85.224.100
 ```
 
-By default, SSH uses port 22. We can specify another port by using the `-p` parameter like so:
+By default, SSH uses port 22.
+We can specify another port by using the `-p` parameter like so:
 ```
 $ ssh user@ip -p port
 ```
+
+This is what you've been doing for the last 2 sessions in order to log onto our machines and solve challenges:
+```
+root@kali:~# ssh ctf@ip -p <some_number>
+```
+
+What you did is you created an SSH conection using a custom port which did not open a shell onto our full machines, but onto an individual [container](#containers) that was hosting each challenge.
+Think of a container as a lighter, albeit less secure VM.
+The architecture looks like this:
+
+![Challenge Hosting Architecture](./assets/challenge_hosting_architecture.svg)
 
 ### UDP
 
@@ -643,8 +594,38 @@ In essence, every app that you use, and which has anything to do with the Intern
 
 Netstat is a complex service used for inspecting various networking-related data.
 We'll be using it to list the services running on a host.
+Now let's test our own Kali Linux host.
 
-TODO: comenzi
+List all running services.
+The `-a` parameter stands for "all".
+```
+root@kali:~# netstat -a | less
+```
+
+That's quite a lot of them.
+Let's trim them down a bit.
+For example, let's only list the services running TCP connections.
+The `-t` parameter stands for "TCP".
+Notice how we can concatenate parameters.
+`-a -t` is equivalent to `-at` or `-ta`.
+```
+root@kali:~# netstat -at | less
+```
+
+Similarly, we can query all services using UDP connections:
+As you might have guessed, UDP connections are listed using the `-u` parameter.
+```
+root@kali:~# netstat -au  # no need for `less` anymore
+```
+
+Now let's look for **servers** specifically.
+Usually a server waits for clients to connect to it and send requests.
+We say the server **listens** for connections.
+
+### Challenge - Who is 111?
+
+Use the `netstat`'s `man` page and find the **name of the program** that listens on port *111*.
+The flag of this challenge does **not** respect the format `SSS{...}`.
 
 ## Wrap-up
 
@@ -694,24 +675,23 @@ Finally, let's map some of the layers of the TCP/IP stack to the CLI tools we us
    - `dig`
 - **Transport:**
    - `ssh`
-   - `nmap`
+   - `netcat`
 - **Application:**
    - `netstat` (although it has [many other uses](https://linux.die.net/man/8/netstat))
 
 ## Activities
 
-### Challenge - They See Me Running:
+### Challenge - They See Me Running
 
-sa dea `netstat` ca sa gaseasca servicii.
-cumva serviciul ala sa interactioneze cu studentii si sa le ceara ceva input ca sa le dea flagu'.
-sa fie ca un quiz
+- use `netstat` to find a server
+- use `nc` to talk to the server and answer its questions.
 
-### Challenge - Connecting Hosts:
+### Challenge - Connecting People
 
-sa fie 2 masini care ruleaza.
-sa dea `ifup` pe unul dintre ele ca sa mearga ssh pe celalalt
+- 2 running machines.
+- find a way to ssh from one to the other
 
-### Challenge - Ping Service:
+### Challenge - Ping Service
 
 The service can ping any IP by running the follwing command:
 ```
@@ -771,6 +751,23 @@ Hosts are *leased* IP addresses from DHCP servers for some limited amounts of ti
 When an address is about to expire, a host can ask the server to extend the lease.
 You can read more about DHCP servers [here](https://www.infoblox.com/glossary/dhcp-server/).
 
-### Advanced `nmap`
+### Containers
 
-TODO: link with tutorial
+The main difference between containers and VMs is that VMs use their own separate OS, whereas containers share the OS with the host.
+Think about your Kali Linux VM.
+It obviously has a separate OS: Kali Linux, duh, while you have your own OS: Windows, Linux, MacOS, whatever.
+The operating system inside the VM is called **guest OS**, while the "outer" OS is called **host OS**.
+When it comes to VMs, you need some sort of _mediator_ between the guest and the host.
+This mediator is called **a hypervisor**.
+In your case, this is VirtualBox.
+
+This separation between OSs ensures a more secure separation between the two environments.
+On the other hand, if a host spawns multiple containers, all of them (host and containers) use the host's OS.
+The containers are most importantly separated at the filesystem level.
+They can also be allocated more limited resources.
+Notice that if you were to use a container for the Security Summer School, you couldn't use Kali Linux unless your host OS were also Kali Linux, which would have been pretty pointless.
+
+![Containers vs VMs](./assets/containers-vs-virtual-machines.png)
+
+However, we use containers to host challenges because our VMs and containers all use Linux and because we can house more containers on the same host (which is itself a VM) than we could VMs.
+You can learn more about containers and how to manage them using `docker` (we also use it for challenges) [here](https://www.docker.com/resources/what-container/).
