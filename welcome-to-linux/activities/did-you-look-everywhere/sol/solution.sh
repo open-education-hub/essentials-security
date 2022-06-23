@@ -1,5 +1,5 @@
 #! /bin/bash
 
-cd /home/ctf/south-park/al-gore/manbearpig
-ls
+cd south-park/al-gore/manbearpig
+ls -a
 cat .flag
