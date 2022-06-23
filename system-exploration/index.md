@@ -1,5 +1,5 @@
 ---
-linkTitle: 02. Welcome to Linux
+linkTitle: 02. System Exploration
 type: docs
 weight: 10
 ---
@@ -50,7 +50,7 @@ weight: 10
 
 ## Introduction
 
-In the [previous session](../welcome-to-linux/index.md), we introduced the Linux OS family via Kali Linux.
+In the [previous session](../welcome-to-linux), we introduced the Linux OS family via Kali Linux.
 With its help, we learned about the terminal and about basic file navigation commands, such as `ls`, `cd`, `mkdir`, `rm`.
 We also talked about processes and the `ps` command.
 
@@ -588,7 +588,7 @@ Now that we can find our way inside a file hierarchy, we need a means by which t
 But what if we aren't?
 
 In this case, we'll need to taka a sneak peak into some _binary analysis_.
-We'll get back to this subject starting from from Session [Data Representation](../data-representation/index.md).
+We'll get back to this subject starting from from Session [Data Representation](../data-representation).
 
 ### `file`
 

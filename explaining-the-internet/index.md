@@ -13,7 +13,7 @@ Use [gh-md-toc](https://github.com/ekalinin/github-markdown-toc).
 ## Introduction
 
 In this session, we'll discuss some networking fundamentals.
-By doing so, we'll lay the foundations for some of our later sessions regarding networking and the Internet, such as [(Re)Discovering the Browser](../rediscovering-the-browser/index.md)
+By doing so, we'll lay the foundations for some of our later sessions regarding networking and the Internet, such as [(Re)Discovering the Browser](../rediscovering-the-browser)
 and [Hacking the Web](../hacking-the-web).
 
 Moreover, we'll explain what happens when you access a URL (we'll also learn how to do this from our terminals).
@@ -25,7 +25,7 @@ For this session, you'll need:
 - a working internet connection;
 - a Linux environment that you're comfortable working with;
 - to understand what a *process* is;
-- general knowledge of the Linux CLI, as discussed in session [Welcome to Linux](../welcome-to-linux/index.md).
+- general knowledge of the Linux CLI, as discussed in session [Welcome to Linux](../welcome-to-linux).
 
 ## A General Overview of the Internet
 
@@ -64,7 +64,7 @@ In some cases, the original data may be processed in some way before the additio
 The layer then passes this data on to the layer below (or onto the transmission media in the case of the link layer).
 
 The arrival of data from an upper layer may trigger additional separate messages to be sent to the receiving end.
-For instance, if the data needed to be encrypted, the layer that carries out the encryption has to exchange initial setup messages with the receiving end to agree the encryption method and other data that we'll touch on in the session [Data Security](../data-security/index.md), before the encrypted data can be transferred.
+For instance, if the data needed to be encrypted, the layer that carries out the encryption has to exchange initial setup messages with the receiving end to agree the encryption method and other data that we'll touch on in the session [Data Security](../data-security), before the encrypted data can be transferred.
 
 At the receiving end, the process happens in reverse: each layer accepts data from the layer below, inspects and removes the additional information added on by the corresponding layer in the sending end, before passing it up to the layer above.
 
@@ -307,7 +307,7 @@ The image below summarises the building blocks of a URL
 Let's disect these components:
 - **The scheme** (sometimes called _schema_) indicates the application layer protocol that the browser must use to request the resource.
 Usually, for websites, the protocol is HTTP (unsecured) or HTTPS (secured).
-We'll get into the details of HTTP in the [next session](../rediscovering-the-browser/index.md).
+We'll get into the details of HTTP in the [next session](../rediscovering-the-browser).
 Other schemes include `ftp` (File Transfer Protocol), `git`, `mailto` etc.
 - **The authority** is separated from the scheme by the characters `://`
 It includes both the domain (in our case: `www.example.com`) and the port (`80`), separated by a colon:
@@ -322,7 +322,7 @@ Nowadays, it is mostly an abstraction handled by web servers without any mandato
 Those parameters are a list of key - value pairs separated with the `&` symbol.
 The web server can use those parameters to do extra stuff before returning the resource.
 Each web server has its own rules regarding parameters.
-Once again, we'll learn more about these parameters, more commonly known as **query parameters** in the [next session](../rediscovering-the-browser/index.md).
+Once again, we'll learn more about these parameters, more commonly known as **query parameters** in the [next session](../rediscovering-the-browser).
 - **The anchor**, also known as **fragment**, is like a _bookmark_ to some specific part of the resource.
 It gives the browser directions to show the content located at that _bookmarked_ spot.
 On an HTML document, for example, the browser will scroll to the point where the anchor is defined; on a video or audio document, the browser will try to go to the time the anchor represents.
@@ -487,7 +487,7 @@ It opens a TCP connection to the remote host, where each character typed in the 
 
 As its name suggests, the gist of this protocol is **secured**.
 The security implies that the characters are not sent to the receiver as plain text, but are **encrypted**.
-While we'll discuss more about encryption in the [Data Security](../data-security/index.md) session, it is important that we outline the main workings of encryption.
+While we'll discuss more about encryption in the [Data Security](../data-security) session, it is important that we outline the main workings of encryption.
 
 Upon initiating the SSH connection, an encryption algorithm is negociated between the communicating hosts.
 This algorithm performs two operations: encryption and decryption
