@@ -491,7 +491,7 @@ To make things clearer, check out and run the code in `activities/demo-python/if
 As stated above, this code would not work because the `print` instruction is not correctly indented and the `if` statement appears to have no body:
 ```python
 if a == 0:
-print('This is an incorrect if statement. You will get an IndentationError.')
+    print('This is an incorrect if statement. You will get an IndentationError.')
 ```
 But don't take our word for granted.
 Run this code too!
@@ -665,21 +665,19 @@ Now just use `cat` to extract the content of the `flag` file.
 
 We assure you the flag is somewhere in the `/home/ctf` directory.
 
-### Challenge: Who Is This Flag?
-
-Is the user who he says he is?
-
 ### Challenge: What's Running?
 
 Did you know flags can **run**?
 
 ### Challenge: Quick Mafs
 
-The flag's format is the classic `SSS{...}`, where `...` represent a string obtained by concatenating the **first 10 numbers** obtained by using the formula below:
-```
-Let each number be n[i], where i is its index.
-n[0] = 1337. This is your first number
+The flag's format is the classic `SSS{...}`, where `...` represent a string obtained by concatenating the **first 10 numbers** oobtained by performing the computations below.
 
+Let each number be `n[i]`, where `i` is its index.
+`n[0] = 1337`.
+This is your first number.
+The next numbers are defined by the formula below, where `^` signifies exponentiation.
+```
 n[i] = (n[i - 1]^3 * 67 + 31) % 2000, for all i > 0
 ```
 And, please, don't compute the numbers manually.
@@ -689,6 +687,7 @@ You've just learned a cool new programming language that you can use!
 
 The flag you're given in `activities/jumbled/public/flag` does contain the actual flag, but not quite.
 Use your Python skills to reconstruct it.
+You'll also need some trial and error here.
 
 ## Further Reading
 
