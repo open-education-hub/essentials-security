@@ -69,7 +69,7 @@ Make sure you have rehearsed and practiced them before the beginning of today's 
 
 ## Continuing Our Exploration
 
-In the challenge [Did You Look Everywhere?](../welcome-to-linux/did-you-look-everywhere/) from the previous session, you had to **manually** look for the `.flag` file in the given hierarchy.
+In the challenge `Did You Look Everywhere` from the previous session, you had to **manually** look for the `.flag` file in the given hierarchy.
 This, as you probably remember, was slow and frustrating.
 We need some means by which to view **an entire hierarchy** at once, or to look for specific files.
 
@@ -629,7 +629,7 @@ We'll try to find the flag itself.
 Maybe we get lucky.
 ```
 root@kali:~/essentials/system-exploration/activities/doge/public# strings doge.jpg | grep SSS
-SSS{grep_your_strings}
+<there should be a flag here>
 ```
 
 That's how you use `strings`: often in combination with some filtering mechanism, such as `grep`.
@@ -660,7 +660,8 @@ Answer the questions and find the **real** flags.
 The quizzes cover subjects discussed today and during the previous session.
 Think of them as a recap.
 
-The answer to each of the riddles in the files `question-*` from the `activities/surgical-precision/public` is the name of the flag you need to submit for that particular riddle.
+The answer to each of the riddles in the files `question-*` from the `activities/surgical-precision/public` is the name of one of the given files.
+When you've found an answer, upload the flag in that file.
 
 Beware of [red herrings](https://en.wikipedia.org/wiki/Red_herring)!
 
