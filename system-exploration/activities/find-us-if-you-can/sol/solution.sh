@@ -1,9 +1,8 @@
 #! /bin/bash
 
 echo "Get the first flag."
-find / -type f -name flag
-cat /proc/1/net/stat/flag | grep SSS
+# Use 2> /dev/null to ignore the error messages.
+find / -type f -name flag 2> /dev/null | xargs cat | grep SSS
 
 echo "Now get the second one."
-find / -name *doc* | grep bugs
-cat /tmp/.hidden/my/bugs/bunny/bugs_bunny.doc | grep SSS
+find / -name *doc* 2> /dev/null | grep bugs | xargs cat

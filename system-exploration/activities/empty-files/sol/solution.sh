@@ -1,3 +1,3 @@
 #! /bin/bash
 
-find /home/ctf -size +1c | sort | xargs cat | tr -d "\n"
+find /home/ctf/south-park/ -type f -size +0c | sort -t '/' -k4 | xargs cat
