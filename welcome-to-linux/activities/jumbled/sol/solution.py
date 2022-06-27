@@ -3,7 +3,7 @@ jumbled_flag = flag_file.read()
 
 # Ther are no hints, so we have to generate all possible flags.
 # This means all permutations of printable characters in the given flag
-chunks = jumbled_flag[4:-2].split(b'\x80\x80\x80')
+chunks = jumbled_flag[4:-1].split(b'\x80\x80\x80')
 
 def permutations(l):
     if not l:  # Check if list is empty
