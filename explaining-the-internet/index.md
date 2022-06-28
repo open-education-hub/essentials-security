@@ -97,9 +97,9 @@ Each of these has a specific name depending on the layer that creates it:
 ## The Medium 
 
 This layer is not mentioned in the above diagrams, but is worth talking a little bit about.
-The medium represents the connection itself between the 2 staions.
+The medium represents the connection itself between the 2 stations.
 This connection can be:
-- **wired**: using a cable on which digital signals that encode the bits are sent;
+- **wired**: using a cable on which digital signals that encode the bits are sent
 - **wireless**: using high-frequency radio waves in order to send the same signals as before
 
 ## The Link Layer
@@ -110,7 +110,7 @@ It represents the underlying technology of any application.
 The device on which the application is running may have a choice of many technologies to connect to a network, such as Ethernet, WiFi, Bluetooth, 4G, 5G (_tinfoil hat off_) etc.
 Where more than one link exists, the operating system of the device chooses the most appropriate link.
 For instance, a mobile phone might be connected to both 4G and WiFi.
-Most moblile phones prefer the WiFi connection, but remain connected to 4G mobile data, which they use as backup. 
+Most mobile phones prefer the WiFi connection, but remain connected to 4G mobile data, which they use as backup. 
 However, in some cases the application itself may dictate the choice of link, e.g. the mobile phone may decide to send traffic over WiFi to avoid 4G data charges.
 Once the link has been chosen, the appropriate link layer protocol is selected.
 
@@ -141,7 +141,7 @@ You need some intermediaries: **routers**.
 It is impossible to connect your PC / laptop directly (physically) to every PC or server in the world.
 Therefore, we need **networks**, which are basically aggregations of hosts (servers, PCs, laptops, mobile phones etc.).
 
-Each network contains one **router** which sends data between the hosts in its network and those on other netowrks.
+Each network contains one **router** which sends data between the hosts in its network and those on other networks.
 So a router is a networking device that connects two or more networks.
 Think of the router you most probably have at home.
 There is a *local network*, to which you can connect via WiFi, or Ethernet cables.
@@ -190,12 +190,12 @@ You've probably heard about IPs before.
 We'll demystify them in a bit.
 `traceroute` sends 3 packets, for consistency.
 It counts the time it takes from sending each of these packets to the moment the response reaches the sender.
-This time called **Round Trip Time (RTT)**.
+This time is called **Round Trip Time (RTT)**.
 As we said, `traceroute` sends and monitors 3 packets in order to display the consistency of the link to each hop.
 
 The first hop is between the VM and the host.
 The other is the router to which the host is connected.
-From then on, it's whe wild Internet itself.
+From then on, it's the wild Internet itself.
 
 ### IP Addresses
 
@@ -210,7 +210,7 @@ Of course you are free to express an IP address however you like, but by far the
 You've already seen IP's when connecting to the remote hosts during the previous sessions.
 Some IPs are:
 - `8.8.8.8`: is the address of Google's Public DNS Service.
-We'll explain what the DNS is in a future [section](#the-dns).
+We'll explain what the DNS is in a future [section](#the-domain-name-system).
 - `69.63.176.13`: is a common IP address used by Facebook
 - `141.85.224.100`: is IP the address of one of the machines in our CTF infrastructure
 
@@ -263,7 +263,6 @@ An unreachable host is as good as a dead one: _useless_.
 
 `localhost`, in other words. the `lo` interface, should **always** be up and respond to pings.
 In case it doesn't, well... your kernel's TCP/IP stack may be broken.
-Sad reacts only.
 We use the `-c 3` parameter to only send 3 "pings" to `localhost`.
 Otherwise, `ping` sends packets continuously, until stopped manually (with `ctrl + c`).
 ```
@@ -357,7 +356,7 @@ We'll see how URLs are translated into IPs by a naming system called the **Doman
 
 ### The Domain Name System
 
-Remember: IPs, **not URLs**, are what's used to identify hosts (web servers included) in the Internet.
+Remember: IPs, **not URLs**, are what's used to identify hosts (web servers included) on the Internet.
 So there needs to be a service by which the URLs we've just learned about are mapped to IPs.
 This service is called the DNS.
 It organises URLs in a hierarchical manner, in order to rapidly respond to queries.
@@ -365,8 +364,10 @@ You can think of the DNS as being similar to a **phonebook of the Internet**.
 
 Here's how all of this works.
 When you type `security-summer-school.github.io` into your browser, it sends a query over the Internet in order to find the website associated with the URL `security-summer-school.github.io`.
-A query is a question asking to look up the domain name and respond the corresponding IP address.
+A query is a question asking to look up the domain name and respond to the corresponding IP address.
 Let's follow the path of this question across the Internet.
+
+In short, a DNS server performs the steps outlined [here](https://howdns.works/ep1/).
 
 #### The Recursive Resolver
 
@@ -413,7 +414,7 @@ Notice that the Recursive Resolver acts as a mediator between most of the DNS lo
 
 ![DNS Lookup for security-summer-school.github.io](./assets/dns_lookup.png)
 
-Notice that only the domain of a URL gets DNS'd.
+Notice that only the domain of a URL has its name resolved to an IP address.
 The port, path, parameters and anchor are handled by the web server itself.
 The DNS part is, thus, necessary in order to **find** that web server.
 
@@ -439,7 +440,7 @@ Notice there are more IP's for `security.summer.schoo.github.io`.
 The main reason for this is **load balancing**.
 Github is accessed frequently and in order not to overload a single server, it uses multiple servers for a single domain.
 Obviously, each of them serve the same web page: `security.summer.schoo.github.io`.
-Github simply uses more machines to spread the workload.
+Github simply serves more machines to spread the workload.
 
 ## The Transport Layer
 
@@ -468,7 +469,7 @@ It just sees the data as a bunch of bytes to be transported to the receiving end
 ### Ports
 
 Generally speaking, ports are endpoints used for communication.
-They have no physical correspondent, but are merely logical concepts used to segregate between different processes, all running on the same host.
+They have no physical correspondence, but are merely logical concepts used to segregate between different processes, all running on the same host.
 
 A port is a 16-bit number used in order to identify multiple network-using processes **on the same host**.
 Notice that with IPs we were talking about identifying _hosts_ whereas now we've increased the granularity and are talking about _processes_
@@ -477,8 +478,7 @@ As a result, when a sender process wants to connect to another process (the rece
 Since ports are numbers up to `2^16`, this means there are 65536 of them.
 This number is enough, given that it's meant to encompass the network-using processes in the system.
 However, not all of them are available for your average network application.
-The **first 1024 (port numbers 0 to 1023)** of them are reserved common system applications and services.
-These ports are unaccessible for the regular apps.
+The **first 1024 (port numbers 0 to 1023)** of them are reserved for common system applications and services.
 
 ### TCP
 
@@ -496,7 +496,7 @@ It is used by the sender to figure out what portion of the data to send as part 
 In the above diagram we can see that the sender (client) adds some bytes (whose length is specified as `Len`) to those already sent.
 At the same time, the receiver (server) adds the newly arrived bytes to those received previously and sends this number back to the client as the ACK number.
 
-But some segment might arrive altered (some of their bits may be changed).
+But some segments might arrive altered (some of their bits may be changed).
 TCP adds what's called a **checksum** to each packet.
 This checksum is computed by `xor`-ing all bytes in the segment.
 When a segment is received, its checksum is recomputed and compared to the one contained within it.
@@ -683,15 +683,17 @@ Finally, let's map some of the layers of the TCP/IP stack to the CLI tools we us
 
 ### Challenge - They See Me Running
 
-- use `netstat` to find a server
-- use `nc` to talk to the server and answer its questions.
+There' s a quiz server running on the remote host.
+Find the port on which the server is listening.
+Then use `netcat` (`nc`) to "talk" to the server and answer its questions.
+Upon a correct answer, the server will give you a flag.
 
 ### Challenge - Connecting People
 
 - 2 running machines.
 - find a way to ssh from one to the other
 
-### Challenge - Ping Service
+### Challenge - Pinger
 
 The service can ping any IP by running the follwing command:
 ```
@@ -713,14 +715,15 @@ You can learn about this alternative stack [here](https://www.imperva.com/learn/
 ### The Networking Bible
 
 Speaking of the OSI model, it is paramount that we mention the most influential book in computer networking to this day, namely Andrew Tanenbaum's [Computer Networks](http://index-of.es/Varios-2/Computer%20Networks%205th%20Edition.pdf).
-Dating from 1981 (about the time these stacks were first defined), this book has been the cornerstone of networking ever since. It's a must-read for every netoworking enthusiast.
+Dating from 1981 (about the time these stacks were first defined), this book has been the cornerstone of networking ever since.
+It's a must-read for every netoworking enthusiast.
 
 ### ICMP
 
 The protocol used by `ping` is called **Internet Control Message Protocol (ICMP)**.
 The protocol defines a set of _utility_ messages and responses, used by hosts in order to check the status of other hosts. 
 
-There is also a very well-known attack, called **Distributed Denial of Service DDoS**, by which an attacker floods a server with `ping`s essentialy.
+There is also a very well-known attack, called **Distributed Denial of Service (DDoS)**, by which an attacker floods a server with `ping`s essentially.
 The purpose of this attack is to overwhelm the server by making it do nothing else but respond to these `pings`, rather than serve the actual requests for which it was designed.
 Thus, this type of attack aims to render a server useless, or even make it crash.
 The attack has been executed in many forms, with one of the simplest being described [here](https://www.cloudflare.com/learning/ddos/glossary/internet-control-message-protocol-icmp/).
@@ -747,7 +750,7 @@ For a better (but still short) introduction to IPv6, check out [this](http://www
 ### DHCP
 
 **Dynamic Host Configuration Protocol (DHCP)** is a protocol used in order to manage and distribute IP addresses.
-Hosts are *leased* IP addresses from DHCP servers for some limited amounts of time.
+Hosts are *leased* IP addresses from DHCP servers for a limited amount of time.
 When an address is about to expire, a host can ask the server to extend the lease.
 You can read more about DHCP servers [here](https://www.infoblox.com/glossary/dhcp-server/).
 
