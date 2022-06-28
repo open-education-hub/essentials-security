@@ -697,7 +697,7 @@ Upon a correct answer, the server will give you a flag.
 
 The service can ping any IP by running the follwing command:
 ```
-$ ping -c <your input>
+$ ping -c 1 <your input>
 ```
 Since your input is given directly to a shell command, you can be creative with how you use it.
 
