@@ -730,10 +730,16 @@ Find the port on which the server is listening.
 Then use `netcat` (`nc`) to "talk" to the server and answer its questions.
 Upon a correct answer, the server will give you a flag.
 
-### Challenge - Connecting People
+### Challenge - Unaccessible
 
-- 2 running machines.
-- find a way to ssh from one to the other
+Connect to the remote host via `ssh` as user `vuln` and get the flag.
+If only you knew the password.
+Up to now, the password was always `ctf`.
+This time, you have to find it yourselv
+The file `password.txt` that contains the MD5 hash of the password.
+You can paste it on [crackstation](https://crackstation.net/), but real hackers use [John the Ripper](https://github.com/openwall/john).
+Don't chicken out and crack the password using `john`.
+We'll come back to `john` when we discuss [Data Security](../data-security/).
 
 ### Challenge - Pinger
 
