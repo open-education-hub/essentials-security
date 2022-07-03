@@ -367,8 +367,17 @@ Specifically, in the URL below:
 - `%3B` is the URL encoding for `;`
 - `%3F` is the URL encoding for `?`
 
+### Tutorial - Readme
+
+The website tells you ti click a hyperlink.
+Do it and then look at the address bar.
+Notice the query parameter `flag=SSS_CTF{do_not_kill_the_messenger}`.
+Flags can be hidden anywhere.
+
 ### Tutorial - One More Pinger
 
+That was simple.
+Now it's time for a more difficult use case of query parameters.
 Yes, it's "Pinger" again.
 But this time, you'll solve it **entirely from the terminal**.
 
@@ -498,7 +507,32 @@ Here are some of its most useful parameters:
     - `-d`: **data** - specify the body of a request (usually a `POST` request) and the query parameters
         - `-G`: **get** - allows sending a body in a `GET` request
     - `-X <method>`: use another HTTP method than the default `GET`
+    - `-L`: **follow redirects** - issue another request to the redirected URL the when receiving a `3XX` response. 
 - `wget`: download files
+
+## Activities
+
+## Challenge: Give to Post
+
+Read the message displayed by the server carefully.
+It tells you all you need to get the flag.
+
+## Challenge: King Kong
+
+You need to tell the server that you are someone special.
+
+## Challenge: Name
+
+Do what the server tells you.
+
+## Challenge: Gimme
+
+Try to add a new resource to the server.
+What can that 35 mean?
+
+## Challenge: Surprise
+
+The server expects a specific type of **content**.
 
 ## Further Reading
 
