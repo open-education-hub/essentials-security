@@ -6,48 +6,6 @@ weight: 10
 
 # System Exploration
 
-## Table of Contents
-
-* [Table of Contents](#table-of-contents)
-* [Introduction](#introduction)
-* [Reminders and Prerequisites](#reminders-and-prerequisites)
-* [Continuing Our Exploration](#continuing-our-exploration)
-  * [Tree of Life](#tree-of-life)
-  * [Find Your Way](#find-your-way)
-    * [type](#type)
-    * [size](#size)
-    * [name](#name)
-  * [Globbing](#globbing)
-    * [*: 0 or more characters](#-0-or-more-characters)
-    * [+: one or more characters](#-one-or-more-characters)
-    * [Ranges](#ranges)
-    * [Sets](#sets)
-    * [Escaping](#escaping)
-  * [Redirecting Streams](#redirecting-streams)
-    * [Standard Input (stdin)](#standard-input-stdin)
-    * [Standard Output (stdout)](#standard-output-stdout)
-    * [Standard Error (stderr)](#standard-error-stderr)
-    * [Appending](#appending)
-    * [Pipes](#pipes)
-    * [xargs](#xargs)
-  * [Less is More](#less-is-more)
-  * [Grep](#grep)
-    * [Grep a File Hierarchy](#grep-a-file-hierarchy)
-* [Inspecting Files](#inspecting-files)
-  * [file](#file)
-  * [strings](#strings)
-    * [Demo: Doge](#demo-doge)
-* [Summary](#summary)
-* [Activities](#activities)
-  * [Challenge: Surgical Precision](#challenge-surgical-precision)
-  * [Challenge: Empty Files](#challenge-empty-files)
-  * [Challenge: Find Us If You Can](#challenge-find-us-if-you-can)
-  * [Challenge: Not Your Doge](#challenge-not-your-doge)
-* [Further Reading](#further-reading)
-  * [Forensics](#forensics)
-  * [Regular Expressions](#regular-expressions)
-
-
 ## Introduction
 
 In the [previous session](../welcome-to-linux), we introduced the Linux OS family via Kali Linux.

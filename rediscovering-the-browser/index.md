@@ -6,10 +6,6 @@ weight: 10
 
 # (Re)Discovering the Browser
 
-## Table of Contents
-
-Use [gh-md-toc](https://github.com/ekalinin/github-markdown-toc).
-
 ## Introduction
 
 In this session we'll zoom in on one of the application-level protocols mentioned in session [Explaining the Internet](../explaining-the-internet/): HTTP.

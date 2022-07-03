@@ -6,52 +6,6 @@ weight: 10
 
 # Explaining the Internet
 
-## Table of Contents
-
-* [Table of Contents](#table-of-contents)
-* [Introduction](#introduction)
-* [Reminders and Prerequisites](#reminders-and-prerequisites)
-* [A General Overview of the Internet](#a-general-overview-of-the-internet)
-   * [Encapsulation](#encapsulation)
-   * [A Bit of Nomenclature](#a-bit-of-nomenclature)
-* [The Medium](#the-medium)
-* [The Link Layer](#the-link-layer)
-* [The Internet Layer](#the-internet-layer)
-   * [Routers](#routers)
-   * [IP Addresses](#ip-addresses)
-      * [ping](#ping)
-   * [URLs](#urls)
-      * [Anatomy of a URL](#anatomy-of-a-url)
-   * [The Domain Name System](#the-domain-name-system)
-      * [The Recursive Resolver](#the-recursive-resolver)
-      * [The Root Server](#the-root-server)
-      * [The Top-Level Domain Name Server](#the-top-level-domain-name-server)
-      * [The Authoritative Name Server(s)](#the-authoritative-name-servers)
-      * [Putting it Together](#putting-it-together)
-      * [host](#host)
-* [The Transport Layer](#the-transport-layer)
-   * [Ports](#ports)
-   * [TCP](#tcp)
-      * [SSH](#ssh)
-   * [UDP](#udp)
-* [The Application Layer](#the-application-layer)
-   * [netstat](#netstat)
-   * [Challenge - Who is 111?](#challenge---who-is-111)
-* [Wrap-up](#wrap-up)
-* [Summary](#summary)
-* [Activities](#activities)
-   * [Challenge - They See Me Running](#challenge---they-see-me-running)
-   * [Challenge - Connecting People](#challenge---connecting-people)
-   * [Challenge - Pinger](#challenge---pinger)
-* [Further Reading](#further-reading)
-   * [The OSI Stack](#the-osi-stack)
-   * [The Networking Bible](#the-networking-bible)
-   * [ICMP](#icmp)
-   * [URL vs URI](#url-vs-uri)
-   * [IPv6](#ipv6)
-   * [DHCP](#dhcp)
-   * [Containers](#containers)
-
 ## Introduction
 
 In this session, we'll discuss some networking fundamentals.

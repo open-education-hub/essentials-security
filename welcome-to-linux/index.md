@@ -6,53 +6,6 @@ weight: 10
 
 # Welcome to Linux
 
-## Table of Contents
-
-* [Table of Contents](#table-of-contents)
-* [Introduction](#introduction)
-* [Prerequisites](#prerequisites)
-* [What is Linux?](#what-is-linux)
-* [Setting up Your Kali Virtual Machine](#setting-up-your-kali-virtual-machine)
-* [Working with Linux](#working-with-linux)
-  * [I Command Thee](#i-command-thee)
-    * [The Prompt](#the-prompt)
-    * [The File System](#the-file-system)
-    * [Traversing the File System](#traversing-the-file-system)
-    * [Be a Man!](#be-a-man)
-    * [I'll Make My Own Hierarchy!](#ill-make-my-own-hierarchy)
-    * [Absolute or Relative?](#absolute-or-relative)
-    * [Inspecting File Contents](#inspecting-file-contents)
-  * [The Root User](#the-root-user)
-  * [Processes](#processes)
-  * [Scripts](#scripts)
-* [Enter Python](#enter-python)
-  * [The Basics](#the-basics)
-    * [Variables](#variables)
-    * [If Statements](#if-statements)
-    * [Loops](#loops)
-    * [Functions](#functions)
-  * [Data Structures](#data-structures)
-    * [Lists](#lists)
-    * [Dictionaries](#dictionaries)
-  * [Working with Files](#working-with-files)
-    * [Strings or Bytes?](#strings-or-bytes)
-* [Summary](#summary)
-  * [Linux](#linux)
-  * [Python](#python)
-* [Activities](#activities)
-  * [Tutorial: In Your Face](#tutorial-in-your-face)
-  * [Challenge: Did You Look Everywhere?](#challenge-did-you-look-everywhere)
-  * [Challenge: Who Is This Flag?](#challenge-who-is-this-flag)
-  * [Challenge: What's Running?](#challenge-whats-running)
-  * [Challenge: Quick Mafs](#challenge-quick-mafs)
-  * [Challenge: Jumbled](#challenge-jumbled)
-* [Further Reading](#further-reading)
-  * [More Terminal Tricks](#more-terminal-tricks)
-  * [Altering the Prompt](#altering-the-prompt)
-  * [Alternatives to Bash](#alternatives-to-bash)
-  * [Hardcore Python](#hardcore-python)
-
-
 ## Introduction
 
 In this session, we will familiarise ourselves with our working environment.
