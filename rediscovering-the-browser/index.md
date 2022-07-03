@@ -73,6 +73,12 @@ In short, authorisation answers the question: "What can you do?".
 It means defining a set of **policies** by which to grant users various kinds of access to different resources.
 You can read about the 3 large types of access control types, from which policies derive, [at the end of this session](#access-control-types). 
 
+#### Accounting
+
+Accounting refers to logging as a means to audit a system.
+Logs provide a chronological view of the events that took place on a system / web server.
+Using them we can trace and understand attackers better and protect from them in the future.
+
 ## HyperText Transfer Protocol (HTTP)
 
 As its name implies, HTTP was initially used to transfer text-based data, because when it was proposed in 1991, that's what its creators imagined the Internet was going to be: a collection of text files.
@@ -184,6 +190,15 @@ Some usual headers are:
 It takes the form "Basic <username:password encoded with base64 >"
 Don't worry about what `base64` is now.
 We'll explain it in the [Data Representation](../data-representation/) session.
+- **Content-Type:** specifies the format of the data
+Some examples are:
+    - `text/html` for a HTML page 
+    - `text/plain` for plain text
+    - `application/json` for JSON files
+    - `image/jpeg` for JPEG images
+- **Content-Length:** specifies the size in bytes of the **body**.
+The body is the data that comes along with a request or response.
+It is described in some more detail in [its own section](#request-body).
 
 ### Responses
 
@@ -369,7 +384,7 @@ Specifically, in the URL below:
 
 ### Tutorial - Readme
 
-The website tells you ti click a hyperlink.
+The website tells you to click a hyperlink.
 Do it and then look at the address bar.
 Notice the query parameter `flag=<flag value>`.
 Flags can be hidden anywhere.
