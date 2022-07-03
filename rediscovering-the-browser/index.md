@@ -371,7 +371,7 @@ Specifically, in the URL below:
 
 The website tells you ti click a hyperlink.
 Do it and then look at the address bar.
-Notice the query parameter `flag=SSS_CTF{do_not_kill_the_messenger}`.
+Notice the query parameter `flag=<flag value>`.
 Flags can be hidden anywhere.
 
 ### Tutorial - One More Pinger
