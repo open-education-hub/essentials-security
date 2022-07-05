@@ -428,6 +428,34 @@ root@kali:~# curl -b 'u=hacky mchack' $URL/manage.php  # Notice the Set-Cookie f
 
 Simply create a `Session` object, set the cookie `u` to `hacky mchack`, then send a `GET` request to the `/manage.php` endpoint.
 
+### Challenge: Beep Beep Boop
+
+Look for hidden files on the web server.
+
+### Challenge: Colours
+
+Indices go brrrrrrr.
+
+### Challenge: Great Names
+
+Do you know these great explorers?
+
+### Challenge: Nobody Loves Me
+
+Whom do you call?
+
+### Challenge: One-by-One
+
+One by one by one by one by one...
+
+### Challenge: Produce-Consume
+
+What does the server produce exactly?
+
+### Challenge: Traverse the Universe
+
+Explore new ~planets~ files.
+
 # Further Reading
 
 ## Cookie Theft / Session Hijacking
