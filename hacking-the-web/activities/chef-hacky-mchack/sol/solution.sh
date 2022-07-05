@@ -3,11 +3,9 @@
 PORT=8010
 
 if [[ $1 == "local" ]]; then
-    remote='http://127.0.0.1:'$PORT
-elif [[ $1 == "remote" ]] && [[ -z $2 ]]; then
-    remote='http://141.85.224.70:'$PORT
+    URL="http://localhost:$PORT/manage.php"
 else
-    remote=$1':'$2
+    URL="http://141.85.224.102:$PORT/manage.php"
 fi
 
 echo "First Bash solution: set the cookie manually"
