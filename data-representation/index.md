@@ -12,17 +12,105 @@ Use [gh-md-toc](https://github.com/ekalinin/github-markdown-toc).
 
 ## Introduction
 
-Objectives and rationale for the current session.
+In today's session we'll discuss about data and the many ways we can represent it.
 
 ## Reminders and Prerequisites
 
-- Information required for this section
-- Commands / snippets that should be known, useful to copy-paste throughout the practical session
+For this session you'll need:
+- Basic knowledge of Python (as seen in the first session)
+- 
+- 
 
-## Content Sections:
+## What is Data?
 
-- Content split in sections, according to session specifics
-- Demos will be part of the session presentation and will be referenced (snippets, images, links) in the content
+Data is information.
+This plain text is data, but more than that, data can be encoded and represented in many ways.
+
+Generally, we represent data in a suitable format for our specific purpose.
+
+For example, if we want the most basic way to encode data, the one that computers "think" in, we'll use `Binary`.
+Binary (or Base-2) is a numeric system that only uses two digits - 0 and 1.
+
+In terms of storage efficiency, we can encode
+`UTF-8` for ASCII text (English and other Western languages)
+`UTF-16` for non-ASCII text (Chinese and other Asian languages)
+
+Sometimes, we need our data to not be confused with something else, so, for example we encode `Binary` to `Base-64` in order to get the information on the other side of the wire uncorrupted.
+
+## Data Formats
+
+### Number Systems
+
+Number Systems are a method of representing numbers by mathematical combinations of symbols.
+
+#### `Decimal`
+
+It's the 'human' way to represent numbers.
+
+#### `Binary `
+
+Binary or Base-2 is a numeric system that only uses two digits - 0 and 1. Computers operate in
+
+#### `Octal`
+Base-8
+
+
+#### `Hexadecimal`
+Base-16
+
+### Character Encoding
+
+#### `ASCII`
+
+ASCII (American Standard Code for Information Interchange):
+Going from 0 - 127
+
+```
+DEC HEX ASCII       DEC HEX ASCII       DEC HEX ASCII       DEC HEX ASCII       DEC HEX ASCII  
+0   00  NUL         26	1A  SUB         52  34  4           78  4E  N           104 68  h     
+1   01  SOH         27  1B  ESC         53  35  5           79  4F  O           105 69  i
+2   02	STX         28	1C  FS          54  36  6           80  50  P           106 6A	j
+3   03	ETX         29	1D  GS          55  37  7           81  51  Q           107 6B	k
+4   04	EOT         30	1E  RS          56  38  8           82  52  R           108 6C	l
+5   05	ENQ         31	1F  US          57  39  9           83  53  S           109 6D	m
+6   06	ACK         32	20  SPACE       58  3A  :           84  54  T           110 6E	n
+7   07	BEL         33	21  !           59  3B  ;           85  55  U           111 6F	o
+8   08	BS          34	22  "           60  3C  <           86  56  V           112 70	p
+9   09	HT          35	23  #           61  3D  =           87  57  W           113 71	q
+10  0A	LF          36	24  $           62  3E  >           88  58  X           114 72	r
+11  0B	VT          37	25  %           63  3F  ?           89  59  Y           115 73	s
+12  0C	FF          38	26  &           64  40  @           90  5A  Z           116 74	t
+13  0D	CR          39	27  '           65  41  A           91  5B  [           117 75	u
+14  0E	SO          40	28  (           66  42  B           92  5C  \           118 76	v
+15  0F	SI          41	29  )           67  43  C           93  5D  ]           119 77	w
+16  10	DLE         42	2A  *           68  44  D           94  5E  ^           120 78	x
+17  11	DC1         43	2B  +           69  45  E           95  5F  _           121 79	y
+18  12	DC2         44	2C  ,           70  46  F           96  60  `           122 7A	z
+19  13	DC3         45	2D  -           71  47  G           97  61  a           123 7B	{
+20  14	DC4         46	2E  .           72  48  H           98  62  b           124 7C	|
+21  15	NAK         47	2F  /           73  49  I           99  63  c           125 7D	}
+22  16	SYN         48	30  0           74  4A  J           100 64  d           126 7E	~
+23  17	ETB         49	31  1           75  4B  K           101 65  e           127 7F
+24  18	CAN         50	32  2           76  4C  L           102 66  f 
+25  19	EM          51	33  3           77  4D  M           103 67  g 
+```
+
+#### `Base64`
+
+Base64 is a way of representing binary data in sequences of 24 bits that can be represented by 4 Base64 digits.
+
+SGVsbG8gZnJvbSB0aGUgRWFydGgtNjQgIQ==
+
+## Data Manipulation
+
+We can manually change the way data is represented, so that it will be easier to read or structure.
+
+For large chunks of data, this could take a long time, so, in order for us to be efficient, we will have to use certain automated ways of manipulating the information.
+
+Tools that can help us achieve this goal are ranging from programming and scripting languages, to programs like MS Excel.
+
+For this session's purpose, we will mainly focus on Python as already seen in Session 1 (TODO hyperlink la sesiunea 1)
+
 
 ## Summary
 
