@@ -35,7 +35,7 @@ Number Systems are a method of representing numbers by mathematical combinations
 ![Number Systems](./assets/number_systems.svg)
 
 #### `Decimal`
-Decimal or Base-10 uses 10 digits (0-9). It's the `human` way to represent numbers.
+Decimal or Base-10 uses 10 digits (0-9). It's the **human** way to represent numbers.
 
 #### `Binary `
 Binary or Base-2 only uses two digits (0 and 1).
