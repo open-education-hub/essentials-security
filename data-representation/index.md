@@ -50,9 +50,9 @@ Computers store data in bites and bytes.
 
 But why do computers do this?
 
-Hardware prefers them, since it is easier to associate with electrical signals.
+Hardware prefers them, since it is easier to associate with electrical signals:
 
-![data_signals](./assets/data_signals.svg)
+![Data Signals](./assets/data_signals.svg)
 
 #### `Hexadecimal`
 Hexadecimal or Base-16 uses 10 digits (0-9) and 6 alphabet letters (A-F). We can look at hexadecimal data as a shortcut for the binary system.
@@ -74,9 +74,9 @@ $(a × 16^1) + (9 × 16^0) = 169$
 TODO(Cod Python)
 
 #### `Octal`
-Octal or Base-8 uses 8 digits (0-7).
+Octal or Base-8 uses 8 digits (0-7). It is the least popular of the aforementioned 4, but an interesting use of it is in the Unix File Permissions system:
 
-![Number Systems](./assets/number_systems.svg)
+![Unix File Permissions](./assets/unix_file_permissions.svg)
 
 ### Character Encoding
 
