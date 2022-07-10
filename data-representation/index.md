@@ -17,7 +17,7 @@ In today's session we'll discuss about data and the many ways we can represent i
 ## Reminders and Prerequisites
 
 For this session you'll need:
-- Basic knowledge of Python (as seen in the [first session](https://security-summer-school.github.io/essentials/welcome-to-linux/))
+- Basic knowledge of Python (as seen in the [first session](..//welcome-to-linux/))
 - Numbers
 - 
 
