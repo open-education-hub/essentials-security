@@ -127,6 +127,21 @@ Base64 is a way of representing binary data in sequences of 24 bits that can be 
 
 SGVsbG8gZnJvbSB0aGUgRWFydGgtNjQgIQ==
 
+#### `Hashing`
+
+A good way to compress data is represented by hashing.
+Data can be stored in hashes; hashes can be stored in hash tables, thus enabling quicker data lookup.
+
+But how does it work?
+
+A hashing algorithm is a mathematical algorithm that converts an input data array of a certain type and arbitrary length to an output bit string of a fixed length. 
+
+The process is one-way, as you cannot convert a hash back to the orgiinal data.
+
+Hashes establish identity, because they are unique. So we use hashes for data encryption. 
+
+We can store passwords as MD5, SHA-1 or SHA-2 (most popular ones), so that in case of a security breach, the real passwords are still hidden.
+
 
 ## Data Manipulation
 
