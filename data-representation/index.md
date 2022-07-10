@@ -35,7 +35,8 @@ Numeral Systems are a method of representing numbers by mathematical combination
 
 ![Numeral Systems 1](./assets/numeral_systems1.svg)
 
-Humans prefer the `decimal` numeral system (also know as Base-10), since it provides better readability, hence the software of computers is mostly `Base-10`, as humans write software far more than they build hardware.
+Humans prefer the `decimal` numeral system (also know as Base-10), since it provides better readability.
+Therefore, written software (i.e. code) is mostly `Base-10`, as humans write software far more than they build hardware.
 
 Computers, on the other hand, use binary (or Base-2), the numerical system that uses two digits (0 and 1), which are also known as `bits` and `bytes` (1 byte = 8 bits)
 
