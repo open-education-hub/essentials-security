@@ -43,17 +43,34 @@ Decimal or Base-10 uses 10 digits (0-9). It's the `human` way to represent numbe
 
 #### `Binary `
 Binary or Base-2 only uses two digits (0 and 1).
+
 0 and 1 are called `bits` and `8 bits = 1 byte`.
-Computers store data in bites and bytes. 
+
+Computers store data in bites and bytes.
+
 But why do computers do this?
+
 Hardware prefers them, since it is easier to associate with electronics.
+
 
 #### `Hexadecimal`
 Hexadecimal or Base-16 uses 10 digits (0-9) and 6 alphabet letters (A-F). We can look at hexadecimal data as a shortcut for the binary system.
-Let's say we have `0b10101001` ('10101001').
+
+Let's say we have `0b10101001` (`10101001`).
+
 I assume you can safely say that since we have 8 bits, it will be `< 256`.
+
 Its hexadecimal form is `0xa9` (`a9`).
-Thus, if we want to convert it to `decimal`, instead of doing 8 steps $(1 × 2^7) + (0 × 2^6) + (1 × 2^5) + (0 × 2^4) + (1 × 2^3) + (0 × 2^2) + (0 × 2^1) + (1 × 2^0)$, we only do 2 steps: $(a × 16^1) + (9 × 16^)$
+
+Thus, if we want to convert it to `decimal`, instead of doing 8 steps:
+
+$(1 × 2^7) + (0 × 2^6) + (1 × 2^5) + (0 × 2^4) + (1 × 2^3) + (0 × 2^2) + (0 × 2^1) + (1 × 2^0) = 169$
+
+we only do 2 steps:
+
+$(a × 16^1) + (9 × 16^0) = 169$
+
+TODO(Cod Python)
 
 #### `Octal`
 Octal or Base-8 uses 8 digits (0-7).
@@ -95,10 +112,11 @@ DEC HEX ASCII       DEC HEX ASCII       DEC HEX ASCII       DEC HEX ASCII       
 24  18	CAN         50	32  2           76  4C  L           102 66  f 
 25  19	EM          51	33  3           77  4D  M           103 67  g 
 ```
-## Character Encoding
 
 In terms of storage efficiency, we can encode
+
 `UTF-8` for ASCII text (English and other Western languages)
+
 `UTF-16` for non-ASCII text (Chinese and other Asian languages)
 
 #### `Base64`
@@ -121,7 +139,7 @@ For this session's purpose, we will mainly focus on Python as already seen in [S
 
 ## Summary
 
-- Sumamrizing session concepts
+- Summarizing session concepts
 - Summarizing commands / snippets that are useful for tutorials, challenges (easy reference, copy-paste)
 
 ## Activities
