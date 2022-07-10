@@ -17,7 +17,7 @@ In today's session we'll discuss about data and the many ways we can represent i
 ## Reminders and Prerequisites
 
 For this session you'll need:
-- Basic knowledge of Python (as seen in the [first session](https://security-summer-school.github.io/essentials/system-exploration/))
+- Basic knowledge of Python (as seen in the [first session](https://security-summer-school.github.io/essentials/welcome-to-linux/))
 - Numbers
 - 
 
@@ -136,7 +136,7 @@ For large chunks of data, this could take a long time, so, in order for us to be
 
 Tools that can help us achieve this goal are ranging from programming and scripting languages, to programs like MS Excel.
 
-For this session's purpose, we will mainly focus on Python as already seen in [Session 1](https://security-summer-school.github.io/essentials/system-exploration/)
+For this session's purpose, we will mainly focus on Python as already seen in [Session 1](https://security-summer-school.github.io/essentials/welcome-to-linux/)
 
 
 ## Summary
