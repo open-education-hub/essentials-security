@@ -35,8 +35,8 @@ Sometimes, we need our data to not be confused with something else, so, for exam
 ## Data Formats
 
 ### Number Systems
-
 Number Systems are a method of representing numbers by mathematical combinations of symbols.
+![Number Systems](./assets/number_systems.svg)
 
 #### `Decimal`
 Decimal or Base-10 uses 10 digits (0-9). It's the `human` way to represent numbers.
