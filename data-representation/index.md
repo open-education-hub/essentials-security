@@ -30,28 +30,25 @@ Sometimes, we need our data to not be confused with something else, so, for exam
 
 ## Data Formats
 
-### Number Systems
-Number Systems are a method of representing numbers by mathematical combinations of symbols.
-![Number Systems](./assets/number_systems.svg)
+### Numeral Systems
+Numeral Systems are a method of representing numbers by mathematical combinations of symbols.
 
-#### `Decimal`
-Decimal or Base-10 uses 10 digits (0-9). It's the **human** way to represent numbers.
+![Numeral Systems 1](./assets/numeral_systems1.svg)
 
-#### `Binary `
-Binary or Base-2 only uses two digits (0 and 1).
+Humans prefer the `decimal` numeral system (also know as Base-10), since it provides better readability, hence the software of computers is mostly `Base-10`, as humans write software far more than they build hardware.
 
-0 and 1 are called `bits` and `8 bits = 1 byte`.
+Computers, on the other hand, use binary (or Base-2), the numerical system that uses two digits (0 and 1), which are also known as `bits` and `bytes` (1 byte = 8 bits)
+![Binary Meme](./assets/binary_meme.svg)
+But why?
 
-Computers store data in bites and bytes.
-
-But why do computers do this?
-
-Hardware prefers them, since it is easier to associate with electrical signals:
+Hardware prefers them, since they are associated easier with electrical signals:
 
 ![Data Signals](./assets/data_signals.svg)
 
-#### `Hexadecimal`
-Hexadecimal or Base-16 uses 10 digits (0-9) and 6 alphabet letters (A-F). We can look at hexadecimal data as a shortcut for the binary system.
+Of course, there is also an in-between: Hexadecimal.
+Also known as Base-16, it uses 10 digits (0-9) and 6 alphabet letters (A-F). 
+
+Hexadecimal data is both readable and tightly correlated to the binary representation.
 
 Let's say we have `0b10101001` (`10101001`).
 
@@ -73,6 +70,10 @@ TODO(Cod Python)
 Octal or Base-8 uses 8 digits (0-7). It is the least popular of the aforementioned 4, but an interesting use of it is in the Unix File Permissions system:
 
 ![Unix File Permissions](./assets/unix_file_permissions.svg)
+
+
+An overview of the presented `Numeral Systems`:
+![Numeral Systems 2](./assets/numeral_systems2.svg)
 
 ### Character Encoding
 
