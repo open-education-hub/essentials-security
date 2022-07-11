@@ -102,6 +102,16 @@ if __name__ == '__main__':
     print(f"0xf7b ―――> {hexToBin('0xf7b')}")
 ```
 
+And their output:
+```
+0b1111 ―――> 15
+15 ―――> 0b1111
+0xa9 ―――> 169
+169 ―――> 0xa9
+0b111101111011 ―――> 0xf7b
+0xf7b ―――> 0b111101111011
+```
+
 #### `Octal`
 Octal or Base-8 uses 8 digits (0-7). It is the least popular of the aforementioned 4, but an interesting use of it is in the Unix File Permissions system:
 
