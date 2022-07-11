@@ -220,11 +220,11 @@ And we will get:
 
 #### `Base64`
 
-Base64 is a way of representing binary data in sequences of 24 bits that can be represented by 4 Base64 digits.
+Base64 is a way of representing binary data in sequences of 24 bits (3 bytes) that can be represented by 4 Base64 digits.
 
 Base64 Encoding Table:
 ```
-Value   Char      Value   Char      Value   Char      Value   Char        
+Index   Char      Index   Char      Index   Char      Index   Char        
 0       A         16      Q         32      g         48      w   
 1       B         17      R         33      h         49      x
 2       C         18      S         34      i         50      y
@@ -271,6 +271,16 @@ message = message_bytes.decode('ascii')
 Which will get us back to:
 ```
 Some random message
+```
+
+As you can see, some Base64 strings have "=" at the end, some have "==" and others have nothing uncommon.  
+Since Base64 represents binary data in 3 bytes, we should also know how to treat the case when the length is not divisible by 3.  
+As a consequence, there is output padding for Base64 as follows:
+
+```
+length % 3 = 1 => "=="
+length % 3 = 2 => "="
+length % 3 = 0 => no padding
 ```
 
 Try decoding yourself!
