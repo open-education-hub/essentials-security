@@ -23,9 +23,9 @@ For this session you'll need:
 ## What is Data?
 
 Data is information.
-This plain text is data, but more than that, data can be encoded and represented in many ways.
-Generally, we represent data in a suitable format for our specific purpose.
-For example, if we want the most basic way to encode data, the one that computers "think" in, we'll use `Binary`.
+This plain text is data, but more than that, data can be encoded and represented in many ways.  
+Generally, we represent data in a suitable format for our specific purpose.  
+For example, if we want the most basic way to encode data, the one that computers "think" in, we'll use `Binary`.  
 Sometimes, we need our data to not be confused with something else, so, for example we encode `Binary` to `Base-64` in order to get the information on the other side of the wire uncorrupted.
 
 ## Data Formats
@@ -35,30 +35,24 @@ Numeral Systems are a method of representing numbers by mathematical combination
 
 ![Numeral Systems 1](./assets/numeral_systems1.svg)
 
-Humans prefer the `decimal` numeral system (also know as Base-10), since it provides better readability.
+Humans prefer the `decimal` numeral system (also know as Base-10), since it provides better readability.  
 Therefore, written software (i.e. code) is mostly `Base-10`, as humans write software far more than they build hardware.
 
 Computers, on the other hand, use binary (or Base-2), the numerical system that uses two digits (0 and 1), which are also known as `bits` and `bytes` (1 byte = 8 bits)
 
 ![Binary Meme](./assets/binary_meme.svg)
 
-But why?
-
+But why?  
 Hardware prefers them, since they are associated easier with electrical signals:
 
 ![Data Signals](./assets/data_signals.svg)
 
-Of course, there is also an in-between: Hexadecimal.
-Also known as Base-16, it uses 10 digits (0-9) and 6 alphabet letters (A-F). 
-
-Hexadecimal data is both readable and tightly correlated to the binary representation.
-
-Let's say we have `0b10101001` (`10101001`).
-
-I assume you can safely say that since we have 8 bits, it will be `< 256`.
-
-Its hexadecimal form is `0xa9` (`a9`).
-
+Of course, there is also an in-between: Hexadecimal.  
+Also known as Base-16, it uses 10 digits (0-9) and 6 alphabet letters (A-F).   
+Hexadecimal data is both readable and tightly correlated to the binary representation.  
+Let's say we have `0b10101001` (`10101001`).  
+I assume you can safely say that since we have 8 bits, it will be `< 256`.  
+Its hexadecimal form is `0xa9` (`a9`).  
 Thus, if we want to convert it to `decimal`, instead of doing 8 steps:
 
 $(1 × 2^7) + (0 × 2^6) + (1 × 2^5) + (0 × 2^4) + (1 × 2^3) + (0 × 2^2) + (0 × 2^1) + (1 × 2^0) = 169$
@@ -113,7 +107,8 @@ And their output:
 ```
 
 #### `Octal`
-Octal or Base-8 uses 8 digits (0-7). It is the least popular of the aforementioned 4, but an interesting use of it is in the Unix File Permissions system:
+Octal or Base-8 uses 8 digits (0-7).  
+It is the least popular of the aforementioned 4, but an interesting use of it is in the Unix File Permissions system:
 
 Here is a table that shows what each permissions does on a file, respectively on a directory.
 ![Unix File Permissions 1](./assets/unix_file_permissions1.svg)
@@ -179,11 +174,49 @@ DEC HEX ASCII       DEC HEX ASCII       DEC HEX ASCII       DEC HEX ASCII       
 25  19	EM          51	33  3           77  4D  M           103 67  g 
 ```
 
+We can see that by adding 32 to an uppercase letter, we get that same letter in lowercase:  
+e.g. $E + 32 = e$
+
+Below, you can see the built-in Python functions `ord` and `chr` that help us determine what caracter coresponds to a certain ASCII code and what ASCII code a character has.
+```py
+>>> ord('E')
+69
+>>> chr(69)
+'E'
+>>> chr(ord('E') + 32)
+'e'
+>>> chr(ord('e') - 32)
+'E'
+>>>
+```
+
 In terms of storage efficiency, we can encode
 
 `UTF-8` for ASCII text (English and other Western languages)
 
 `UTF-16` for non-ASCII text (Chinese and other Asian languages)
+
+Let's say we have a string in Chinese. With Python, we can get the hex bytes of the string, using the built-in function `str.encode()`:
+```py
+Str = ("老板")
+print(Str)
+
+Str = (("老板").encode("utf-8"))
+print(Str)
+```
+The output will be:
+```
+老板
+b'\xe8\x80\x81\xe6\x9d\xbf'
+```
+If we want to get back to the original string, we will execute:
+```py
+print((Str.decode()))
+```
+And we will get:
+```
+老板
+```
 
 #### `Base64`
 
@@ -193,19 +226,15 @@ SGVsbG8gZnJvbSB0aGUgRWFydGgtNjQgIQ==
 
 #### `Hashing`
 
-A good way to compress data is represented by hashing.
+A good way to compress data is represented by hashing.  
 Data can be stored in hashes; hashes can be stored in hash tables, thus enabling quicker data lookup.
 
 But how does it work?
 
-A hashing algorithm is a mathematical algorithm that converts an input data array of a certain type and arbitrary length to an output bit string of a fixed length. 
-
-The process is one-way, as you cannot convert a hash back to the orgiinal data.
-
-Hashes establish identity, because they are unique. So we use hashes for data encryption. 
-
-We can store passwords as MD5, SHA-1 or SHA-2 (most popular ones), so that in case of a security breach, the real passwords are still hidden.
-
+A hashing algorithm is a mathematical algorithm that converts an input data array of a certain type and arbitrary length to an output bit string of a fixed length.  
+The process is one-way, as you cannot convert a hash back to the original data.  
+Hashes establish identity, because they are unique. So we use hashes for data encryption.  
+We can store passwords as MD5, SHA-1 or SHA-2 (most popular ones), so that in case of a security breach, the real passwords are still hidden.  
 
 ## Data Manipulation
 
@@ -231,5 +260,5 @@ Tasks for the students to solve. They may be of two types:
 
 ## Further Reading
 
-[pandas (Python Tool for Data Manipulation)(1)](https://pandas.pydata.org/docs/getting_started/)
+[pandas (Python Tool for Data Manipulation)(1)](https://pandas.pydata.org/docs/getting_started/)  
 [pandas (Python Tool for Data Manipulation)(2)](https://www.w3schools.com/python/pandas/default.asp)
