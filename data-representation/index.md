@@ -283,6 +283,37 @@ length % 3 = 2 => "="
 length % 3 = 0 => no padding
 ```
 
+The following can be used to better understand output padding:
+```py
+import base64
+
+text1 = "SecuritySummmerSch"
+text2 = "SecuritySummmerScho"
+text3 = "SecuritySummmerSchoo"
+text4 = "SecuritySummmerSchool"
+
+b64_text1 = (base64.b64encode(text1.encode('ascii'))).decode('ascii')
+b64_text2 = (base64.b64encode(text2.encode('ascii'))).decode('ascii')
+b64_text3 = (base64.b64encode(text3.encode('ascii'))).decode('ascii')
+b64_text4 = (base64.b64encode(text4.encode('ascii'))).decode('ascii')
+
+print(f"Plain text\t\tPT length\tBase64 text\t\t\tB64 length")
+print(f"{text1}\t{len(text1)}\t\t{b64_text1}\t{len(b64_text1)}")
+print(f"{text2}\t{len(text2)}\t\t{b64_text2}\t{len(b64_text2)}")
+print(f"{text3}\t{len(text3)}\t\t{b64_text3}\t{len(b64_text3)}")
+print(f"{text4}\t{len(text4)}\t\t{b64_text4}\t{len(b64_text4)}")
+```
+
+We get:
+```html
+Plain text              PT length       Base64 text                     B64 length
+SecuritySummmerSch      18              U2VjdXJpdHlTdW1tbWVyU2No        24
+SecuritySummmerScho     19              U2VjdXJpdHlTdW1tbWVyU2Nobw==    28
+SecuritySummmerSchoo    20              U2VjdXJpdHlTdW1tbWVyU2Nob28=    28
+SecuritySummmerSchool   21              U2VjdXJpdHlTdW1tbWVyU2Nob29s    28
+```
+
+
 Try decoding yourself!
 ```
 SGVsbG8gZnJvbSB0aGUgRWFydGgtNjQgIQ==
@@ -296,9 +327,16 @@ Data can be stored in hashes; hashes can be stored in hash tables, thus enabling
 But how does it work?
 
 A hashing algorithm is a mathematical algorithm that converts an input data array of a certain type and arbitrary length to an output bit string of a fixed length.  
-The process is one-way, as you cannot convert a hash back to the original data.  
+The process is one-way, as you cannot convert a hash back to the original data, like making a banana smoothie, as seen in the image below:
+
+![Blender Hashing](./assets/blender_hashing.svg)
+
 Hashes establish identity, because they are unique. So we use hashes for data encryption.  
 We can store passwords as MD5, SHA-1 or SHA-2 (most popular ones), so that in case of a security breach, the real passwords are still hidden.  
+
+```py
+
+```
 
 ## Data Manipulation
 
