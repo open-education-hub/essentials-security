@@ -343,6 +343,8 @@ root@kali:~$ echo -n "Random plaintext" | md5sum
 1155bd70728d5dc0e1856f7742621d94  -
 ```
 
+2. Getting the hash of a text using 'Python'
+
 We can see that by adding, changing or deleting a character from the text, radically changes the hash:
 ```bash
 root@kali:~$ echo -n "Random plaintextt" | md5sum
