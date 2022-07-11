@@ -8,7 +8,7 @@ weight: 10
 
 ## Introduction
 
-In today's session we'll discuss about data and the many ways we can represent it.
+In today's session we'll be discussing data and the many ways we can represent it.
 
 ## Reminders and Prerequisites
 
@@ -102,7 +102,7 @@ And their output:
 0xf7b ―――> 0b111101111011
 ```
 
-#### `Octal`
+#### Octal
 Octal or Base-8 uses 8 digits (0-7).  
 It is the least popular of the aforementioned 4, but an interesting use of it is in the Unix File Permissions system:
 
@@ -135,7 +135,7 @@ An overview of the presented `Numeral Systems`:
 
 ### Character Encoding
 
-#### `ASCII`
+#### ASCII
 
 ASCII (American Standard Code for Information Interchange):
 Going from 0 - 127
@@ -214,7 +214,7 @@ And we will get:
 老板
 ```
 
-#### `Base64`
+#### Base64
 
 Base64 is a way of representing binary data in sequences of 24 bits (3 bytes) that can be represented by 4 Base64 digits.
 
@@ -263,6 +263,8 @@ base64_message = 'U29tZSByYW5kb20gbWVzc2FnZQ=='
 base64_bytes = base64_message.encode('ascii')
 message_bytes = base64.b64decode(base64_bytes)
 message = message_bytes.decode('ascii')
+
+print(message)
 ```
 Which will get us back to:
 ```
@@ -315,7 +317,7 @@ Try decoding yourself!
 SGVsbG8gZnJvbSB0aGUgRWFydGgtNjQgIQ==
 ```
 
-#### `Hashing`
+#### Hashing
 
 A good way to compress data is represented by hashing.  
 Data can be stored in hashes; hashes can be stored in hash tables, thus enabling quicker data lookup.
@@ -393,14 +395,16 @@ A much better approach is to store the passwords hashed, as mentioned above:
 Data can be represented in many ways, with different purposes.
 
 Some useful information from today:
-- Hashes cannot be reverted
 - Base64 is encoding, not encrypting
-- Computers love binary
- 
-Some useful commands from today:
+- Computers love `binary`, humans love `decimal`, and they both have a thing for `hexadecimal`
+- We need the `base64` and `hashlib` modules imported in our Python scripts in order for us to work with `Base64` encoding/decoding and `Hashing`
+
+Some useful Python commands from today:
 - Convert Binary to Decimal - `int(n,2)`
-- Find the ASCII code - ord('X')
-- Find a character based on its ASCII code - chr(88)
+- Find the ASCII code - `ord('X')`
+- Find a character based on its ASCII code - `chr(88)`
+- Encode in Base64 format - `(base64.b64encode(text1.encode('ascii'))).decode('ascii')`
+- Decode from Base64 format - `(base64.b64decode(base64_message.encode('ascii'))).decode('ascii')`
 
 ## Activities
 
@@ -421,11 +425,15 @@ A useful Python tool for this purpose is `pandas`:
 [pandas (Python tool for Data Manipulation)(1)](https://pandas.pydata.org/docs/getting_started/)  
 [pandas (Python tool for Data Manipulation)(2)](https://www.w3schools.com/python/pandas/default.asp)
 
+### Useful Links for encoding/decoding data
+[dCode](https://www.dcode.fr/)  
+[CyberChef](https://gchq.github.io/CyberChef/)
+
 ### Hashes and their vulnerabilities
 [CrackStation](https://crackstation.net/)  
 [Hash Collision Wikipedia](https://en.wikipedia.org/wiki/Hash_collision)  
 [Shattered](https://shattered.io/)
+[Hash Toolkit](https://hashtoolkit.com/)
 
-### Useful Links for encoding/decoding data
-[dCode](https://www.dcode.fr/)  
-[CyberChef](https://gchq.github.io/CyberChef/)
+### More on the topic
+[Video about Data Representation](https://www.youtube.com/watch?v=MijmeoH9LT4)
