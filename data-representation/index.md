@@ -224,7 +224,7 @@ Base64 is a way of representing binary data in sequences of 24 bits that can be 
 
 Base64 Encoding Table:
 ```
-DEC     B64       DEC     B64       DEC     B64       DEC     B64        
+Value   Char      Value   Char      Value   Char      Value   Char        
 0       A         16      Q         32      g         48      w   
 1       B         17      R         33      h         49      x
 2       C         18      S         34      i         50      y
