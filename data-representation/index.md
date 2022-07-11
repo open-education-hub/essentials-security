@@ -175,7 +175,7 @@ DEC HEX ASCII       DEC HEX ASCII       DEC HEX ASCII       DEC HEX ASCII       
 ```
 
 We can see that by adding 32 to an uppercase letter, we get that same letter in lowercase:  
-e.g. $E + 32 = e$
+e.g. `E + 32 = e`
 
 Below, you can see the built-in Python functions `ord` and `chr` that help us determine what character coresponds to a certain ASCII code and what ASCII code a character has.
 ```py
@@ -336,14 +336,12 @@ As you can see, you cannot make a banana back from the juice, so `unhashing` is 
 Hashes establish identity, because they are unique. So we use hashes for data encryption.
 We can find the hash of a some data in a lot of ways. Some of them are:
 
-1. Getting the hash of a text using `Bash`
+1. Getting the hash (`md5` in this case) of a text using `Bash`
 
 ```bash
 root@kali:~$ echo -n "Random plaintext" | md5sum
 1155bd70728d5dc0e1856f7742621d94  -
 ```
-
-2. Getting the hash of a text using 'Python'
 
 We can see that by adding, changing or deleting a character from the text, radically changes the hash:
 ```bash
@@ -353,6 +351,24 @@ root@kali:~$ echo -n "Random plaintest" | md5sum
 29adfa240cda59153245464ed8de4ec1
 root@kali:~$ echo -n "Random plaintex" | md5sum
 d992ee83f3675b4021e0bb614021ffeb
+```
+
+2. Getting the hash (`sha-1` in this case) of a text using `Python`:
+
+We will use the module `hashlib` in order to get hashes in Python:
+
+```py
+import hashlib
+
+text = "some kind of text"
+h = hashlib.sha1(text.encode('ascii'))
+
+print(h.hexdigest())
+```
+
+This code would provide the following `sha-1` hash:
+```
+1145d8b71c84d1b0a717d36bd0cd6638697bd606
 ```
 
 We can store passwords as MD5, SHA-1 or SHA-2 (most popular ones), so that in case of a security breach, the real passwords are still hidden.  
@@ -376,21 +392,19 @@ A much better approach is to store the passwords hashed, as mentioned above:
 ```
 
 
-## Data Manipulation
-
-We can manually change the way data is represented, so that it will be easier to read or structure.
-
-For large chunks of data, this could take a long time, so, in order for us to be efficient, we will have to use certain automated ways of manipulating the information.
-
-Tools that can help us achieve this goal are ranging from programming and scripting languages, to programs like MS Excel.
-
-For this session's purpose, we will mainly focus on Python as already seen in [Session 1](../welcome-to-linux/)
-
-
 ## Summary
 
-- Summarizing session concepts
-- Summarizing commands / snippets that are useful for tutorials, challenges (easy reference, copy-paste)
+Data can be represented in many ways, with different purposes.
+
+Some useful information from today:
+- Hashes cannot be reverted
+- Base64 is encoding, not encrypting
+- Computers love binary
+ 
+Some useful commands from today:
+- Convert Binary to Decimal - `int(n,2)`
+- Find the ASCII code - ord('X')
+- Find a character based on its ASCII code - chr(88)
 
 ## Activities
 
@@ -400,5 +414,22 @@ Tasks for the students to solve. They may be of two types:
 
 ## Further Reading
 
-[pandas (Python Tool for Data Manipulation)(1)](https://pandas.pydata.org/docs/getting_started/)  
-[pandas (Python Tool for Data Manipulation)(2)](https://www.w3schools.com/python/pandas/default.asp)
+### Data Manipulation
+We can manually change the way data is represented, so that it will be easier to read or structure.
+
+For large chunks of data, this could take a long time, so, in order for us to be efficient, we will have to use certain automated ways of manipulating the information.
+
+Tools that can help us achieve this goal are ranging from programming and scripting languages, to programs like MS Excel.  
+A useful Python tool for this purpose is `pandas`:
+
+[pandas (Python tool for Data Manipulation)(1)](https://pandas.pydata.org/docs/getting_started/)  
+[pandas (Python tool for Data Manipulation)(2)](https://www.w3schools.com/python/pandas/default.asp)
+
+### Hashes and their vulnerabilities
+[CrackStation](https://crackstation.net/)  
+[Hash Collision Wikipedia](https://en.wikipedia.org/wiki/Hash_collision)  
+[Shattered](https://shattered.io/)
+
+### Useful Links for encoding/decoding data
+[dCode](https://www.dcode.fr/)  
+[CyberChef](https://gchq.github.io/CyberChef/)
