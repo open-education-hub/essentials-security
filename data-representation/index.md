@@ -186,10 +186,8 @@ Below, you can see the built-in Python functions `ord` and `chr` that help us de
 >>>
 ```
 
-In terms of storage efficiency, we can encode
-
-`UTF-8` for ASCII text (English and other Western languages)
-
+In terms of storage efficiency, we can encode  
+`UTF-8` for ASCII text (English and other Western languages)  
 `UTF-16` for non-ASCII text (Chinese and other Asian languages)
 
 Let's say we have a string in Chinese. With Python, we can get the hex bytes of the string, using the built-in function `str.encode()`:
