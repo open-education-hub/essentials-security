@@ -6,10 +6,6 @@ weight: 10
 
 # Data Representation
 
-## Table of Contents
-
-Use [gh-md-toc](https://github.com/ekalinin/github-markdown-toc).
-
 ## Introduction
 
 In today's session we'll discuss about data and the many ways we can represent it.
