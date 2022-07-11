@@ -329,7 +329,10 @@ The process is one-way, as you cannot convert a hash back to the original data, 
 
 As you can see, you cannot make a banana back from the juice, so `unhashing` is impossible.
 
-Hashes establish identity, because they are unique. So we use hashes for data encryption.
+Hashes establish identity between inputs because they are unique.
+We can safely assume that if 2 inputs have the same hash, they are identical.
+
+We can also use hashes for data encryption.
 We can find the hash of a some data in a lot of ways. Some of them are:
 
 1. Getting the hash (`md5` in this case) of a text using `Bash`
