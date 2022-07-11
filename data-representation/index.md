@@ -67,13 +67,67 @@ we only do 2 steps:
 
 $(a × 16^1) + (9 × 16^0) = 169$
 
-TODO(Cod Python)
+Some conversions:
+```py
+# binary <――> decimal
+def binToDec(n):
+    return int(n,2)
+
+def decToBin(n):
+    return bin(n)
+
+# hexadecimal <――> decimal
+def hexToDec(n):
+    return int(n, 16)
+
+def decToHex(n):
+    return hex(n)
+
+# binary <――> hexadecimal
+def binToHex(n):
+    return(decToHex(binToDec(n)))
+
+def hexToBin(n):
+    return(decToBin(hexToDec(n)))
+
+# Back and forth conversions
+if __name__ == '__main__':
+    print(f"0b1111 ―――> {binToDec('0b1111')}")
+    print(f"15 ―――> {decToBin(15)}")
+
+    print(f"0xa9 ―――> {hexToDec('0xa9')}")
+    print(f"169 ―――> {decToHex(169)}")
+
+    print(f"0b111101111011 ―――> {binToHex('0b111101111011')}")
+    print(f"0xf7b ―――> {hexToBin('0xf7b')}")
+```
 
 #### `Octal`
 Octal or Base-8 uses 8 digits (0-7). It is the least popular of the aforementioned 4, but an interesting use of it is in the Unix File Permissions system:
 
-![Unix File Permissions](./assets/unix_file_permissions.svg)
+Here is a table that shows what each permissions does on a file, respectively on a directory.
+![Unix File Permissions 1](./assets/unix_file_permissions1.svg)
 
+Each file/directory has three sets of permissions:
+`Owner`,
+`Group Owner`,
+`Others`
+
+So, if we want to view the permissions of a file/directory we execute:
+```bash
+root@kali:~# ls -l File_Name
+-rwxrw-r-- 1 root root 1000 Sep 10 2020 File_Name
+-[-][-][-]   [--] [--]
+| |  |  |     ||   ||
+| |  |  |     ||   ||
+| |  |  |     ||   ++----------------> 6. Group
+| |  |  |     ++---------------------> 5. Owner
+| |  |  +----------------------------> 4. Others Permissions
+| |  +-------------------------------> 3. Group Permissions
+| +----------------------------------> 2. Owner Permissions
++------------------------------------> 1. File Type
+```
+![Unix File Permissions 2](./assets/unix_file_permissions2.svg)
 
 An overview of the presented `Numeral Systems`:
 ![Numeral Systems 2](./assets/numeral_systems2.svg)
@@ -167,4 +221,5 @@ Tasks for the students to solve. They may be of two types:
 
 ## Further Reading
 
-Any links or references to extra information.
+[pandas (Python Tool for Data Manipulation)(1)](https://pandas.pydata.org/docs/getting_started/)
+[pandas (Python Tool for Data Manipulation)(2)](https://www.w3schools.com/python/pandas/default.asp)
