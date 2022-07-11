@@ -331,12 +331,48 @@ The process is one-way, as you cannot convert a hash back to the original data, 
 
 ![Blender Hashing](./assets/blender_hashing.svg)
 
-Hashes establish identity, because they are unique. So we use hashes for data encryption.  
-We can store passwords as MD5, SHA-1 or SHA-2 (most popular ones), so that in case of a security breach, the real passwords are still hidden.  
+As you can see, you cannot make a banana back from the juice, so `unhashing` is impossible.
 
-```py
+Hashes establish identity, because they are unique. So we use hashes for data encryption.
+We can find the hash of a some data in a lot of ways. Some of them are:
+
+1. Getting the hash of a text using `Bash`
+
+```bash
+root@kali:~$ echo -n "Random plaintext" | md5sum
+1155bd70728d5dc0e1856f7742621d94  -
+```
+
+We can see that by adding, changing or deleting a character from the text, radically changes the hash:
+```bash
+root@kali:~$ echo -n "Random plaintextt" | md5sum
+43052701309339b0a084bfbe5a5e531c
+root@kali:~$ echo -n "Random plaintest" | md5sum
+29adfa240cda59153245464ed8de4ec1
+root@kali:~$ echo -n "Random plaintex" | md5sum
+d992ee83f3675b4021e0bb614021ffeb
+```
+
+We can store passwords as MD5, SHA-1 or SHA-2 (most popular ones), so that in case of a security breach, the real passwords are still hidden.  
+An unsecure and naive way of storing passwords is:
 
 ```
+|  User   |      Password      |
+|:-------:|:------------------:|
+| Robert  | S3cur3.p@ssw0rd?   |
+| Maria   | Palmademallorca123 |
+| Ciprian | password           |
+```
+
+A much better approach is to store the passwords hashed, as mentioned above:
+```
+|  User   |             Password             |
+|:-------:|:--------------------------------:|
+| Robert  | 0daeb943b4cc762da2c541c7338c90b6 |
+| Maria   | 9daa2547b9a0155841d7f653257e3762 |
+| Ciprian | 5f4dcc3b5aa765d61d8327deb882cf99 |
+```
+
 
 ## Data Manipulation
 
