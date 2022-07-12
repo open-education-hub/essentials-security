@@ -1,6 +1,6 @@
 import base64
 
-text = flag = open("Tommy's art project.txt","r").read()
+text = flag = open("tommys_art_project.txt","r").read()
 text = (base64.b64decode(text.encode('ascii'))).decode('ascii')
 
 ascii_list = []
