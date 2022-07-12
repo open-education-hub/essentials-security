@@ -409,9 +409,16 @@ Some useful Python commands from today:
 
 ## Activities
 
-Tasks for the students to solve. They may be of two types:
-- **Tutorials** - simpler tasks accompanied by more detailed, walkthrough-like explanations
-- **Challenges** - the good stuff
+### Challenge: Froggified
+My human friend got turned into a frog and he's been trying to base his communication with me through a computer, but he couldn't really work his way with Linux and lost the message in all those 0s and 1s. He jumps around angry on my desk, can you help me find his message?
+
+### Challenge: ASCII Art
+My friend Tommy is really passionate about art. Lately, he got into something called ASCII art and e-mailed me the following attachment.  
+I am too afraid to tell him that I don't know how to open it. Can you help?
+
+### Challenge: Encoding Train
+I wanted to learn encodings, so I changed my e-mail password then I encoded it 20 times with base16, base32, base64 and base85, every time using a random one.  
+Now I don't know how to get it back and I really need access to my e-mail. Can you take a look?
 
 ## Further Reading
 
