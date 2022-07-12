@@ -410,7 +410,7 @@ Some useful Python commands from today:
 ## Activities
 
 ### Challenge: Froggified
-My human friend got turned into a frog and he's been trying to base his communication with me through a computer, but he couldn't really work his way with Linux and lost the message in all those 0s and 1s.
+My human friend got turned into a frog and he's been trying to base his communication with me through a computer, but he couldn't really work his way with Linux and lost the message in all those 0s and 1s.  
 He jumps around angry on my desk, can you help me find his message?
 
 ### Challenge: ASCII Art
@@ -422,7 +422,8 @@ I wanted to learn encodings, so I changed my e-mail password then I encoded it 2
 Now I don't know how to get it back and I really need access to my e-mail. Can you take a look?
 
 ### Challenge: Infinity Hashes
-Thanos had 6 Infinity Stones, but I have something better: 6 Infinity Hashes, that store the truth of the whole universe. Wrap it with `SSS{}` and `_` instead of space, and spread it with everyone!
+Thanos had 6 Infinity Stones, but I have something better: 6 Infinity Hashes, that store the truth of the whole universe.  
+Wrap it with `SSS{}` and `_` instead of space, and spread it with everyone!
 
 ## Further Reading
 
