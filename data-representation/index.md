@@ -410,7 +410,8 @@ Some useful Python commands from today:
 ## Activities
 
 ### Challenge: Froggified
-My human friend got turned into a frog and he's been trying to base his communication with me through a computer, but he couldn't really work his way with Linux and lost the message in all those 0s and 1s. He jumps around angry on my desk, can you help me find his message?
+My human friend got turned into a frog and he's been trying to base his communication with me through a computer, but he couldn't really work his way with Linux and lost the message in all those 0s and 1s.
+He jumps around angry on my desk, can you help me find his message?
 
 ### Challenge: ASCII Art
 My friend Tommy is really passionate about art. Lately, he got into something called ASCII art and e-mailed me the following attachment.  
