@@ -1,5 +1,5 @@
 import base64
-flag = open("my encodings.txt","rb").read()
+flag = open("my_encodings.txt","rb").read()
 
 def isBase64(s):
     try:
