@@ -445,7 +445,7 @@ A useful Python tool for this purpose is `pandas`:
 ### Hashes and their vulnerabilities
 [CrackStation](https://crackstation.net/)  
 [Hash Collision Wikipedia](https://en.wikipedia.org/wiki/Hash_collision)  
-[Shattered](https://shattered.io/)
+[Shattered](https://shattered.io/)  
 [Hash Toolkit](https://hashtoolkit.com/)
 
 ### More on the topic
