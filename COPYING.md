@@ -450,7 +450,7 @@ Creative Commons may be contacted at creativecommons.org.
 Copy of BSD-3-Clause:
 
 ```
-Copyright 2021 University POLITEHNICA of Bucharest
+Copyright 2023 University POLITEHNICA of Bucharest
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
