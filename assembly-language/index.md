@@ -8,7 +8,8 @@ weight: 10
 
 In the previous 2 sessions you started discovering what binary security looks like.
 [Last session](../binary-analysis/) you learnt two very powerful means of investigating and even reverse engineering executables: static and dynamic analysis.
-In order to leverage them efficiently, you used two tools: Ghidra for static analysis and GDB for dynamic analysis.
+In order to leverage them efficiently, you used Ghidra for static analysis.
+Now we'll introduce GDB for dynamic analysis.
 You've most likely noticed that they are able to display the source code of the application.
 GDB can do so when said app was compiled with _debug symbols_, while Ghidra does not even need debug symbols.
 It infers the original C code from its compiled representation (learn more about how Ghidra does this by taking part in the [Binary Security track](https://security-summer-school.github.io/binary/static-analysis/#ida-and-ghidra) next year).
@@ -96,7 +97,7 @@ Some of them also have some special functions, especially regarding function cal
 - `rdx`: data register
 - `rdi`: destination register
 - `Rsi`: source register
-- `r8`, r9` ... `r15`: regular registers
+- `r8`, `r9` ... `r15`: regular registers
 
 Do not learn them by heart.
 And also do not bother with their extra meanings.
@@ -108,11 +109,11 @@ Otherwise, treat them as simple variables.
 Sometimes you only need to access 32 or 16 or 8 bits out of a 64-bit register.
 This is possible by slightly changing the name of the register like so:
 
-| 64 bits | Lowe 32 bits | Lower 16 bits | High 8 bits  | Low 8 bits   |
-|:-------:|:------------:|:-------------:|:------------:|:------------:|
-| `rax`   | `eax`        | `ax`          | `ah`         | `al`         |
-| `rdi`   | unaccessible | `di`          | unaccessible | unaccessible |
-| `r8`    | `r8d`        | `r8w`         | unaccessible | `r8l`        |
+| 64 bits | Lowe 32 bits | Lower 16 bits | High 8 bits  | Low 8 bits |
+|:-------:|:------------:|:-------------:|:------------:|:----------:|
+| `rax`   | `eax`        | `ax`          | `ah`         | `al`       |
+| `rdi`   | `edi`        | `di`          | unaccessible | `dil`      |
+| `r8`    | `r8d`        | `r8w`         | unaccessible | `r8l`      |
 
 The bits contained in each of the above subdivisions are shown in the image below.
 It is similar for `rdi` and `r8`, it's just the names that differ.
@@ -121,11 +122,11 @@ It is similar for `rdi` and `r8`, it's just the names that differ.
 
 `rbx`, `rcx` and `rdx` have the same subdivisions as `rax`.
 `rsi` has the same subdivision as `rdi`: `si`.
-You cannot access anything other than `si` and `di` because `rdi` and `Rsi` are meant to store pointers which are 8 bytes wide.
+You cannot access anything other than `si` and `di` because `rdi` and `rsi` are meant to store pointers which are 8 bytes wide.
 It doesn't make sense to access 4 bytes of an address.
 The lower 2 bytes can be accessed due to historical reasons.
 In the 70s, when the first CPU of this family (8086) was launched, it only supported 2-byte addresses.
-All registers `R9` to `R15` have the same subdivisions as `r8`.
+All registers `r9` to `r15` have the same subdivisions as `r8`.
 
 # Assembly Instructions
 
@@ -228,6 +229,7 @@ some_label:
 
 Each instruction (except for `mov`) changes the **inner state of the CPU**.
 In other words, several aspects regarding the result of the instruction are stored in a special register that we cannot access directly, called `eflags`.
+There are [instructions](https://stackoverflow.com/questions/1406783/how-to-read-and-write-x86-flags-registers-directly) that can set or clear some flags in `eflags`, but we cannot write something like `mov eflags, 2`.
 
 As its name implies, each bit in `eflags` is a flag that is activated (i.e. set to 1) if a certain condition is true about the result of the last executed instruction.
 We won't be using these flags per se with one exception: `ZF` - the **zero flag**.
@@ -375,11 +377,18 @@ mov ax, [0x100]     ; ax = 0x5678
 mov bx, [101]       ; bx = 0x3456
 ```
 
-Therefore, in order to write the string `SSS Rulz` at address 0x100 in one instruction, that instruction would be:
+However, endianness does not apply to strings.
+The code below writes the string `SSS Rulz` at the address 0x100.
+Notice we don't have to write it in reverse order like `zluR SSS`.
 ```asm
-mov [0x100], qword "zluR SSS"
+mov rax, "SSS Rulz"
+mov [0x100], rax
+; We need to use a register because mov cannot take both an address and a 64-bit immediate as operands.
+; https://www.felixcloutier.com/x86/mov
 ```
 # Reading Assembly
+
+## `objdump`
 
 Starting from an executable file, we can read its Assembly code by **disassembling** it.
 The standard tool for doing this is `objdump`:
@@ -395,6 +404,63 @@ Notice that every line contains an address, an opcode and an instruction.
 The opcode is simply the binary representation of that instruction. 
 
 Alternatively, you can use GDB and Ghidra that you learned about [in the previous session](../binary-analysis/).
+
+## GDB
+
+The undisputed king of Assembly is by far the **GNU DeBugger (GDB)**.
+It's just what its name says it is, but its beauty is in its versatility.
+GDB is a command-line debugger that allows us to print registers, variables, dump memory from any address, step through the code, go back through the call stack and much more.
+Today we will only get a glimpse of its power.
+
+We are using the `pwndbg` extension for GDB as it allows us to view the assembly code, stack (you'll learn about it in the [next session](../taming-the-stack/)) and registers.
+Follow the instructions [here](https://github.com/pwndbg/pwndbg#how) to install it if you haven't done so already.
+
+GDB can run Assembly instructions one by one and stops after each instruction.
+The current instruction is also clearly displayed.
+Below is a reduced list of useful GDB commands to get you going.
+Use it as a cheatsheet when you get stuck:
+
+- `start` = start running the program from `main`
+- `list` = decompile and display C code
+Only works for executables compiled with `-g`
+- `pdis` = disassemble and display instructions with nice syntax highlighting
+- `next` / `n` = run the current C code
+If it is a function call, it is executed without stepping into the function.
+- `nexti` / `ni` = run the current Assembly instruction
+- `step` / `s` = if the debugger has reached a function call, step into it.
+Otherwise, it behaves like `next` / `n`
+- `stepi` / `si` = step into function (used for the `call` instruction in Assembly)
+
+- `break` / `b <n>` = place a breakpoint at line `n`
+- `break` / `b *<address>` = place breakpoint at address
+- `continue` / `c` = run code until next breakpoint
+- `info registers <name>` = display the values in all registers.
+If a name is specified, only the value in that register is displayed
+- `p <variable>` / `<name>` = print the variable / number; similar to `printf`
+```
+p/d = printf("%d")
+p/c = printf("%c")
+p/x = printf(“%x”)
+p/u = printf(“%u”)
+```
+
+- `x <address>` = print data at the address (dereference it).
+By default, the output is represented in hex
+- `x/<n><d><f> <address>` -> print `n` memory areas of size `d` with format `f`:
+```
+n = any number; default = 1
+d = b (byte - default) / h (half-word = short) / w (word = int) 
+f = (like p): x (hex - default)  / c (char) / d (int, decimal) / u (unsigned)  / s (string)
+```
+Examples:
+```
+x/20wx = 20 hex words (ints)
+x/10hd = 10 decimal half-words (shortsuri)
+x/10c = 10 ASCII characters
+x/10b = 10 hex bytes (because x is the default)
+```
+
+- `set $<register> <value>` = sets the register to that value
 
 # Summary
 
