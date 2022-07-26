@@ -474,7 +474,27 @@ The key takeaways from this session are:
 
 # Activities
 
-TODO
+## In Plain Assembly
+
+The flag is almost right there in your face.
+
+## Gotta Link Em All
+
+I wonder what hides in all those object files...
+
+## Jump Maze
+
+Theseus has nothing on you!
+Navigate the maze and get the flag.
+
+## Crypto
+
+Is it really about crypto?
+
+## Call Me Little Sunshine
+
+Do what the binary asks you to do.
+What, it doesn't work?
 
 # Further Reading
 
