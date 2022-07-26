@@ -121,8 +121,7 @@ It is similar for `rdi` and `r8`, it's just the names that differ.
 ![rax Subdivisions](./assets/rax-subdivisions.svg)
 
 `rbx`, `rcx` and `rdx` have the same subdivisions as `rax`.
-`rsi` has the same subdivision as `rdi`: `si`.
-You cannot access anything other than `si` and `di` because `rdi` and `rsi` are meant to store pointers which are 8 bytes wide.
+`rsi` has the same subdivision as `rdi`: `esi`, `si` and `sil`.
 It doesn't make sense to access 4 bytes of an address.
 The lower 2 bytes can be accessed due to historical reasons.
 In the 70s, when the first CPU of this family (8086) was launched, it only supported 2-byte addresses.
