@@ -218,16 +218,32 @@ print(f"Plaintext: {decrypted_plaintext}")
 Asymmetric Cryptography is a cryptography system that uses two keys: a public key(which as the name suggests may be known by others) and private key(which must only be known by the owner)
 
 ![Asymmetric](./assets/assymetric.svg)
-## Summary
 
-- Sumamrizing session concepts
-- Summarizing commands / snippets that are useful for tutorials, challenges (easy reference, copy-paste)
+### RSA
+
+RSA (Rivest-Shamir-Adleman) is a powerful asymmetric encryption algorithm widely used in modern cryptography.  
+It heavily relies on the computational difficulty of factoring large numbers to ensure secure communication.  
+RSA uses a pair of keys, a public key for encryption and a private key for decryption.  
+We will work with the form of RSA with keys represented by numbers.  
+RSA is extensively employed for secure online transactions, digital signatures, secure email communication, and authentication protocols.  
+Its strength lies in its resistance to brute-force attacks, making it a fundamental component of secure communication in today's interconnected world.
 
 ## Activities
 
-Tasks for the students to solve. They may be of two types:
-- **Tutorials** - simpler tasks accompanied by more detailed, walkthrough-like explanations
-- **Challenges** - the good stuff
+Today's activites are a bit different than usual. They will contain encrypted strings and the required keys for decryption. The proccess is about trying to understand how the decryption works when you have everything needed and only then you shall seek to perform attacks on various encrypted texts.
+
+**Xor Encryption**
+Encrypted string: `0x3b3c241f180d4715275b2d332a2b181a015f185a34111f5e041012`  
+Key: `howdoesaxorkeylooklike`
+
+**Caesar Cipher**
+Encrypted string: `JJJ{nyp_1j_dp_j4cru_jy1w7vu}`  
+Hint: Find the number of rotations performed on the flag, knowing that it should start with SSS.
+
+**AES CBC**
+Encrypted string: `0x2608c399fd28ad2b4ba786625f3dc650c301b4d55e0efbf4df35cc6522643a2649d68ccae7339185b6ec1686e679c282`  
+Key: `wszGeCTs9aTRZW*jG=NT-+YQ4s2ZTt+@`  
+IV: `ebcb4d5365e089667ada1d0e3b96b7b7`
 
 ## Further Reading
 
