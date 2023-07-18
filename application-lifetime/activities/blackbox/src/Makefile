@@ -1,4 +1,5 @@
 BIN = blackbox
+CFLAGS = -std=c11
 
 all: $(BIN)
 
