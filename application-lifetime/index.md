@@ -4,45 +4,7 @@ type: docs
 weight: 10
 ---
 
-## Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [Reminders](#reminders)
-- [Introduction](#introduction)
-- [From Code to Application](#from-code-to-application)
-  - [Compiling](#compiling)
-  - [Linking](#linking)
-    - [Static Libraries](#static-libraries)
-    - [Static Linking](#static-linking)
-    - [Dynamic Libraries](#dynamic-libraries)
-      - [Demo: See dynamic libraries used by an executable](#demo-see-dynamic-libraries-used-by-an-executable)
-    - [Dynamic Linking](#dynamic-linking)
-  - [Loading](#loading)
-- [Processes](#processes)
-  - [Process Address Space](#process-address-space)
-    - [mprotect](#mprotect)
-  - [File Descriptors](#file-descriptors)
-    - [open, openat, close](#open-openat-close)
-    - [read, write](#read-write)
-- [Creating a Process](#creating-a-process)
-  - [Fork](#fork)
-  - [Exec](#exec)
-- [Summary]
-- [Activities]
-  - [Tutorial: Static Linking](#tutorial-static-linking)
-  - [Tutorial: Dynamic Linking](#tutorial-dynamic-linking)
-  - [Tutorial: Our own `puts`](#tutorial-our-own-puts)
-  - [Challenge: Secretive Binary](#challenge-secretive-binary)
-  - [Tutorial: Take RO out of RODATA](#tutorial-take-ro-out-of-rodata)
-  - [Tutorial: File Basics](#tutorial-file-basics)
-  - [Tutorial: Fork Me](#tutorial-fork-me)
-  - [Challenge: Blackbox](#challenge-blackbox)
-    - [Challenge: Open My Files](#challenge-open-my-files)
-    - [Challenge: Reveal My Data](#challenge-reveal-my-data)
-    - [Challenge: If You Want Something Done Well, Do It Yourself](#challenge-if-you-want-something-done-well-do-it-yourself)
-    - [Challenge: Hidden](#challenge-hidden)
-    - [Challenge: Hidden 2](#challenge-hidden-2)
-- [Further Reading](#further-reading)
+# Application Lifetime
 
 ## Prerequisites
 
@@ -74,7 +36,7 @@ Interpreted code isn't the focus of the session, but can be interesting for thos
 Bash and Python are other examples of interpreted languages.
 
 In this session we will focus mainly on compiled code.
-For compiled code to become a working application, 3 steps are needed: **compling**, **linking** and **loading**.
+For compiled code to become a working application, 3 steps are needed: **compiling**, **linking** and **loading**.
 Some languages, like C and C++, require an additional step before compiling, **preprocessing**.
 
 ![From Code to Process](assets/from_code_to_process.svg)
@@ -141,7 +103,7 @@ However, the statically-linked executables aren't more portable - maybe the libr
 
 #### Dynamic Libraries
 
-Dynamic libraries aren't copied in the exectable, like their static counterparts.
+Dynamic libraries aren't copied in the executable, like their static counterparts.
 Instead, they are loaded into memory when needed, and each executable that uses them has a way to access the exported functions and variables (collectively called symbols) from those libraries.
 The exact process is detailed in the first session of the binary track, [Executables and Processes](https://security-summer-school.github.io/binary/executables-and-processes/).
 For now, the only thing you must remember is that all executables use the same dynamic library.
@@ -206,7 +168,7 @@ Those abstractions are there to isolate different processes in a system.
 
 To see what processes are running, the `ps` command can be used.
 
-A simple `$ ps` command whill show only the child processes of the current terminal, and the terminal itself.
+A simple `$ ps` command will show only the child processes of the current terminal, and the terminal itself.
 
 ```shell
 $ ps
@@ -223,7 +185,7 @@ To display all processes on a system, `$ ps -e` can be used.
 ### Process Address Space
 
 From a process point-of-view, the entire memory of a system is available, and almost any portion of it can be used.
-Behind the scenes, the OS maps the process memory to physical memory, and ensures that two unrelated processes can't see eachother's virtual memory.
+Behind the scenes, the OS maps the process memory to physical memory, and ensures that two unrelated processes can't see each other's virtual memory.
 The process memory is split into sections, which can contain one or more pages.
 
 A memory page is a division of the virtual memory of a process, that has its own permissions.
@@ -249,14 +211,15 @@ you can read about them in the [Further Reading](#further-reading) section.
 To explore the sections of an executable, `objdump` can be used.
 To see the contents of the **DATA** section, run `$ objdump -s -j .data <executable>`
 
-Now, some security stuff: all sections must follow the NX princpile - if a section is writable, it can't be executable.
+Now, some security stuff: all sections must follow the NX principle - if a section is writable, it can't be executable.
 Why?
 You don't want your application to be able to execute code that wasn't written by you, but was injected by someone else.
 
 This can be exploited, if the principle isn't respected, by an attack method called **shellcode**.
 Shellcodes represent a big part of the [SSS Binary track](https://security-summer-school.github.io/binary/shellcodes/).
 
-The process address space isn't fixed during the execution of a program; it can be changed by the program itself, using `mmap()` to create new entries, and `mprotect()` to change the permissions.
+The process address space isn't fixed during the execution of a program;
+it can be changed by the program itself, using `mmap()` to create new entries, and `mprotect()` to change the permissions.
 
 #### mprotect
 
@@ -267,7 +230,7 @@ Using `mprotect()`, an application can change, for example, a page belonging to 
 
 I/O access is usually done through files.
 Each process keeps track of the files it has opened using file descriptors.
-Opening, closing, modifiying a file in any way can be done only by the OS.
+Opening, closing, modifying a file in any way can be done only by the OS.
 In order for the application to interact with files, it needs to use system calls: `open()`, `close()`, `read()`, `write()` and many others.
 
 ![File descriptors](assets/file_descriptors.svg)
@@ -288,7 +251,7 @@ However, there are ways to modify a file, but have those modifications visible o
 Now let's discuss what happens when an application is started.
 Let's consider the case when we are in a terminal (bash) and we launch an executable file.
 That executable becomes a process, which is a child of the current bash process.
-This is because the bash process launches the exectable, using the `fork()` and `exec()` system calls.
+This is because the bash process launches the executable, using the `fork()` and `exec()` system calls.
 Basically, what happens is that the bash process duplicates itself, then loads the code of our executable into the duplicate process.
 
 ### Fork
@@ -303,7 +266,7 @@ Otherwise, it remains active, until it is cleaned-up by the OS.
 ### Exec
 
 `exec()` and its variants are used to change the executable run by the process, or the **image**, as it is called in this context.
-`exec()` can be used toghether with fork, as done by the terminal, or without it.
+`exec()` can be used together with `fork()`, as done by the terminal, or without it.
 One use that you may encounter in the security world is using `exec()` to make a process spawn a terminal, after you have gained control of the process.
 
 ![Exec Overview](assets/exec.svg)
@@ -342,7 +305,7 @@ Let's break it down:
 
 - `-static` tells gcc to perform a static linking
 - `-L.` indicates that a custom path, `.`, the current directory, should be considered when looking for the required libraries - libhello in the current directory
-- `-lhello` indicates that the executable should contain `libhello.aconsider the case when we are in a terminal (bash) and we launch an executable file.consider the case when we are in a terminal (bash) and we launch an executable file.`
+- `-lhello` indicates that the executable should contain `libhello.a`
 
 After the command is added in the Makefile, a simple `make` will create our executable.
 We can see that it is statically-linked, by issuing the following command:
@@ -405,7 +368,7 @@ In our case, `puts()` has this header, in `stdio.h`:
 int puts(const char *s)
 ```
 
-Then, we write an implemengtation of our own, and create a dynamic library containing that implementation.
+Then, we write an implementation of our own, and create a dynamic library containing that implementation.
 At last, we set the `LD_PRELAOD` variable with the **absolute path** to our dynamic library and we run the executable.
 
 ```shell
