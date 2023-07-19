@@ -84,6 +84,8 @@ int main(void)
 
         close(fd);
 
+        printf("Hello, this is blackbox. Type \"help\" to get help\n");
+
         while (FOREVER) {
                 fgets(command, 100, stdin);
 
@@ -165,8 +167,7 @@ int main(void)
                         printf("list <resource> - print the requested resource\n");
                         printf("        available resources: files, memory,  ??? lmhhir(4)\n");
                         printf("exec <binary> - start the given binary file;  path must be absolute\n");
-                        printf("mprotect <memory_zone_name> <protections> - \
-                                change protection of a given memory zone;\n");
+                        printf("mprotect <memory_zone_name> <protections> - change protection of a given memory zone;\n");
                         printf("        examples of protection format: RW-, ---\n");
                         printf("open <file> - open a file; can open only the  files diplayed by list\n");
                         printf("close - close the last opened file\n");
