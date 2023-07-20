@@ -4,30 +4,9 @@ type: docs
 weight: 10
 ---
 
-## Table of Contents
+# Binary Analysis
 
-- [Static Analysis](#static-analysis)
-  - [strings](#strings)
-  - [file](#file)
-    - [Counter-measures](#counter-measures)
-  - [nm](#nm)
-    - [Counter-measures: Strip](#counter-measures-strip)
-  - [objdump](#objdump)
-    - [Counter-measures](#counter-measures-1)
-  - [Ghidra](#ghidra)
-    - [Counter-measures](#counter-measures-2)
-- [Dynamic Analysis](#dynamic-analysis)
-  - [strace](#strace)
-  - [ltrace](#ltrace)
-  - [gdb](#gdb)
-- [Summary](#summary)
-- [Activities](#activities)
-  - [Challenge: Easy to Spot](#challenge-easy-to-spot)
-  - [Challenge: Packaging is Important](#challenge-packaging-is-important)
-  - [Challenge: Ghidra Killer](#challenge-ghidra-killer)
-  - [Challenge: Spaghetti](#challenge-spaghetti)
-
-## Recap
+## Reminders
 
 - code can't just be run;
 it needs to be compiled and linked, becoming an executable
