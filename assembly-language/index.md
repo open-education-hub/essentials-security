@@ -4,7 +4,9 @@ type: docs
 weight: 10
 ---
 
-# Introduction
+# Assembly Language
+
+## Introduction
 
 In the previous 2 sessions you started discovering what binary security looks like.
 [Last session](../binary-analysis/) you learnt two very powerful means of investigating and even reverse engineering executables: static and dynamic analysis.
@@ -17,20 +19,23 @@ This representation is called **assembly language**.
 Both Ghidra and GDB can display the program's code in assembly language.
 Today we will demystify this low-level language and learn to understand it.
 
-# Reminders and Prerequisites
+## Reminders and Prerequisites
 
 For this session, you need:
+
 - a working knowledge of the C programming language and familiarity with pointers
 - basic skills with Ghidra and GDB
 - understand how an executable file is created, as described in the [Application Lifetime session](../application-lifetime/)
 - knowledge of the following means of representing data: ASCII, binary, hexadecimal.
+
 Check out the session on [Data Representation](../data-representation/) for a reminder.
 
-# Assembly
+## Assembly
 
 Assembly is a low-level language used as a human-readable representation of instructions executed by the CPU.
 There is a one-to-one mapping between the binary code executed by the CPU and Assembly.
 Few people write Assembly, but many people are required to read it:
+
 - security engineers
 - compiler / interpreter developers
 - embedded developers
@@ -39,7 +44,7 @@ Few people write Assembly, but many people are required to read it:
 Simply put, if a field is close to CPU it requires (some knowledge of) Assembly.
 So let's learn this language!
 
-# Registers
+## Registers
 
 You might have already seen the image below.
 It shows the various places where data can be kept.
@@ -50,24 +55,24 @@ The "Main Memory" is simply referred to as **memory** or RAM.
 
 Persistent storage refers to data on **disks**: HDD, SSD, CDs, DVDs, magnetic tapes, even in the cloud (where cloud storage providers also use HDDs, SSDs etc.).
 If you shut down your laptop or your mobile phone, your pictures or video games remain unchanged.
-This is because they are stored **on your device's disk**.
+This is because they are stored _on your device's disk_.
 We simply refer to persistent storage as **storage**.
 Take note of the difference between _storage_ and _memory_.
 
 ![Memory Hierarchy](./assets/memory-hierarchy.png)
 
 In most programming languages you can freely access data everywhere up to and including the memory.
-In assembly however, you also have access to the **registers** and can influence the _cache_.
+In assembly however, you also have access to the **registers** and can influence the **cache**.
 We won't be dealing with the cache in this session, but you can read more about them [at the end of this session](#caches)
-They are the fastest form of memory available and are implemented *inside the CPU*.
+They are the fastest form of memory available and are implemented **inside the CPU**.
 We can access data in registers in less than 1 ns (nanoseconds), as opposed to a few dozen ns when fetching data from the RAM.
 
 Then why not make more registers and only use them instead of RAM?
 Registers are fast because they are few in number.
-This allows them to be efficiently wired to the CPU's Arithmetic and Logic Unit (ALU), which is responsible for executing basic operations, sch as addition, subtraction, bitwise and, or, shifts etc.
+This allows them to be efficiently wired to the CPU's Arithmetic and Logic Unit (ALU), which is responsible for executing basic operations, such as addition, subtraction, bitwise and, or, shifts etc.
 The more registers, the more complex and the less efficient the logic.
 
-## Registers in an X64 CPU
+### Registers in an X64 CPU
 
 Registers are like variables with fixed names embedded in the CPU.
 They can be assigned values that can be modified via instructions.
@@ -77,7 +82,7 @@ All of them can be assigned data and that data can be modified using the assembl
 All registers are **64-bits** wide.
 So they each can store up to 8 bytes of data.
 
-### `rip`
+#### `rip`
 
 We'll start with a very special and illusive one: the **instruction pointer** - `rip`.
 In [the previous session](../binary-analysis/), you learned that the code of any process is also in its memory.
@@ -86,14 +91,15 @@ The CPU does this using `rip`.
 This register stores te **address of the currently executed instruction**.
 We will never use this instruction per-se in instructions, but you will see and make use of it in GDB.
 
-### General Purpose Registers
+#### General Purpose Registers
 
 Then there are **general purpose registers**.
 As their name implies, they are used to store _anything_: addresses, user input, function parameters, data read from files or from the web etc.
 Some of them also have some special functions, especially regarding function calls:
+
 - `rax`: accumulator register
 - `rbx`: base register
-- `rcx`: counter register; used with the [`loop`](#loop) instruction
+- `rcx`: counter register; used with the [`loop`](#loops) instruction
 - `rdx`: data register
 - `rdi`: destination register
 - `Rsi`: source register
@@ -104,7 +110,7 @@ And also do not bother with their extra meanings.
 We will make use of those only when specified.
 Otherwise, treat them as simple variables.
 
-### Smaller Registers
+#### Smaller Registers
 
 Sometimes you only need to access 32 or 16 or 8 bits out of a 64-bit register.
 This is possible by slightly changing the name of the register like so:
@@ -127,7 +133,7 @@ The lower 2 bytes can be accessed due to historical reasons.
 In the 70s, when the first CPU of this family (8086) was launched, it only supported 2-byte addresses.
 All registers `r9` to `r15` have the same subdivisions as `r8`.
 
-# Assembly Instructions
+## Assembly Instructions
 
 We've now learned what assembly is theoretically and what registers are, but how do we use them?
 Each CPU exposes an **ISA (Instruction Set Architecture)**: a set of instructions with which to modify and interact with its registers and with the RAM.
@@ -136,33 +142,35 @@ There are even instructions for efficiently encrypting data.
 Find out more about them by enrolling in the [Hardware Assisted Security track](https://github.com/security-summer-school/hardware-sec/).
 
 Before we dive into the instructions themselves, it's useful to first look at their generic syntax:
-```
+
+```asm
 instruction_name destination, source
 ```
 
 Most Assembly instructions have 2 operands: a source and a destination.
 For some operations, such as arithmetic, the destination is also an operand.
-The result of each instruction always stored in the destination. 
+The result of each instruction is always stored in the destination.
 
 Below we'll list some fundamental instructions.
-We will be using the Intel Assembly syntax.    
+We will be using the Intel Assembly syntax.
 
-## `mov`
+### `mov`
 
 `mov` is the most basic instruction in Assembly.
 It _copies_ (or _moves_) data from the source to the destination.
 Also note that comments in Assembly are preceded by `;` and that the language is case-insensitive.
+
 ```asm
 mov eax, 3              ; eax = 3
 
 mov rbx, "SSS Rulz"     ; place the string "SSS Rulz" in `rbx`
 ; This places each byte of the string "SSS Rulz" in rbx.
 
-mov r8b, bh              ; r8b = bh
+mov r8b, bh             ; r8b = bh
 ; The sizes of the operands must be equal (1 byte each in this case).
 ```
 
-## Data Manipulation
+### Data Manipulation
 
 Now that we've learnt how to place data in registers we need to learn how to do math with it.
 As you've seen so far, Assembly instructions are really simple.
@@ -183,13 +191,13 @@ The result is always stored in the `destination`
 | `inc <dest>`         | `dest++`        | `inc rsi`                         |
 | `dec <dest>`         | `dest--`        | `dec r10w`                        |
 
-## Control Flow
+### Control Flow
 
 Now we know how to do maths and move bits around.
 This is all good, but we still can't write full programs.
 We need a mechanism similar to `if`s from Python and also loops in order to make the code run based on conditions.
 
-### `jmp`
+#### `jmp`
 
 The simplest instruction for control flow is the `jmp` instruction.
 It simply loads an address into the `rip` register.
@@ -224,7 +232,7 @@ some_label:
     ; rax = 2; rbx = 3
 ```
 
-### `eflags`
+#### `eflags`
 
 Each instruction (except for `mov`) changes the **inner state of the CPU**.
 In other words, several aspects regarding the result of the instruction are stored in a special register that we cannot access directly, called `eflags`.
@@ -234,9 +242,9 @@ As its name implies, each bit in `eflags` is a flag that is activated (i.e. set 
 We won't be using these flags per se with one exception: `ZF` - the **zero flag**.
 When active, it means that the result of the last instruction was... 0, duh!
 This is useful for testing if numbers are equal for example.
-We'll talk about this in the next section. 
+We'll talk about this in the next section.
 
-### Conditional jumps
+#### Conditional jumps
 
 Now we know that there is an internal state of the CPU which is modified by each instruction, except for `mov`.
 We still need a way to leverage this state.
@@ -245,12 +253,14 @@ We can do this via **conditional jumps**.
 They are like `jmp` instructions, but the jump is made only when certain conditions are met.
 Otherwise, code execution continues from the next instruction.
 The general syntax of a conditional jump is
+
+```asm
+j[n]<cond> label
 ```
-j[n]<cond> jabel
-```
+
 where the letter `n` is optional and means the jump will be made if the condition is **not** met.
 
-#### `cmp` and `test`
+##### `cmp` and `test`
 
 We can use the regular arithmetic instructions that we've learned so far to modify `eflags`.
 But this has the drawback of also modifying our data.
@@ -262,12 +272,15 @@ This is great for testing if 2 things are equal, or for testing which is greater
 
 `test dest, src` is similar to `cmp`, but modifies `eflags` according to the `and` instruction.
 This comes in handy when we want to check if a register is 0.
-```
+
+```asm
 test rax, rax
 jz rax_is_zero
 ```
+
 is equivalent to
-```
+
+```asm
 cmp rax, 0
 jz rax_is_zero
 ```
@@ -287,10 +300,11 @@ Now let's have a look at some conditional jumps:
 | `cmp rax, rbx`<br>`j[n]le` | Jump if `rax` is (not) lower (signed) or equal than `rbx`     |
 | `cmp rax, rbx`<br>`j[n]be` | Jump if `rax` is (not) lower (unsigned) or equal than `rbx`   |
 
-### Loops
+#### Loops
 
 We can create loops simply by combining labels and conditional jumps.
 For example, `for i in range(0, 10)` from Python is equivalent to:
+
 ```asm
     xor rcx, rcx    ; i = rcx; same as mov rcx, 0
 for_loop:
@@ -306,6 +320,7 @@ done_loop:
 ```
 
 Or alternatively, we can verify `rcx < 10` at the end of the loop:
+
 ```asm
     xor rcx, rcx
 for_loop:
@@ -318,7 +333,7 @@ for_loop:
     ; The code here is executed only after the loop ends.
 ```
 
-# Dereferencing Addresses
+## Dereferencing Addresses
 
 Up to this point we know how to operate with data and can write complex programs using conditional jumps.
 But we know that data is stored mostly in the RAM.
@@ -330,11 +345,12 @@ Therefore, each byte is found at a given **index** in this array.
 Indices start at 0, so the first byte is found at index 0, the third 3 at index 2 and so on.
 These indices are also called **memory addresses**, or simply **addresses**.
 
-In order to load data from the RAM into our registers or vice-versa, we need to specify to CPU which RAM address to access.
+In order to load data from the RAM into our registers or vice-versa, we need to specify the CPU which RAM address to access.
 This is called **dereferencing that address**.
 Syntactically, this is very easy and is done by wrapping the address in `[]`.
 The address can be either a raw number, or a register, or an expression:
-```
+
+```asm
 mov rax, [0xdeadbeef]   ; load 8 bytes from the address 0xdeadbeef into rax
 mov bx, [0xdeadbeef]    ; load 2 bytes from the address 0xdeadbeef into bx
 mov [0xdeadbeef], ecx   ; store 4 bytes from ecx at the address 0xdeadbeef
@@ -345,6 +361,7 @@ But what happens when we don't use a register?
 The code below is incorrect because it is impossible to tell how many bytes to use to write 0x69.
 We could write it using one byte of course, but what if we wanted to write it on 4 bytes and store `[ 0x00 | 0x00 | 0x00 | 0x69 ]`?
 To eliminate such ambiguities, we must specify the number of bytes that we want to write to the RAM:
+
 ```asm
 mov [0xdeadbeef], byte 0x2      ; writes 1 byte
 mov [0xdeadbeef], word 0x2      ; writes 2 bytes: 0x00 and 0x02
@@ -354,22 +371,26 @@ mov [0xdeadbeef], qword 0x2     ; writes 8 bytes
 
 Instead of a hardcoded value, we can express addresses as complex expressions which the CPU computes for us.
 In the snippet below, the CPU computes the address given by `rdi + rcx * 4` and then writes the contents of `edx` there.
+
 ```asm
 mov [rdi + rcx * 4], edx
 ```
+
 This is equivalent to `v[i] = something` where `v` is an array of 4-byte values (hence `rcx * 4`):
+
 - `rdi` = starting address of `v`
 - `rcx` = `i`
 - `edx` = `something`
 
 Therefore, whenever you see `[...]` in Assembly, what between the square brackets is being dereferenced [**with one exception**](#lea).
 
-## Endianness
+### Endianness
 
 This is all nice, but how does all this look like in the memory?
 The order in which the bytes are stored in the RAM is called **endianness**.
 Most CPUs store bytes **in reverse order**, or **little endian** order, because the least significant byte is the first.
 When data is fetched back from the ram, the order is reversed:
+
 ```asm
 mov [0x100], dword 0x12345678       ; the RAM at 0x100: [ 0x78 | 0x56 | 0x34 | 0x12 ]
 mov ax, [0x100]     ; ax = 0x5678
@@ -379,32 +400,36 @@ mov bx, [101]       ; bx = 0x3456
 However, endianness does not apply to strings.
 The code below writes the string `SSS Rulz` at the address 0x100.
 Notice we don't have to write it in reverse order like `zluR SSS`.
+
 ```asm
 mov rax, "SSS Rulz"
 mov [0x100], rax
 ; We need to use a register because mov cannot take both an address and a 64-bit immediate as operands.
 ; https://www.felixcloutier.com/x86/mov
 ```
-# Reading Assembly
 
-## `objdump`
+## Reading Assembly
+
+### `objdump`
 
 Starting from an executable file, we can read its Assembly code by **disassembling** it.
 The standard tool for doing this is `objdump`:
-```
+
+```console
 root@kali:~$ objdump -M intel -d <binary> | less
 ```
+
 - Use `-M intel` for Intel syntax.
 The default syntax is AT&T.
 - `-d` stands for "disassembly".
 - pipe the output to `less` so you can navigate the Assembly code more easily.
 
 Notice that every line contains an address, an opcode and an instruction.
-The opcode is simply the binary representation of that instruction. 
+The opcode is simply the binary representation of that instruction.
 
 Alternatively, you can use GDB and Ghidra that you learned about [in the previous session](../binary-analysis/).
 
-## GDB
+### GDB
 
 The undisputed king of Assembly is by far the **GNU DeBugger (GDB)**.
 It's just what its name says it is, but its beauty is in its versatility.
@@ -436,7 +461,8 @@ Otherwise, it behaves like `next` / `n`
 - `info registers <name>` = display the values in all registers.
 If a name is specified, only the value in that register is displayed
 - `p <variable>` / `<name>` = print the variable / number; similar to `printf`
-```
+
+```console
 p/d = printf("%d")
 p/c = printf("%c")
 p/x = printf(“%x”)
@@ -446,66 +472,74 @@ p/u = printf(“%u”)
 - `x <address>` = print data at the address (dereference it).
 By default, the output is represented in hex
 - `x/<n><d><f> <address>` -> print `n` memory areas of size `d` with format `f`:
-```
+
+```console
 n = any number; default = 1
 d = b (byte - default) / h (half-word = short) / w (word = int) 
 f = (like p): x (hex - default)  / c (char) / d (int, decimal) / u (unsigned)  / s (string)
 ```
+
 Examples:
-```
+
+```console
 x/20wx = 20 hex words (ints)
-x/10hd = 10 decimal half-words (shortsuri)
+x/10hd = 10 decimal half-words (shorts)
 x/10c = 10 ASCII characters
 x/10b = 10 hex bytes (because x is the default)
 ```
 
 - `set $<register> <value>` = sets the register to that value
 
-# Summary
+## Summary
 
 The key takeaways from this session are:
+
 - Assembly is a human-readable representation of instructions executed by the CPU
 - It allows us to access CPU registers directly
 - It uses a fixed set of instructions called ISA
 - **Memory** is the RAM, **storage** is the disk
 - Data is stored in memory using the little endian representation
-- You can disassemble a program with `objdump` like so: `objdump -M intel -d <program> |less` 
+- You can disassemble a program with `objdump` like so:
 
-# Activities
+```console
+root@kali:~$ objdump -M intel -d <program> |less
+```
 
-## In Plain Assembly
+## Activities
+
+### In Plain Assembly
 
 The flag is almost right there in your face.
 
-## Gotta Link Em All
+### Gotta Link Em All
 
 I wonder what hides in all those object files...
 
-## Jump Maze
+### Jump Maze
 
 Theseus has nothing on you!
 Navigate the maze and get the flag.
 
-## Crypto
+### Crypto
 
 Is it really about crypto?
 
-## Call Me Little Sunshine
+### Call Me Little Sunshine
 
 Do what the binary asks you to do.
 What, it doesn't work?
 
-# Further Reading
+## Further Reading
 
-## The Whole ISA
+### The Whole ISA
 
 If you want to search for an instruction, use [this](https://www.felixcloutier.com/x86/) website.
 Each instruction has its own table with all possible operands and what they do.
-Note that `imm8` means "8-bit immediate", i.e an 8-byte regular number, `imm64` means a 64-bit immediate and so on.
+Note that `imm8` means "8-bit immediate" (an 8-byte regular number), `imm64` means a 64-bit immediate and so on.
 Similarly, `reg32` means a 32-bit register and `m16` for example means a 16-bit (2-byte) memory area.
 You'll see `reg`, `imm` and `m` combined with `8`, `16`, `32` and `64` depending on what each instruction does.
 
-## Caches
+### Caches
 
 Many programs access the same addresses repeatedly over a short period of time.
 Take a short 1000-step loop.
@@ -517,7 +551,8 @@ As their name implies, caches store the contents of some memory addresses that a
 We say _caches_, in plural because they are laid out hierarchically, each lower level being faster and smaller than the ones below.
 Usually, CPUs have 3 levels of cache memory.
 You can query their sizes with the `lscpu` command:
-```
+
+```console
 root@kali:~$ lscpu
 [...]
 L1d cache:                       128 KiB
@@ -526,31 +561,36 @@ L2 cache:                        1 MiB
 L3 cache:                        6 MiB
 [...]
 ```
+
 Notice the L1 (level 1) cache is split between a data cache (`L1d`) and an instruction cache `L1i`.
 The other caches do not store data and instructions separately.
 
-## Assembly Syntaxes
+### Assembly Syntaxes
 
 This session we've used the Intel syntax for writing and displaying Assembly.
 We did so because it's more straightforward than its alternative: the AT&T syntax.
 You can find the differences on [Wikipedia](https://en.wikipedia.org/wiki/X86_assembly_language#Syntax).
 
-## `lea`
+### `lea`
 
 `lea` stands for "Load Effective Address".
-It syntax is:
-```
+Its syntax is:
+
+```asm
 lea dest, [address]
 ```
+
 It loads `address` into the `dest` register (it can only be a register).
 What's interesting about it is that it also uses the `[...]` syntax, but **does not dereference the address**.
 In the snippet below, `0xdeadbeef` is simply copied to `rax`.
-```
+
+```asm
 lea rax, [0xdeadbeef]
 ```
 
 Its true power comes from the fact that it can also compute an address.
 For example, the code below will first compute the address given by `rdi + rcx * 8 + 7` and then write this address into `rax`.
-```
+
+```asm
 lea rax, [rdi + rcx * 8 + 7]
 ```
