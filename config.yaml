@@ -266,8 +266,22 @@ docusaurus:
                           - Call Me Little Sunshine/: drills/tasks/call-me-little-sunshine/README.md
           - Taming the Stack:
               path: chapters/binary-introduction/taming-the-stack/
+              extra:
+                - media/
               subsections:
-                - Reading: reading/README.md
+                - Reading:
+                    path: reading/
+                    subsections:
+                      - Introduction: introduction.md
+                      - Data, Data everywhere: data-data-everywhere.md
+                      - Stack: stack.md
+                      - Fucntions and the Stack: functions-and-the-stack.md
+                      - Summary: summary.md
+                      - Further Reading: further-reading.md
+                - Guides:
+                    path: guides/
+                    subsections:
+                      - Function Calls/: function-calls/README.md
 
     static_assets:
       - application-lifetime: /build/make_assets/chapters/binary-introduction/application-lifetime/slides/_site
