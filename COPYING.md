@@ -1,13 +1,13 @@
 # License
 
-This repository is organized into actual content (in the `README.md` file of each session) and support code (in the `activities/` subfolder of each session).
-Repository content is licensed under the [Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) license](https://creativecommons.org/licenses/by-sa/4.0/).
+The content of this repository is dual-licensed.
+Reading content and slides are licensed under the [Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) license](https://creativecommons.org/licenses/by-sa/4.0/).
 Support code is licensed under the [3-Clause BSD license](https://opensource.org/licenses/BSD-3-Clause) (SPDX short identifier: BSD-3-Clause).
 A copy of each license is below.
 
 Copy of CC BY-SA 4.0:
 
-```
+```text
 Attribution-NonCommercial-ShareAlike 4.0 International
 
 =======================================================================
@@ -59,7 +59,7 @@ exhaustive, and do not form part of our licenses.
      such as asking that all changes be marked or described.
      Although not required by our licenses, you are encouraged to
      respect those requests where reasonable. More considerations
-     for the public:
+     for the public: 
 	wiki.creativecommons.org/Considerations_for_licensees
 
 =======================================================================
@@ -449,8 +449,8 @@ Creative Commons may be contacted at creativecommons.org.
 
 Copy of BSD-3-Clause:
 
-```
-Copyright 2023 University POLITEHNICA of Bucharest
+```text
+Copyright 2021 University POLITEHNICA of Bucharest
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
