@@ -1,0 +1,10 @@
+---
+title: "Scratch Linux"
+revealOptions:
+  background-color: 'aquamarine'
+  transition: 'none'
+  slideNumber: true
+  autoAnimateDuration: 0.0
+---
+
+!INCLUDE "scratch-linux.md"
