@@ -1,0 +1,91 @@
+stages:
+  - make_assets
+  - embed_reveal
+  - docusaurus
+
+build_dir: /build
+output_type: last
+output_dir: /output
+
+make_assets:
+  plugin: command
+  options:
+    command: make
+    locations:
+      - chapters/binary-introduction/assembly-language/slides
+      - chapters/binary-introduction/binary-analysis/slides
+      - chapters/binary-introduction/taming-the-stack/slides
+      - chapters/binary-introduction/overview/slides
+      - chapters/data-and-application-lifetime/application-lifetime/slides
+      - chapters/data-and-application-lifetime/data-representation/slides
+      - chapters/data-and-application-lifetime/data-security/slides
+      - chapters/data-and-application-lifetime/overview/slides
+      - chapters/demystifying-web/explaining-the-internet/slides
+      - chapters/demystifying-web/hacking-the-web/slides
+      - chapters/demystifying-web/rediscovering-the-browser/slides
+      - chapters/demystifying-web/overview/slides
+      - chapters/scratch-linux/system-exploration/slides
+      - chapters/scratch-linux/welcome-to-linux/slides
+      - chapters/scratch-linux/overview/slides
+    args:
+      - all
+
+embed_reveal:
+  plugin: reveal_embed
+  options:
+    target: docusaurus
+    extension: mdx
+    build:
+      assembly-language: assembly-language
+      binary-analysis: binary-analysis
+      taming-the-stack: taming-the-stack
+      application-lifetime: application-lifetime
+      data-representation: data-representation
+      data-security: data-security
+      explaining-the-internet: explaining-the-internet
+      hacking-the-web: hacking-the-web
+      rediscovering-the-browser: rediscovering-the-browser
+      system-exploration: system-exploration
+      welcome-to-linux: welcome-to-linux
+
+docusaurus:
+  plugin: docusaurus
+  options:
+    course_name: Essentials Security
+    sidebar: js
+    structure:
+      - Scratch Linux:
+          - Overview: chapters/scratch-linux/overview/README.md
+          - Welcome to Linux:
+              path: chapters/scratch-linux/welcome-to-linux/
+              extra:
+                - media/
+              subsections:
+                - Reading: reading/
+                - Slides: /build/embed_reveal/welcome-to-linux
+
+    static_assets:
+      - assembly-language: /build/make_assets/chapters/binary-introduction/assembly-language/slides/_site
+      - binary-analysis: /build/make_assets/chapters/binary-introduction/binary-analysis/slides/_site
+      - taming-the-stack: /build/make_assets/chapters/binary-introduction/taming-the-stack/slides/_site
+
+      - application-lifetime: /build/make_assets/chapters/data-and-application-lifetime/application-lifetime/slides/_site
+      - data-representation: /build/make_assets/chapters/data-and-application-lifetime/data-representation/slides/_site
+      - data-security: /build/make_assets/chapters/data-and-application-lifetime/data-security/slides/_site
+
+      - explaining-the-internet: /build/make_assets/chapters/demystifying-web/explaining-the-internet/slides/_site
+      - hacking-the-web: /build/make_assets/chapters/demystifying-web/hacking-the-web/slides/_site
+      - rediscovering-the-browser: /build/make_assets/chapters/demystifying-web/rediscovering-the-browser/slides/_site
+
+      - welcome-to-linux: /build/make_assets/chapters/scratch-linux/welcome-to-linux/slides/_site
+      - system-exploration: /build/make_assets/chapters/scratch-linux/system-exploration/slides/_site
+    config_meta:
+      title: Essentials Security
+      url: http://localhost/
+      baseUrl: /essentials-security/
+      onBrokenLinks: warn
+      onBrokenMarkdownLinks: warn
+    config_socials:
+      OCW: https://security.cs.pub.ro/summer-school/wiki/
+      Facebook: https://www.facebook.com/SSSUPB/
+    copyright_string: SSS Team
