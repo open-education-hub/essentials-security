@@ -1,0 +1,10 @@
+---
+title: "Taming The Stack"
+revealOptions:
+  background-color: 'aquamarine'
+  transition: 'none'
+  slideNumber: true
+  autoAnimateDuration: 0.0
+---
+
+!INCLUDE "taming-the-stack.md"
