@@ -32,7 +32,7 @@ In order to learn how all of this works, let's start from the example below.
 It's generic enough for it to be relatable to most networking scenarios.
 Yet, it encompasses everything we need to talk about.
 
-![Network Stack](./assets/network_stack.png)
+![Network Stack](./media/network_stack.png)
 
 So what happens here is that the computer on the left is trying to **send** data to the one on the right.
 We call the left computer **the sender** and the right one **the receiver**.
@@ -45,7 +45,7 @@ We'll see what's with the *TCP/IP* part soon enough.
 Individually, each box is a **layer**.
 Here are the 4 layers of the TCP/IP stack:
 
-![The TCP/IP Network Stack](./assets/tcp_ip_network_stack.svg)
+![The TCP/IP Network Stack](./media/tcp_ip_network_stack.svg)
 
 Each layer provides a well-defined set of requirements, which are fulfilled by **protocols**.
 A networking protocol is a set of rules that define the communication (data formatting and processing) between the same two levels of the network stack.
@@ -68,7 +68,7 @@ At the receiving end, the process happens in reverse: each layer accepts data fr
 Data is passed from a sender process to a receiver process by using the services of the layer below.
 It is only the final layer that actually causes the data to be transmitted onto the transmission media (e.g. cable). Below is a representation of this whole mechanism.
 
-![General Workings of a Network Stack Layer](./assets/network_layers.png)
+![General Workings of a Network Stack Layer](./media/network_layers.png)
 
 This method of modular communication is called **encapsulation**.
 It can be likened to taking the data from the layer above and placing it in an **envelope**, writing some additional information on the envelope, then passing the envelope to the layer below.
@@ -151,7 +151,7 @@ Back to our example above, you will surely need many routers to get a packet fro
 But how does a router know how where to send a packet?
 Let's say a router R1 connects a laptop with IP 192.168.100.5 and a PC with IP 192.168.100.10 to the external network, as shown in the image below.
 
-![Router in Action](./assets/router_in_action.svg)
+![Router in Action](./media/router_in_action.svg)
 
 Now let's look at 2 different scenarios:
 1. If the laptop sends a packet to IP `192.168.100.10`, the router knows this address is part of its **Local Area Network (LAN)** and sends it directly to the PC.
@@ -318,7 +318,7 @@ In the next section, we'll explain all of these components.
 
 The image below summarises the building blocks of a URL
 
-![Anatomy of a URL](./assets/url_anatomy.png)
+![Anatomy of a URL](./media/url_anatomy.png)
 
 Let's disect these components:
 - **The scheme** (sometimes called _schema_) indicates the application layer protocol that the browser must use to request the resource.
@@ -408,7 +408,7 @@ The fact that we are able to perform queries in this manner is proof of the hier
 All in all, the DNS lookup for `security-summer-school.github.io` is the one shown below.
 Notice that the Recursive Resolver acts as a mediator between most of the DNS lookups.
 
-![DNS Lookup for security-summer-school.github.io](./assets/dns_lookup.png)
+![DNS Lookup for security-summer-school.github.io](./media/dns_lookup.png)
 
 Notice that only the domain of a URL has its name resolved to an IP address.
 The port, path, parameters and anchor are handled by the web server itself.
@@ -487,7 +487,7 @@ Each ACK is sent together with an **ACK number**.
 This number signifies the amount of bytes received so far by the host.
 It is used by the sender to figure out what portion of the data to send as part of the next segment.
 
-![TCP ACKs in Action](./assets/tcp_ack_model.webp)
+![TCP ACKs in Action](./media/tcp_ack_model.webp)
 
 In the above diagram we can see that the sender (client) adds some bytes (whose length is specified as `Len`) to those already sent.
 At the same time, the receiver (server) adds the newly arrived bytes to those received previously and sends this number back to the client as the ACK number.
@@ -547,7 +547,7 @@ What you did is you created an SSH conection using a custom port which did not o
 Think of a container as a lighter, albeit less secure VM.
 The architecture looks like this:
 
-![Challenge Hosting Architecture](./assets/challenge_hosting_architecture.svg)
+![Challenge Hosting Architecture](./media/challenge_hosting_architecture.svg)
 
 ### UDP
 
@@ -576,7 +576,7 @@ For this reason, UDP is mostly used for streaming services:
 
 Since an image is worth 1000 words, here's a summary of TCP and UDP:
 
-![TCP vs UDP](./assets/tcp_vs_udp.jpg)
+![TCP vs UDP](./media/tcp_vs_udp.jpg)
 
 ## The Application Layer
 
@@ -772,7 +772,7 @@ The containers are most importantly separated at the filesystem level.
 They can also be allocated more limited resources.
 Notice that if you were to use a container for the Security Summer School, you couldn't use Kali Linux unless your host OS were also Kali Linux, which would have been pretty pointless.
 
-![Containers vs VMs](./assets/containers-vs-virtual-machines.png)
+![Containers vs VMs](./media/containers-vs-virtual-machines.png)
 
 However, we use containers to host challenges because our VMs and containers all use Linux and because we can house more containers on the same host (which is itself a VM) than we could VMs.
 You can learn more about containers and how to manage them using `docker` (we also use it for challenges) [here](https://www.docker.com/resources/what-container/).

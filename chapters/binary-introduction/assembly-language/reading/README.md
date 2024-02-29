@@ -59,7 +59,7 @@ This is because they are stored _on your device's disk_.
 We simply refer to persistent storage as **storage**.
 Take note of the difference between _storage_ and _memory_.
 
-![Memory Hierarchy](./assets/memory-hierarchy.png)
+![Memory Hierarchy](./media/memory-hierarchy.png)
 
 In most programming languages you can freely access data everywhere up to and including the memory.
 In assembly however, you also have access to the **registers** and can influence the **cache**.
@@ -124,7 +124,7 @@ This is possible by slightly changing the name of the register like so:
 The bits contained in each of the above subdivisions are shown in the image below.
 It is similar for `rdi` and `r8`, it's just the names that differ.
 
-![rax Subdivisions](./assets/rax-subdivisions.svg)
+![rax Subdivisions](./media/rax-subdivisions.svg)
 
 `rbx`, `rcx` and `rdx` have the same subdivisions as `rax`.
 `rsi` has the same subdivision as `rdi`: `esi`, `si` and `sil`.

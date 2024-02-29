@@ -3,7 +3,7 @@
 We visit to the URL, open the Developer Tools and go over to the "Storage" tab.
 There we see the server has given ass the cookie `u=guest`.
 
-![Hacky McHack - Initial Cookie](../../assets/hacky-mchack-cookies.png)
+![Hacky McHack - Initial Cookie](../../media/hacky-mchack-cookies.png)
 
 Since the challenge is called "Hacky McHack" we set the cookie value to `hacky mchack`.
 We notice a new tab has appeared at the top of the page or by inspecting the HTML source: **Manage** (`/manage.php`).

@@ -39,7 +39,7 @@ In this session we will focus mainly on compiled code.
 For compiled code to become a working application, 3 steps are needed: **compiling**, **linking** and **loading**.
 Some languages, like C and C++, require an additional step before compiling, **preprocessing**.
 
-![From Code to Process](assets/from_code_to_process.svg)
+![From Code to Process](media/from_code_to_process.svg)
 
 The diagram above represents the process through which some source code becomes a running application.
 The steps are detailed below.
@@ -51,7 +51,7 @@ This step is performed by the compiler.
 The best-known compiler for C is **GNU C Compiler (GCC)**.
 While technically it is not correct to say that we get to a binary file by compiling (assembly would like to say hello), we will leave it like this for now.
 
-![Compiling step](assets/compiling.svg)
+![Compiling step](media/compiling.svg)
 
 To compile a `.c` source code, the `-c` flag is used.
 
@@ -99,7 +99,7 @@ This is done in a straightforward manner: copy everything from the libraries to 
 This leads to big executables, that generally run faster and can run on other systems even if the libraries are not installed.
 However, the statically-linked executables aren't more portable - maybe the library uses something not present on the system.
 
-![Static Linking Overview](assets/static_linking.svg)
+![Static Linking Overview](media/static_linking.svg)
 
 #### Dynamic Libraries
 
@@ -145,7 +145,7 @@ In order for it to run on another system, the required dynamic libraries must be
 It is also open to some kinds of attacks.
 One of them is the **return-to-libc** attack, usually via ROP attacks, which are discussed [in the binary track of SSS](https://security-summer-school.github.io/binary/return-oriented-programming).
 
-![Dynamic Linking Overview](assets/dynamic_linking.svg)
+![Dynamic Linking Overview](media/dynamic_linking.svg)
 
 The stubs placed in the executable are resolved at runtime, during the **loading** step.
 
@@ -155,7 +155,7 @@ Loading is the process in which the program is launched.
 During this process, the program code is placed in the OS memory, the dynamic libraries are found and placed into memory, then the control is passed to the application.
 A loaded executable is represented in the OS as a **process**.
 
-![Loading Overview](assets/loading.svg)
+![Loading Overview](media/loading.svg)
 
 ## Processes
 
@@ -164,7 +164,7 @@ It is important to know that one executable can be launched multiple times, at t
 Each process has access to the main resources of a system: **CPU**, **memory**, and **I/O devices**, through abstractions.
 Those abstractions are there to isolate different processes in a system.
 
-![Process Overview](assets/process_layout.svg)
+![Process Overview](media/process_layout.svg)
 
 To see what processes are running, the `ps` command can be used.
 
@@ -206,7 +206,7 @@ the other sections occupy space in the executable.
 - some spicy sections: **GOT**, **PLT**;
 you can read about them in the [Further Reading](#further-reading) section.
 
-![Process Address Space Layout](assets/memory_layout.svg)
+![Process Address Space Layout](media/memory_layout.svg)
 
 To explore the sections of an executable, `objdump` can be used.
 To see the contents of the **DATA** section, run `$ objdump -s -j .data <executable>`
@@ -233,7 +233,7 @@ Each process keeps track of the files it has opened using file descriptors.
 Opening, closing, modifying a file in any way can be done only by the OS.
 In order for the application to interact with files, it needs to use system calls: `open()`, `close()`, `read()`, `write()` and many others.
 
-![File descriptors](assets/file_descriptors.svg)
+![File descriptors](media/file_descriptors.svg)
 
 #### open, openat, close
 
@@ -261,7 +261,7 @@ The memory of the child process is the same as that of the parent, until it's mo
 After the `fork()` call, the parent must wait for the child process to finish.
 Otherwise, it remains active, until it is cleaned-up by the OS.
 
-![Fork Overview](assets/fork.svg)
+![Fork Overview](media/fork.svg)
 
 ### Exec
 
@@ -269,7 +269,7 @@ Otherwise, it remains active, until it is cleaned-up by the OS.
 `exec()` can be used together with `fork()`, as done by the terminal, or without it.
 One use that you may encounter in the security world is using `exec()` to make a process spawn a terminal, after you have gained control of the process.
 
-![Exec Overview](assets/exec.svg)
+![Exec Overview](media/exec.svg)
 
 ## Summary
 

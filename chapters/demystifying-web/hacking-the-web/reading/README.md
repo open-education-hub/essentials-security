@@ -66,7 +66,7 @@ An HTTP cookie (also called web cookie, Internet cookie, browser cookie, or simp
 Cookies were designed to be a reliable mechanism for websites to remember stateful information (such as items added in the shopping cart in an online store) or to record the user's browsing activity (including clicking particular buttons, logging in, or recording which pages were visited in the past).
 They can also be used to remember pieces of information that the user previously entered into form fields, such as names, addresses, passwords, and credit card numbers.
 
-![Cookies](./assets/cookies.png)
+![Cookies](./media/cookies.png)
 
 They are like ID cards for websites.
 If a browser sends a certain cookie to a web server, the server deduces the identity of said client from that cookie, without requiring authentication.
@@ -107,7 +107,7 @@ All modern browsers have the ability to assist developers in creating, previewin
 This ability comes in the form of the **Developer Tools** suite.
 You can open the Developer Tools by pressing either `F12` or `Ctrl + Shift + c` when browsing through a website.
 
-![Developer Tools - First Sight](./assets/developer-tools.png)
+![Developer Tools - First Sight](./media/developer-tools.png)
 
 ### Inspector
 
@@ -116,7 +116,7 @@ It displays the HTML source of the page we are viewing.
 This structure is called the [Document Object Model](../explaining-the-internet#the-document-object-model-dom).
 We can even modify the content of the HTML document
 
-![Modified Title](./assets/inspector-modify-title.png)
+![Modified Title](./media/inspector-modify-title.png)
 
 Of course, this modification is only visible to me because I'm modifying my local copy of the `index.html` file.
 
@@ -125,7 +125,7 @@ Of course, this modification is only visible to me because I'm modifying my loca
 This tab is pretty straightforward.
 It is a shell in which we can write JavaScript code.
 
-![Console](./assets/console.png)
+![Console](./media/console.png)
 
 ### Debugger
 
@@ -137,13 +137,13 @@ Hence its name: _Debugger_
 The "Sources" sub-tab of the "Debugger" tab shows the hierarchical structure of all files used by the web page.
 These files can be HTML files, CSS files images, videos, JavaScript files, anything.
 
-![Debugger - Source](./assets/debugger-sources.png)
+![Debugger - Source](./media/debugger-sources.png)
 
 Notice the file `(index)` is actually the same we saw in [Inspector](#inspector).
 
 ### Network
 
-![Network](./assets/network.png)
+![Network](./media/network.png)
 
 The network tab shows detailed information about every file loaded and every request and response made by the page.
 Notice the sub-tabs to the right.
@@ -153,14 +153,14 @@ This is useful for listing all the resources needed by a page, such as if there 
 
 Here we can also see the cookies sent with each request.
 
-![Network - Cookies](./assets/network-cookies.png)
+![Network - Cookies](./media/network-cookies.png)
 
 ### Storage
 
 Viewing cookies in the "Network" tab is fine, but that only gives us their value.
 If we want to see all their attributes **and change their value**, we need to go over to the "Storage" tab.
 
-![Storage](./assets/_ga-cookie.png)
+![Storage](./media/_ga-cookie.png)
 
 Let's take a closer look at one cookie called `_ga`.
 It comes form "Google Analytics".
@@ -171,7 +171,7 @@ Let's troll them by modifying their cookie
 Its contents are explained [here](https://stackoverflow.com/a/16107194).
 But we're just going to mess with it.
 
-![Storage - Modified](./assets/_ga-cookie-modified.png)
+![Storage - Modified](./media/_ga-cookie-modified.png)
 
 There!
 We showed Big Tech not to mess with us!
@@ -204,7 +204,7 @@ The basic workflow is:
 For PHP, these variables will become available in the superglobal variable `$_SESSION`.
 1. If the server doesn't find a match, it will create a new session and repeat steps 1-6.
 
-![Session lifecycle](./assets/session.jpg)
+![Session lifecycle](./media/session.jpg)
 
 Example of a session in PHP (running on the server):  
 ```php
@@ -370,7 +370,7 @@ That good we are!
 We visit to the URL, open the Developer Tools and go over to the "Storage" tab.
 There we see the server has given ass the cookie `u=guest`.
 
-![Hacky McHack - Initial Cookie](./assets/hacky-mchack-cookies.png)
+![Hacky McHack - Initial Cookie](./media/hacky-mchack-cookies.png)
 
 Since the challenge is called "Hacky McHack" we set the cookie value to `hacky mchack`.
 We notice a new tab has appeared at the top of the page or by inspecting the HTML source: **Manage** (`/manage.php`).
