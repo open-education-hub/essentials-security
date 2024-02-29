@@ -61,7 +61,7 @@ docusaurus:
               extra:
                 - media/
               subsections:
-                - Reading: reading/
+                - Reading: reading/README.md
                 - Slides: /build/embed_reveal/welcome-to-linux
 
     static_assets:
