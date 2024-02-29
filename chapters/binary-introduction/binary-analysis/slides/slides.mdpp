@@ -1,0 +1,10 @@
+---
+title: "Binary Analysis"
+revealOptions:
+  background-color: 'aquamarine'
+  transition: 'none'
+  slideNumber: true
+  autoAnimateDuration: 0.0
+---
+
+!INCLUDE "binary-analysis.md"
