@@ -59,7 +59,7 @@ This is because they are stored _on your device's disk_.
 We simply refer to persistent storage as **storage**.
 Take note of the difference between _storage_ and _memory_.
 
-![Memory Hierarchy](./media/memory-hierarchy.png)
+![Memory Hierarchy](../media/memory-hierarchy.png)
 
 In most programming languages you can freely access data everywhere up to and including the memory.
 In assembly however, you also have access to the **registers** and can influence the **cache**.
@@ -124,7 +124,7 @@ This is possible by slightly changing the name of the register like so:
 The bits contained in each of the above subdivisions are shown in the image below.
 It is similar for `rdi` and `r8`, it's just the names that differ.
 
-![rax Subdivisions](./media/rax-subdivisions.svg)
+![rax Subdivisions](../media/rax-subdivisions.svg)
 
 `rbx`, `rcx` and `rdx` have the same subdivisions as `rax`.
 `rsi` has the same subdivision as `rdi`: `esi`, `si` and `sil`.
@@ -181,13 +181,13 @@ The result is always stored in the `destination`
 
 | Instruction          | Description     | Examples                          |
 |:--------------------:|:---------------:|:---------------------------------:|
-| `add <dest>, <src>`  | `dest += src`   | `add rbx, 5`<br>`add r11, 0x99`   |
-| `sub <dest>, <src>`  | `dest -= src`   | `sub ecx, 'a'`<br>`sub r9, r8`    |
-| `shl <dest>, <bits>` | `dest <<= bits` | `shl rax, 3`<br>`shl rdi, cl`     |
-| `shr <dest>, <bits>` | `dest >>= bits` | `shr r15, 5`<br>`shr rsi, cl`     |
-| `and <dest> <src>`   | `dest &= src`   | `and al, ah`<br>`and bx, 13`      |
-| `or <dest> <src>`    | `dest \|= src`  | `or r10b, cl`<br>`or r14, 0x2000` |
-| `xor <dest> <src>`   | `dest ^= src`   | `xor ebx, edx`<br>`xor rcx, 1`    |
+| `add <dest>, <src>`  | `dest += src`   | `add rbx, 5`<br/>`add r11, 0x99`   |
+| `sub <dest>, <src>`  | `dest -= src`   | `sub ecx, 'a'`<br/>`sub r9, r8`    |
+| `shl <dest>, <bits>` | `dest <<= bits` | `shl rax, 3`<br/>`shl rdi, cl`     |
+| `shr <dest>, <bits>` | `dest >>= bits` | `shr r15, 5`<br/>`shr rsi, cl`     |
+| `and <dest> <src>`   | `dest &= src`   | `and al, ah`<br/>`and bx, 13`      |
+| `or <dest> <src>`    | `dest \|= src`  | `or r10b, cl`<br/>`or r14, 0x2000` |
+| `xor <dest> <src>`   | `dest ^= src`   | `xor ebx, edx`<br/>`xor rcx, 1`    |
 | `inc <dest>`         | `dest++`        | `inc rsi`                         |
 | `dec <dest>`         | `dest--`        | `dec r10w`                        |
 
@@ -291,14 +291,14 @@ Now let's have a look at some conditional jumps:
 |:--------------------------:|:-------------------------------------------------------------:|
 | `jz` / `je`                | Jump if the Zero Flag is active                               |
 | `jnz` / `jne`              | Jump if the Zero Flag is not active                           |
-| `cmp rax, rbx`<br>`j[n]g`  | Jump if `rax` is (not) greater (signed) than `rbx`            |
-| `cmp rax, rbx`<br>`j[n]a`  | Jump if `rax` is (not) greater (unsigned) than `rbx`          |
-| `cmp rax, rbx`<br>`j[n]ge` | Jump if `rax` is (not) greater (signed) or equal than `rbx`   |
-| `cmp rax, rbx`<br>`j[n]ae` | Jump if `rax` is (not) greater (unsigned) or equal than `rbx` |
-| `cmp rax, rbx`<br>`j[n]l`  | Jump if `rax` is (not) lower (signed) than `rbx`              |
-| `cmp rax, rbx`<br>`j[n]b`  | Jump if `rax` is (not) lower (unsigned) than `rbx`            |
-| `cmp rax, rbx`<br>`j[n]le` | Jump if `rax` is (not) lower (signed) or equal than `rbx`     |
-| `cmp rax, rbx`<br>`j[n]be` | Jump if `rax` is (not) lower (unsigned) or equal than `rbx`   |
+| `cmp rax, rbx`<br/>`j[n]g`  | Jump if `rax` is (not) greater (signed) than `rbx`            |
+| `cmp rax, rbx`<br/>`j[n]a`  | Jump if `rax` is (not) greater (unsigned) than `rbx`          |
+| `cmp rax, rbx`<br/>`j[n]ge` | Jump if `rax` is (not) greater (signed) or equal than `rbx`   |
+| `cmp rax, rbx`<br/>`j[n]ae` | Jump if `rax` is (not) greater (unsigned) or equal than `rbx` |
+| `cmp rax, rbx`<br/>`j[n]l`  | Jump if `rax` is (not) lower (signed) than `rbx`              |
+| `cmp rax, rbx`<br/>`j[n]b`  | Jump if `rax` is (not) lower (unsigned) than `rbx`            |
+| `cmp rax, rbx`<br/>`j[n]le` | Jump if `rax` is (not) lower (signed) or equal than `rbx`     |
+| `cmp rax, rbx`<br/>`j[n]be` | Jump if `rax` is (not) lower (unsigned) or equal than `rbx`   |
 
 #### Loops
 
