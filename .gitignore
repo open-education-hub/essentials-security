@@ -25,3 +25,6 @@ core
 __pycache__/
 *.py[cod]
 *$py.class
+
+# Open Educational Hub
+.output/

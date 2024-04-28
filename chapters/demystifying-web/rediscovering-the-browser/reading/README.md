@@ -29,7 +29,7 @@ So in short, the server waits for clients to come to it.
 The clients are proactive.
 They reach out to the server by initiating connections.
 
-![Web Application Model](./media/client-server.svg)
+![Web Application Model](../media/client-server.svg)
 
 ## Web Security
 
@@ -97,7 +97,7 @@ Thus, the transport-layer protocol used by HTTP is TCP.
 Most websites nowadays use HTTP or HTTPS to transfer data.
 Remember the anatomy of a URL, also from [the previous session](../explaining-the-internet#anatomy-of-a-url).
 
-![Anatomy of a URL](../explaining-the-internet/media/url_anatomy.png)
+![Anatomy of a URL](../media/url_anatomy.png)
 
 The first part of a URL is called the **scheme**.
 It defines the protocol used for interacting with that website.
@@ -157,14 +157,14 @@ Communication between a client and a server usually follows these steps:
 
 ### Requests
 
-![HTTP - Request](./media/http-request.png)
+![HTTP - Request](../media/http-request.png)
 
 Here we have a `GET` request.
 It is made for a file: `/index.html`.
 
 Remember the **path** from the anatomy of a URL:
 
-![Anatomy of a URL Again](../explaining-the-internet/media/url_anatomy.png)
+![Anatomy of a URL Again](../media/url_anatomy.png)
 
 This is the file that you request.
 The path is like a path in the Linux file system.
@@ -198,7 +198,7 @@ It is described in some more detail in [its own section](#request-body).
 
 ### Responses
 
-![HTTP - Response](./media/http-response.png)
+![HTTP - Response](../media/http-response.png)
 
 - `1xx`: informational responses
 - `2xx`: the request was fulfilled successfully.
@@ -224,7 +224,7 @@ What methods does the server support?
 
 This is the last time today that you'll se the image with the anatomy of a URL, we promise.
 
-![Anatomy of a URL Yet Again](../explaining-the-internet/media/url_anatomy.png)
+![Anatomy of a URL Yet Again](../media/url_anatomy.png)
 
 Look at the **parameters** of the URL
 They are highlighted in blue.
@@ -285,7 +285,7 @@ Each branch of the tree ends in a node, and each node contains objects.
 DOM methods allow programmatic access to the tree.
 With them, you can change the document's structure, style, or content.
 
-![DOM](./media/dom.png)
+![DOM](../media/dom.png)
 
 Every element within your document is an object: `\<head\>` or `\<body\>` tags etc.
 DOMs are flexible and allow easy introduction of nodes, as all objects are nodes.
@@ -576,6 +576,6 @@ Imagine a student logging onto his school's/university's website.
 If they log as a student, they can't access teachers' exam solutions.
 But if they could somehow obtain the role of teacher (while using the same account as before), they could view those solutions.
 
-![RBAC](./media/rbac.svg)
+![RBAC](../media/rbac.svg)
 
 This sort of attack is called a **privilege escalation attack** because the student has managed to _elevate_ his default privileges (as a student) to those of a teacher.

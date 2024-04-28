@@ -130,7 +130,7 @@ At the same time, `/` is the root of the file system.
 
 The file hierarchy looks like this:
 
-![Sample File Hierarchy](./media/sample_file_hierarchy.svg)
+![Sample File Hierarchy](../media/sample_file_hierarchy.svg)
 
 Going back to the `current_working_directory` in the prompt, the terminal can also be seen as a file walker.
 This means that at each moment it is "placed" in a certain directory, i.e. at some point in the file hierarchy.
