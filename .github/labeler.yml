@@ -1,3 +1,15 @@
+topic/scratch-linux:
+  - chapters/scratch-linux/**/*
+
+topic/demystifying-web:
+  - chapters/demystifying-web/**/*
+
+topic/data:
+  - chapters/data/**/*
+
+topic/binary-introduction:
+  - chapters/binary-introduction/**/*
+
 area/reading:
   - "**/reading/*"
   - "**/reading/**/*"
