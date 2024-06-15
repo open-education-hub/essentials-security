@@ -18,7 +18,6 @@ make_assets:
       - chapters/binary-introduction/taming-the-stack/slides
       - chapters/binary-introduction/overview/slides
       - chapters/data/data-representation/slides
-      - chapters/data/data-security/slides
       - chapters/data/overview/slides
       - chapters/demystifying-web/explaining-the-internet/slides
       - chapters/demystifying-web/hacking-the-web/slides
@@ -55,7 +54,6 @@ docusaurus:
     sidebar: js
     structure:
       - Scratch Linux:
-          - Overview: chapters/scratch-linux/overview/README.md
           - Welcome to Linux:
               path: chapters/scratch-linux/welcome-to-linux/
               extra:
@@ -67,7 +65,6 @@ docusaurus:
               subsections:
                 - Reading: reading/README.md
       - Demystifying the Web:
-          - Overview: chapters/demystifying-web/overview/README.md
           - Explaining the Internet:
               path: chapters/demystifying-web/explaining-the-internet/
               extra:
@@ -87,17 +84,31 @@ docusaurus:
               subsections:
                 - Reading: reading/README.md
       - Data:
-          - Overview: chapters/data/overview/README.md
           - Data Representation:
               path: chapters/data/data-representation/
               subsections:
                 - Reading: reading/README.md
           - Data Security:
               path: chapters/data/data-security/
+              extra:
+                - media/
               subsections:
-                - Reading: reading/README.md
+                - Reading:
+                    - Introduction: reading/introduction.md
+                    - Exclusive Or (XOR): reading/xor-encrpytion.md
+                    - Symmetric Cryptography: reading/symmetric-cryptography.md
+                    - Asymmetric Cryptography: reading/asymmetric-cryptography.md
+                - Drills:
+                    path: drills/
+                    subsections:
+                      - Tasks:
+                          path: tasks/
+                          subsections:
+                            - Caesar Cipher/: caesar-cipher/README.md
+                            - Xor Encryption/: xor-encryption/README.md
+                            - AES CBC/: aes-cbc/README.md
+
       - Binary Introduction:
-          - Overview: chapters/binary-introduction/overview/README.md
           - Application Lifetime:
               path: chapters/binary-introduction/application-lifetime/
               extra:
@@ -126,7 +137,6 @@ docusaurus:
       - taming-the-stack: /build/make_assets/chapters/binary-introduction/taming-the-stack/slides/_site
 
       - data-representation: /build/make_assets/chapters/data/data-representation/slides/_site
-      - data-security: /build/make_assets/chapters/data/data-security/slides/_site
 
       - explaining-the-internet: /build/make_assets/chapters/demystifying-web/explaining-the-internet/slides/_site
       - hacking-the-web: /build/make_assets/chapters/demystifying-web/hacking-the-web/slides/_site
