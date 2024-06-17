@@ -59,7 +59,26 @@ docusaurus:
               extra:
                 - media/
               subsections:
-                - Reading: reading/README.md
+                - Reading:
+                    path: reading/
+                    subsections:
+                      - Introduction: introduction.md
+                      - Working with Linux: working-with-linux.md
+                      - Enter Python: enter-python.md
+                      - Summary: summary.md
+                      - Activities: activities.md
+                      - Further Reading: further-reading.md
+                - Drills:
+                    path: drills/
+                    subsections:
+                      - Tasks:
+                          path: tasks/
+                          subsections:
+                            - In Your Face/: in-your-face/README.md
+                            - Did You Look Everywhere/: did-you-look-everywhere/README.md
+                            - What is Running/: whats-running/README.md
+                            - Quick Mafs/: quick-mafs/README.md
+                            - Jumbled/: jumbled/README.md
           - System Exploration:
               path: chapters/scratch-linux/system-exploration/
               subsections:
