@@ -164,7 +164,21 @@ docusaurus:
               extra:
                 - media/
               subsections:
-                - Reading: reading/README.md
+                  - Reading:
+                      - Introduction: reading/introduction.md
+                      - Registers: reading/registers.md
+                      - Assembly Instructions: reading/assembly-instructions.md
+                      - Dereferencing Addresses: reading/dereferencing-addresses.md
+                      - Reading Assembly: reading/reading-assembly.md
+                      - Summary: reading/summary.md
+                      - Further Reading: reading/further-reading.md
+                  - Drills:
+                      - Tasks:
+                          - In Plain Assembly/: drills/tasks/in-plain-assembly/README.md
+                          - Gotta Link Em All/: drills/tasks/gotta-link-em-all/README.md
+                          - Jump Maze/: drills/tasks/jump-maze/README.md
+                          - Crypto/: drills/tasks/crypto/README.md
+                          - Call Me Little Sunshine/: drills/tasks/call-me-little-sunshine/README.md
           - Taming the Stack:
               path: chapters/binary-introduction/taming-the-stack/
               subsections:
