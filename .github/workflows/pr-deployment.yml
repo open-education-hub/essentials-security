@@ -22,7 +22,7 @@ jobs:
       - run: |
           cd repo
           REF=$(echo ${{ github.event.number }} | sed 's/\//\\\//g')
-          sed -i "s/baseUrl: \/binary-security\//baseUrl: \/binary-security\/$REF\//" config.yaml
+          sed -i "s/baseUrl: \/essentials-security\//baseUrl: \/essentials-security\/$REF\//" config.yaml
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
@@ -34,7 +34,7 @@ jobs:
           file: ./repo/Dockerfile
           push: false
           load: true
-          tags: binary-security/docusaurus:latest
+          tags: essentials-security/docusaurus:latest
           cache-from: type=gha
           cache-to: type=gha
 
@@ -42,7 +42,7 @@ jobs:
         run: |
           mkdir -p ${{ github.event.number }}
           docker image list
-          docker run -v $GITHUB_WORKSPACE/repo:/content -v $GITHUB_WORKSPACE/${{ github.event.number }}:/output binary-security/docusaurus:latest
+          docker run -v $GITHUB_WORKSPACE/repo:/content -v $GITHUB_WORKSPACE/${{ github.event.number }}:/output essentials-security/docusaurus:latest
 
       # Popular action to deploy to GitHub Pages:
       # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
@@ -64,4 +64,4 @@ jobs:
         uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
-            Published at http://open-education-hub.github.io/binary-security/${{ github.event.number }}/
+            Published at http://security-summer-school.github.io/essentials-security/${{ github.event.number }}/
