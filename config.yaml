@@ -82,7 +82,28 @@ docusaurus:
           - System Exploration:
               path: chapters/scratch-linux/system-exploration/
               subsections:
-                - Reading: reading/README.md
+                - Reading:
+                    path: reading/
+                    subsections:
+                      - Introduction: introduction.md
+                      - Exploration tools: exploration-tools.md
+                      - File inspection: file-inspection.md
+                      - Summary: summary.md
+                      - Further reading: further-reading.md
+                - Guides:
+                    path: guides/
+                    subsections:
+                      - Doge: doge/README.md
+                - Drills:
+                    path: drills/
+                    subsections:
+                      - Tasks:
+                          path: tasks/
+                          subsections:
+                          - Empty Files/: empty-files/README.md
+                          - Find us if you can/: find-us-if-you-can/README.md
+                          - Not your doge/: not-your-doge/README.md
+                          - Surgical precision/: surgical-precision/README.md
       - Demystifying the Web:
           - Explaining the Internet:
               path: chapters/demystifying-web/explaining-the-internet/
