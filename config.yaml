@@ -110,7 +110,29 @@ docusaurus:
               extra:
                 - media/
               subsections:
-                - Reading: reading/README.md
+                - Reading:
+                    path: reading/
+                    subsections:
+                      - Introduction: introduction.md
+                      - Internet Overview: internet-overview.md
+                      - Layers: layers.md
+                      - Routers: routers.md
+                      - URLs: urls.md
+                      - DNS: dns.md
+                      - Transport Layer: transport-layer.md
+                      - Application Layer: application-layer.md
+                      - Summary: summary.md
+                      - Further Reading: further-reading.md
+                - Drills:
+                    path: drills/
+                    subsections:
+                      - Tasks:
+                          path: tasks/
+                          subsections:
+                            - Who is 111/: who-is-111/README.md
+                            - They See Me Running/: they-see-me-running/README.md
+                            - Unaccessible/: unaccessible/README.md
+                            - Pinger/: pinger/README.md
           - Re-Discovering the Browser:
               path: chapters/demystifying-web/rediscovering-the-browser/
               extra:
