@@ -116,7 +116,34 @@ docusaurus:
               extra:
                 - media/
               subsections:
-                - Reading: reading/README.md
+                - Reading:
+                    path: reading/
+                    subsections:
+                      - Introduction: introduction.md
+                      - Triple A\'s: triple-a.md
+                      - Hyper Text Transfer Protocol: http.md
+                      - Browsers: browsers.md
+                      - Summary: summary.md
+                      - Further Reading: further-reading.md
+                - Drills:
+                    path: drills/
+                    subsections:
+                      - Tasks:
+                          path: tasks/
+                          subsections:
+                            - Cockroach/: cockroach/README.md
+                            - Give to Get/: give-to-get/README.md
+                            - Eyes/: eyes/README.md
+                            - Give to Post/: give-to-post/README.md
+                            - King Kong/: king-kong/README.md
+                            - Name/: name/README.md
+                            - Gimme/: gimme/README.md
+                            - Surprise/: surprise/README.md
+                - Guides:
+                    path: guides/
+                    subsections:
+                      - Readme/: readme/README.md
+                      - One more Pinger/: one-more-pinger/README.md
           - Hacking the Web:
               path: chapters/demystifying-web/hacking-the-web/
               extra:
