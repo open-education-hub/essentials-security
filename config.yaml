@@ -171,7 +171,33 @@ docusaurus:
               extra:
                 - media/
               subsections:
-                - Reading: reading/README.md
+                - Reading:
+                    path: reading/
+                    subsections:
+                      - Introduction: introduction.md
+                      - Cookies: cookies.md
+                      - Developer Tools: developer-tools.md
+                      - Sessions: sessions.md
+                      - Web Attacks: web-attacks.md
+                      - Summary: summary.md
+                      - Further Reading: further-reading.md
+                - Drills:
+                    path: drills/
+                    subsections:
+                      - Tasks:
+                          path: tasks/
+                          subsections:
+                            - Beep Beep Boop/: beep-beep-boop/README.md
+                            - Colours/: colours/README.md
+                            - Great Names/: great-names/README.md
+                            - Nobody loves me/: nobody-loves-me/README.md
+                            - One by One/: one-by-one/README.md
+                            - Produce-Consume/: produce-consume/README.md
+                            - Traverse the Universe/: traverse-universe/README.md
+                - Guides:
+                    path: guides/
+                    subsections:
+                      - Chef Hacky McHack/: chef-hacky-mchack/README.md
       - Data:
           - Data Representation:
               path: chapters/data/data-representation/
