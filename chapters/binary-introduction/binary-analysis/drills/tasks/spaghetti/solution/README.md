@@ -9,4 +9,4 @@ In this task, you must use `Ghidra` to follow the function-call graph, to find t
 The function call sequence, that ends with `fn11()` is the following:
 `fn37()` -> `fn28()` -> `fn30()` -> `fn11()`.
 
-`fn37()` is called by enetring the `38` number.
+`fn37()` is called by entering the `38` number.

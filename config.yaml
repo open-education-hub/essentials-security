@@ -100,10 +100,10 @@ docusaurus:
                       - Tasks:
                           path: tasks/
                           subsections:
-                          - Empty Files/: empty-files/README.md
-                          - Find us if you can/: find-us-if-you-can/README.md
-                          - Not your doge/: not-your-doge/README.md
-                          - Surgical precision/: surgical-precision/README.md
+                            - Empty Files/: empty-files/README.md
+                            - Find us if you can/: find-us-if-you-can/README.md
+                            - Not your doge/: not-your-doge/README.md
+                            - Surgical precision/: surgical-precision/README.md
       - Demystifying the Web:
           - Explaining the Internet:
               path: chapters/demystifying-web/explaining-the-internet/
@@ -233,7 +233,17 @@ docusaurus:
           - Binary Analysis:
               path: chapters/binary-introduction/binary-analysis/
               subsections:
-                - Reading: reading/README.md
+                  - Reading:
+                      - Introduction: reading/introduction.md
+                      - Static Analysis: reading/static-analysis.md
+                      - Dynamic Analysis: reading/dynamic-analysis.md
+                      - Summary: reading/summary.md
+                  - Drills:
+                      - Tasks:
+                          - Easy to spot/: drills/tasks/easy-to-spot/README.md
+                          - Ghidra killer/: drills/tasks/ghidra-killer/README.md
+                          - Packaging is important/: drills/tasks/packaging-is-important/README.md
+                          - Spaghetti/: drills/tasks/spaghetti/README.md
           - Assembly Language:
               path: chapters/binary-introduction/assembly-language/
               extra:
