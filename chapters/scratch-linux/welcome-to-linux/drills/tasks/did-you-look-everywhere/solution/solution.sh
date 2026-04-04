@@ -1,6 +1,5 @@
 #! /bin/bash
-# SPDX-License-Identifier: BSD-3-Clause
 
-cd south-park/al-gore/manbearpig || exit
+cd south-park/al-gore/manbearpig
 ls -a
 cat .flag

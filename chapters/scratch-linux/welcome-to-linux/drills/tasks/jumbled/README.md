@@ -1,7 +1,17 @@
-# Jumbled
+# Name: Essentials: Welcome to Linux: Jumbled
 
-The flag you're given in `jumbled/support/flag` does contain the actual flag, but not quite.
-Use your Python skills to reconstruct it.
-You'll also need some trial and error here.
+## Description
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/enter-python.md) reading material.
+You get a flag that is made up of jumbled chunks from the real flag, split by some non-printable bytes.
+You have to recreate the original flag.
+
+Score: 200
+
+### Exploit
+
+Run the script in `./sol/solution.py`.
+
+### Deploy
+
+No environment is needed for this challenge.
+Only provide the jumbled flag.

@@ -1,13 +1,19 @@
-# Surgical Precision
+# Name: Essentials: System Exploration: Surgical Precision
 
-There are many false flags out there.
-Answer the questions and find the **real** flags.
-The quizzes cover subjects discussed today and during the previous session.
-Think of them as a recap.
+## Description
 
-The answer to each of the riddles in the files `question-*` from the `drills/surgical-precision/support` is the name of one of the given files.
-When you've found an answer, upload the flag in that file.
+Your flags lie in files whose names are the either the answers to, or pointed at by the `question-*` files present in the `public` folder.
 
-Beware of [red herrings](https://en.wikipedia.org/wiki/Red_herring)!
+Score: 500
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/summary.md) reading material.
+## Exploit
+
+Run the script in `./sol/solution.sh`.
+
+## Environment
+
+The question files and possible answers in the `public` directory.
+
+## Deploy
+
+No deployment is needed.

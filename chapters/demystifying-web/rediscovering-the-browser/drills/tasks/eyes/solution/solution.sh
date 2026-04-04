@@ -14,6 +14,6 @@ fi
 # Eyes
 echo "Start exploit for Eyes"
 remote=$remote'/eyes/'
-flag=$(curl -s "$remote" | grep -o "SSS_CTF{.*}")
+flag=$(curl -s $remote | grep -o "SSS_CTF{.*}")
 echo "Flag is $flag"
 echo "----------------------------"

@@ -14,6 +14,6 @@ fi
 # King-Kong
 echo "Start exploit for King-Kong"
 remote=$remote'/king-kong/'
-flag=$(curl -s -A 'King-Kong' "$remote" | grep -o "SSS_CTF{.*}")
+flag=$(curl -s -A 'King-Kong' $remote | grep -o "SSS_CTF{.*}")
 echo "Flag is $flag"
 echo "----------------------------"

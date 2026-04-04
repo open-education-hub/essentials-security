@@ -1,11 +1,12 @@
-# Pinger
+# Name
+Essentials: Explaining the Internet: Pinger
 
-The service can `ping` any IP by running the following command:
+## Description
+Challenge link: [http://141.85.224.101:30001/pinger/](http://141.85.224.101:30001/pinger/)
 
-```bash
-ping -c 1 <your input>
-```
+Get the flag from pinger. What happened? Get the flag!
 
-Since your input is given directly to a shell command, you can be creative with how you use it.
+**Score:** 25
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/summary.md) reading material.
+## Exploit
+Solution in ./sol/solution.sh

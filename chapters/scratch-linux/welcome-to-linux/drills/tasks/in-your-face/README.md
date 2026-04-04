@@ -1,17 +1,22 @@
-# In Your Face
+# Name: Essentials: Welcome to Linux: In Your Face
 
-The flag is literally in your face.
+## Description
 
-Connect to the specified virtual machine and use `ls` to explore your surroundings:
+The flag is literally **in your face**.
+Use `cat` to find it.
 
-```console
-ctf@tutorial:~$ ls
-flag
-```
+Score: 100
 
-Now just use `cat` to extract the content of the `flag` file:
+## Exploit
 
-```console
-ctf@tutorial:~$ cat flag
-<your_flag_is_here>
-```
+Simply run `cat flag` after `ssh`-ing into the container.
+
+## Deploy
+
+Deployment is done via Docker using the `Dockerfile` and support files in the `deploy/` folder.
+
+Copy the challenge folder to the remote hosting system, enter the `deploy/` folder and run `make run`.
+This will create and deploy the Docker container with the proper port redirection in place.
+
+If you need to update the image and container, first use `make clean` to remove the old container, then use `make` to update the image (and the container).
+It is not possible to update the container without updating the image first.

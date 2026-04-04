@@ -12,7 +12,7 @@ for i in {0..10000}; do
     flag=$(curl -s "$URL?index=$i" | grep SSS)
     if [[ $flag != "" ]]; then
         echo "index = $i"
-        echo "$flag"
+        echo $flag
         break
     fi
 done

@@ -1,0 +1,8 @@
+namespace: cctf
+challenge:
+  name: pinger
+  category: web
+  image: pinger
+  containerPort: 80
+  nodePort: 30008
+  healthCheck: /_.healthcheck

