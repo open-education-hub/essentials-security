@@ -1,8 +1,10 @@
-# Name: Traverse the Universe
+# Name
+Essentials: Hacking The Web: Traverse Universe
 
 ## Description
+Get the flag from [Traverse-Universe](http://141.85.224.102:8015/panetarium/../earth/moon/NASA/flag.php.)
 
-Explore new ~planets~ files.
+Get the flag!
 
 Score: 75
 

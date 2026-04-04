@@ -1,0 +1,4 @@
+<?php
+$flag = "__TEMPLATE__";
+echo "Welcome!";
+?>
