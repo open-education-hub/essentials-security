@@ -14,6 +14,6 @@ fi
 # Give to Get
 echo "Start exploit for Give to Get"
 remote=$remote'/give-to-get/'
-flag=$(curl -s "$remote"'?ask=flag' | grep -o "SSS_CTF{.*}")
+flag=$(curl -s $remote'?ask=flag' | grep -o "SSS_CTF{.*}")
 echo "Flag is $flag"
 echo "----------------------------"

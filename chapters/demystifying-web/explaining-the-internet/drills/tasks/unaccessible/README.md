@@ -1,12 +1,23 @@
-# Unaccessible
+# Name: Essentials: Explaining the Internet: Unaccessible
 
-Connect to the remote host via `ssh` as user `vuln` and get the flag.
-If only you knew the password.
-Up to now, the password was always `ctf`.
-This time, you have to find it yourself
-The file `password.txt` that contains the MD5 hash of the password.
-You can paste it on [crackstation](https://crackstation.net/), but real hackers use [John the Ripper](https://github.com/openwall/john).
-Don't chicken out and crack the password using `john`.
-We'll come back to `john` when we discuss [Data Security](../data-security/).
+## Description
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/summary.md) reading material.
+Connect to `141.85.224.70` with user `vuln`, on port `3222` and get the flag.
+Whoops, you don't know the password.
+You have its MD5 hash in `password.txt`.
+
+Score: 100
+
+## Exploit
+
+Use [`john`](https://github.com/openwall/john) to find out the password.
+
+## Deploy
+
+Deployment is done via Docker using the `Dockerfile` and support files in the `deploy/` folder.
+
+Copy the challenge folder to the remote hosting system, enter the `deploy/` folder and run `make run`.
+This will create and deploy the Docker container with the proper port redirection in place.
+
+If you need to update the image and container, first use `make clean` to remove the old container, then use `make` to update the image (and the container).
+It is not possible to update the container without updating the image first.

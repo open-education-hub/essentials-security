@@ -1,0 +1,23 @@
+namespace: ctf
+
+challenge:
+  name: traverse-the-universe
+  category: web
+
+image:
+  repository: sss-essentials_05_traverse-the-universe
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 80
+  nodePort: 30015
+
+container:
+  port: 80
+
+healthCheck:
+  path: /
+  initialDelaySeconds: 5
+  periodSeconds: 10

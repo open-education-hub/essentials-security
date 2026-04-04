@@ -14,6 +14,6 @@ fi
 # Name
 echo "Start exploit for Name"
 remote=$remote'/name/'
-flag=$(curl -s "$remote"'the_flag.html' | grep -o "SSS_CTF{.*}")
+flag=$(curl -s $remote'the_flag.html' | grep -o "SSS_CTF{.*}")
 echo "Flag is $flag"
 echo "----------------------------"

