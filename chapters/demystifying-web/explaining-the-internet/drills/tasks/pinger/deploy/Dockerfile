@@ -1,15 +1,12 @@
-FROM tiangolo/uwsgi-nginx-flask:python3.8
+# Stage 1: Builder
+FROM alpine AS builder
+WORKDIR /app
+# COPY commands look for files relative to the build context
+COPY src/index.php .
+COPY flag .
+RUN sed -i "s/__TEMPLATE__/$(cat flag)/g" index.php
 
-RUN useradd -m -d /home/ctf -s /bin/bash ctf
-RUN chown -R ctf:ctf /home/ctf/
-RUN chmod -R 750 /home/ctf/
-ADD flag /home/ctf
-RUN chmod 440 /home/ctf/flag
-
-COPY src/requirements.txt /tmp/
-
-RUN pip3 install -r /tmp/requirements.txt
-RUN mkdir app
-RUN mkdir -p  app/templates
-
-COPY src/ /app
+# Stage 2: Final Image
+FROM php:8.0-apache
+COPY --from=builder /app/index.php /var/www/html/
+EXPOSE 80

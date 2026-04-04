@@ -1,18 +1,18 @@
-PORT := 8069
-IMG_NAME := sss-essentials-03_pinger
-CONT_NAME := ${IMG_NAME}
-
-build:
-	docker build -f Dockerfile -t $(IMG_NAME) ..
-
-run: build
-	docker run -d -p $(PORT):80 --name $(CONT_NAME) $(IMG_NAME)
-
-stop:
-	docker stop $(CONT_NAME)
-
-clean: stop
-	docker rm $(IMG_NAME)
-	docker image rm $(IMG_NAME):latest
+NAME = pinger
+INTERNAL_PORT = 80
+EXTERNAL_PORT = 8000
 
 .PHONY: build run stop clean
+
+build:
+docker build -t $(NAME) -f Dockerfile ..
+
+run:
+docker run -d -p $(EXTERNAL_PORT):$(INTERNAL_PORT) --name $(NAME) $(NAME)
+
+stop:
+docker stop $(NAME) || true
+docker rm $(NAME) || true
+
+clean: stop
+docker rmi $(NAME) || true
