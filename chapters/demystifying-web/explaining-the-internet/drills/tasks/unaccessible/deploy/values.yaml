@@ -1,0 +1,23 @@
+namespace: explaining-the-internet
+
+challenge:
+  name: unaccessible
+  category: explaining-the-internet
+
+image:
+  repository: ghcr.io/open-education-hub/essentials-security/explaining-the-internet/unaccessible
+  tag: latest
+  pullPolicy: Always
+
+containerPort: 80
+
+service:
+  type: NodePort
+  port: 80
+  nodePort: 8000
+
+healthCheck:
+  enabled: true
+  path: "/"
+  initialDelaySeconds: 5
+  periodSeconds: 15
