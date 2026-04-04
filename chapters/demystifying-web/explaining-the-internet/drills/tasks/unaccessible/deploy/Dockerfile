@@ -1,17 +1,25 @@
-FROM ubuntu:18.04
 
-RUN useradd -m -d /home/vuln -s /bin/bash vuln
+# Stage 1: Builder
 
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN echo vuln:stupid | chpasswd &&\
-    chown -R vuln:vuln /home/vuln/ &&\
-    chmod -R 750 /home/vuln/ &&\
-    echo 'set +o history' >> /home/ctf/.bashrc
+FROM alpine AS builder
 
-COPY flag /home/vuln/flag
-RUN chmod 644 /home/vuln/flag &&\
-    apt-get update && apt-get install -y openssh-server &&\
-    apt-get clean &&\
-    rm -rf /var/lib/apt/lists/*
+WORKDIR /app
 
-ENTRYPOINT service ssh restart && bash
+
+
+COPY src/index.php .
+
+COPY flag .
+
+RUN sed -i "s/__TEMPLATE__/$(cat flag)/g" index.php
+
+
+
+# Stage 2: Final Image
+
+FROM php:8.0-apache
+
+COPY --from=builder /app/index.php /var/www/html/
+
+EXPOSE 80
+

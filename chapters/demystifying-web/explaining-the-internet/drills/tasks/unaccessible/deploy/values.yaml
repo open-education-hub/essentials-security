@@ -1,0 +1,17 @@
+
+namespace: cctf
+
+challenge:
+
+  name: unaccessible
+
+  category: web
+
+  image: unaccessible
+
+  containerPort: 80
+
+  nodePort: 30009
+
+  healthCheck: /_.healthcheck
+

@@ -1,18 +1,18 @@
-PORT := 33222
-IMG_NAME := sss-essentials-03_unaccessible
-CONT_NAME := ${IMG_NAME}
+NAME = unaccessible
+INTERNAL_PORT = 80
+EXTERNAL_PORT = 8001
+
+.PHONY: build run stop clean
 
 build:
-	docker build -t $(IMG_NAME) -f Dockerfile ..
+docker build -t $(NAME) -f Dockerfile ..
 
-run: build
-	docker run -d -p $(PORT):22 --name $(CONT_NAME) -t $(IMG_NAME)
+run:
+docker run -d -p $(EXTERNAL_PORT):$(INTERNAL_PORT) --name $(NAME) $(NAME)
 
 stop:
-	docker stop $(CONT_NAME)
+docker stop $(NAME) || true
+docker rm $(NAME) || true
 
 clean: stop
-	docker rm $(IMG_NAME)
-	docker image rm $(IMG_NAME):latest
-
-.PHONY: run stop clean
+docker rmi $(NAME) || true
